@@ -58,6 +58,14 @@ export const Theme: GlobalConfig = {
       },
     },
     {
+      name: 'primaryTextColor',
+      type: 'text',
+      admin: {
+        description:
+          'Optional override for the text/icon color shown on top of the Primary color. Leave blank to auto-calculate a readable black or white based on Primary Color.',
+      },
+    },
+    {
       name: 'accentColor',
       type: 'text',
       required: true,

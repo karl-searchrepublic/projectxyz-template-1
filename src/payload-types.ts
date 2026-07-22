@@ -631,23 +631,27 @@ export interface ContactPage {
 export interface Theme {
   id: number;
   /**
-   * Main brand color — buttons, links, active states
+   * Main brand color — solid buttons (Get a Quote, Call Now, etc.), text links, and icon accents like service checkmarks. Text shown on top of it is calculated automatically for contrast.
    */
   primaryColor: string;
   /**
-   * Page background color
+   * Page and card background color. Also blended with the text color to produce the derived border, input outline, and focus ring tones.
    */
   backgroundColor: string;
   /**
-   * Header/nav bar background color. Set this per client to match the background baked into their logo file, so the logo sits cleanly on the header — independent of the general page background.
+   * Header/nav bar background color (desktop bar and mobile dropdown menu). Set this per client to match the background baked into their logo file, so the logo sits cleanly on the header — independent of the general page background. Nav text color is calculated automatically for contrast against it.
    */
   headerBackgroundColor: string;
   /**
-   * Main text color
+   * Main text color. Also blended with the background color to produce derived tones — muted/secondary text, borders, input outlines, and focus rings.
    */
   foregroundColor: string;
   /**
-   * Secondary background — muted sections, card hovers, badges
+   * Optional override for the text/icon color shown on top of the Primary color. Leave blank to auto-calculate a readable black or white based on Primary Color.
+   */
+  primaryTextColor?: string | null;
+  /**
+   * Secondary background — badges/chips, hover backgrounds on nav links and outline buttons, and muted section backgrounds like the final CTA banner.
    */
   accentColor: string;
   updatedAt?: string | null;
@@ -897,6 +901,7 @@ export interface ThemeSelect<T extends boolean = true> {
   backgroundColor?: T;
   headerBackgroundColor?: T;
   foregroundColor?: T;
+  primaryTextColor?: T;
   accentColor?: T;
   updatedAt?: T;
   createdAt?: T;

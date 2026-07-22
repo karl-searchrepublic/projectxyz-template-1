@@ -13,6 +13,7 @@ import * as migration_20260722_214154_add_company_info from './20260722_214154_a
 import * as migration_20260722_220207_remove_hero_secondary_cta from './20260722_220207_remove_hero_secondary_cta';
 import * as migration_20260722_222202_add_header_call_button_label from './20260722_222202_add_header_call_button_label';
 import * as migration_20260722_225822_add_header_background_color from './20260722_225822_add_header_background_color';
+import * as migration_20260722_231842_add_primary_text_color from './20260722_231842_add_primary_text_color';
 
 export const migrations = [
   {
@@ -88,6 +89,11 @@ export const migrations = [
   {
     up: migration_20260722_225822_add_header_background_color.up,
     down: migration_20260722_225822_add_header_background_color.down,
-    name: '20260722_225822_add_header_background_color'
+    name: '20260722_225822_add_header_background_color',
+  },
+  {
+    up: migration_20260722_231842_add_primary_text_color.up,
+    down: migration_20260722_231842_add_primary_text_color.down,
+    name: '20260722_231842_add_primary_text_color'
   },
 ];
