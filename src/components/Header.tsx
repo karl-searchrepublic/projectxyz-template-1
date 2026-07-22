@@ -17,11 +17,11 @@ export function Header({ data }: { data: HeaderGlobal }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link className="flex items-center text-lg font-semibold tracking-tight" href="/">
+        <Link className="flex shrink-0 items-center text-lg font-semibold tracking-tight" href="/">
           {logo?.url ? (
             <Image
               alt={logo.alt}
-              className="h-8 w-auto"
+              className="h-8 w-auto max-w-[180px] object-contain md:h-10"
               height={logo.height ?? 32}
               priority
               src={logo.url}
