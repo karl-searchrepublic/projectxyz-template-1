@@ -208,27 +208,6 @@ svg {
 
 /* Structure & spacing only — no visual design yet */
 
-.site-footer__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 24px 45px;
-}
-
-.site-footer__nav {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.site-footer__contact {
-  display: flex;
-  gap: 16px;
-}
-
 .page-intro,
 .our-story,
 .credentials-strip,
