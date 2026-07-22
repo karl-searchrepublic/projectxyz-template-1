@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, Phone, X } from 'lucide-react'
+import { ArrowRight, Menu, Phone, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -47,7 +47,7 @@ export function Header({ data, phone }: { data: HeaderGlobal; phone?: string | n
 
           <div className="hidden items-center gap-3 md:flex">
             {phone && (
-              <Button asChild size="sm" variant="outline">
+              <Button asChild size="sm">
                 <a href={`tel:${phone.replace(/[^\d+]/g, '')}`}>
                   <Phone />
                   {phone}
@@ -55,8 +55,11 @@ export function Header({ data, phone }: { data: HeaderGlobal; phone?: string | n
               </Button>
             )}
             {data.ctaLabel && data.ctaHref && (
-              <Button asChild size="sm">
-                <Link href={data.ctaHref}>{data.ctaLabel}</Link>
+              <Button asChild size="sm" variant="outline">
+                <Link href={data.ctaHref}>
+                  {data.ctaLabel}
+                  <ArrowRight />
+                </Link>
               </Button>
             )}
           </div>
