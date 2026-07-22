@@ -21,7 +21,7 @@ export function Header({ data }: { data: HeaderGlobal }) {
           {logo?.url ? (
             <Image
               alt={logo.alt}
-              className="h-8 w-auto max-w-[180px] object-contain md:h-10"
+              className="h-12 w-auto max-w-[180px] object-contain md:h-14"
               height={logo.height ?? 32}
               priority
               src={logo.url}
