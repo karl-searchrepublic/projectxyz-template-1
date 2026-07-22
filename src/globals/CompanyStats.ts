@@ -12,6 +12,7 @@ export const CompanyStats: GlobalConfig = {
     afterChange: [revalidateFrontend],
   },
   admin: {
+    group: 'Components',
     description:
       'Shared credential/stat numbers shown on both the About page and the homepage trust strip.',
   },

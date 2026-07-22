@@ -7,6 +7,9 @@ export const Footer: GlobalConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    group: 'Site Settings',
+  },
   hooks: {
     afterChange: [revalidateFrontend],
   },

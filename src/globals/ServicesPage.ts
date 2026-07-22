@@ -7,6 +7,9 @@ export const ServicesPage: GlobalConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    group: 'Pages',
+  },
   hooks: {
     afterChange: [revalidateFrontend],
   },

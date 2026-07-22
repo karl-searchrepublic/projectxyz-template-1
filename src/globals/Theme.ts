@@ -12,6 +12,7 @@ export const Theme: GlobalConfig = {
     afterChange: [revalidateFrontend],
   },
   admin: {
+    group: 'Site Settings',
     description:
       'Brand colors for this site. Enter hex codes (e.g. #1a56db). Readable text color on Primary/Accent is calculated automatically.',
   },
