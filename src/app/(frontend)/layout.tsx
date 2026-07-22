@@ -45,7 +45,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" style={themeStyle}>
       <body className="pb-20 md:pb-0">
-        <Header data={header} />
+        <Header data={header} phone={companyInfo.phone} />
         <main>{children}</main>
         <Footer companyInfo={companyInfo} data={footer} />
         <MobileCtaBar

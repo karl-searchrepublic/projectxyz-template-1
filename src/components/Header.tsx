@@ -3,20 +3,20 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { Menu, Phone, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import type { Header as HeaderGlobal, Media } from '@/payload-types'
 
-export function Header({ data }: { data: HeaderGlobal }) {
+export function Header({ data, phone }: { data: HeaderGlobal; phone?: string | null }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const logo = data.logo && typeof data.logo === 'object' ? (data.logo as Media) : null
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-header-background/95 text-header-foreground backdrop-blur supports-[backdrop-filter]:bg-header-background/80">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center px-6">
         <Link className="flex shrink-0 items-center text-lg font-semibold tracking-tight" href="/">
           {logo?.url ? (
             <Image
@@ -32,36 +32,46 @@ export function Header({ data }: { data: HeaderGlobal }) {
           )}
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-medium md:flex">
-          {data.navLinks?.map((link) => (
-            <Link
-              className="text-header-foreground/70 transition-colors hover:text-header-foreground"
-              href={link.href}
-              key={link.id ?? link.href}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="ml-auto flex items-center gap-6">
+          <nav className="hidden items-center gap-8 text-sm font-medium md:flex">
+            {data.navLinks?.map((link) => (
+              <Link
+                className="text-header-foreground/70 transition-colors hover:text-header-foreground"
+                href={link.href}
+                key={link.id ?? link.href}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
 
-        <div className="hidden md:block">
-          {data.ctaLabel && data.ctaHref && (
-            <Button asChild size="sm">
-              <Link href={data.ctaHref}>{data.ctaLabel}</Link>
-            </Button>
-          )}
+          <div className="hidden items-center gap-3 md:flex">
+            {phone && (
+              <Button asChild size="sm" variant="outline">
+                <a href={`tel:${phone.replace(/[^\d+]/g, '')}`}>
+                  <Phone />
+                  {phone}
+                </a>
+              </Button>
+            )}
+            {data.ctaLabel && data.ctaHref && (
+              <Button asChild size="sm">
+                <Link href={data.ctaHref}>{data.ctaLabel}</Link>
+              </Button>
+            )}
+          </div>
+
+          <Button
+            aria-expanded={isMenuOpen}
+            aria-label="Toggle menu"
+            className="md:hidden"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            size="icon"
+            variant="ghost"
+          >
+            {isMenuOpen ? <X /> : <Menu />}
+          </Button>
         </div>
-
-        <Button
-          aria-expanded={isMenuOpen}
-          aria-label="Toggle menu"
-          className="md:hidden"
-          onClick={() => setIsMenuOpen((open) => !open)}
-          size="icon"
-          variant="ghost"
-        >
-          {isMenuOpen ? <X /> : <Menu />}
-        </Button>
       </div>
 
       <div
