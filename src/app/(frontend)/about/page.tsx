@@ -36,7 +36,7 @@ export default async function AboutPage() {
         subtext={about.pageIntro?.subtext}
       />
 
-      <section className="mx-auto max-w-6xl px-6 py-16">
+      <section className="mx-auto max-w-6xl px-6 py-section-y-lg">
         <div className="flex flex-col items-center gap-10 lg:flex-row">
           <div className="flex-1">
             {about.ourStory?.heading && (
@@ -64,7 +64,7 @@ export default async function AboutPage() {
       <CredentialsStrip items={companyStats.stats ?? []} />
 
       {about.teamGrid && about.teamGrid.length > 0 && (
-        <section className="mx-auto max-w-6xl px-6 py-16">
+        <section className="mx-auto max-w-6xl px-6 py-section-y-lg">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {about.teamGrid.map((member) => {
               const photo =

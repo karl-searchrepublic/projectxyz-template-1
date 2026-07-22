@@ -47,7 +47,7 @@ export default async function ContactPage() {
         subtext={contact.pageIntro?.subtext}
       />
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-16 lg:grid-cols-3">
+      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-section-y-lg lg:grid-cols-3">
         <ContactForm />
 
         <div className="flex flex-col gap-6">
@@ -94,7 +94,7 @@ export default async function ContactPage() {
       </section>
 
       {contact.serviceAreaSuburbs && contact.serviceAreaSuburbs.length > 0 && (
-        <section className="mx-auto max-w-6xl px-6 pb-16">
+        <section className="mx-auto max-w-6xl px-6 pb-section-y-lg">
           <h2 className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
             {contact.serviceAreaHeading}
           </h2>

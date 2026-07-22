@@ -9,7 +9,7 @@ export function CredentialsStrip({
 
   return (
     <section className="border-t border-border bg-accent">
-      <div className="mx-auto max-w-6xl px-6 py-12">
+      <div className="mx-auto max-w-6xl px-6 py-section-y">
         {heading && (
           <h2 className="mb-10 text-center text-2xl font-bold tracking-tight sm:text-3xl">
             {heading}

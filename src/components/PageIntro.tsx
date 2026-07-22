@@ -9,7 +9,7 @@ export function PageIntro({
 }) {
   return (
     <section className="bg-background text-foreground">
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 px-6 py-16 text-center sm:py-24">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 px-6 py-section-y text-center sm:py-section-y-lg">
         {eyebrow && (
           <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
             {eyebrow}

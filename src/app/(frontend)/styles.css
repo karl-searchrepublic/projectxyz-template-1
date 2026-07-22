@@ -61,6 +61,17 @@
 }
 
 /*
+ * Shared vertical rhythm for page/section wrappers, so every section across
+ * the site pulls from the same two values instead of each component
+ * hardcoding its own padding number. Generates py-section-y, pb-section-y,
+ * py-section-y-lg, pb-section-y-lg, etc.
+ */
+@theme {
+  --spacing-section-y: 3rem;
+  --spacing-section-y-lg: 4rem;
+}
+
+/*
  * Base element resets, wrapped in Tailwind's `base` layer so utility classes
  * (which live in the `utilities` layer) correctly override them. Unlayered
  * CSS always beats layered CSS regardless of specificity, so without this,

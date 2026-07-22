@@ -10,7 +10,7 @@ export function Hero({ data, phone }: { data: HomePage['hero']; phone?: string |
 
   return (
     <section className="bg-accent text-accent-foreground">
-      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-12 lg:grid-cols-12 lg:gap-16 lg:py-16">
+      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-section-y lg:grid-cols-12 lg:gap-16 lg:py-section-y-lg">
         <div className="order-last flex flex-col justify-center lg:order-none lg:col-span-6">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-balance md:text-5xl">
             {data.headline}

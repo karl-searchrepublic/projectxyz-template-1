@@ -71,12 +71,12 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         </div>
       )}
 
-      <section className="mx-auto max-w-3xl px-6 py-12">
+      <section className="mx-auto max-w-3xl px-6 py-section-y">
         <p className="text-lg text-muted-foreground">{service.description}</p>
       </section>
 
       {service.whatsIncluded && service.whatsIncluded.length > 0 && (
-        <section className="mx-auto max-w-3xl px-6 pb-12">
+        <section className="mx-auto max-w-3xl px-6 pb-section-y">
           <h2 className="text-2xl font-bold tracking-tight">{servicesPage.whatsIncludedHeading}</h2>
           <ul className="mt-6 flex flex-col gap-3">
             {service.whatsIncluded.map((entry) => (
@@ -90,7 +90,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
       )}
 
       {relatedServices.length > 0 && (
-        <section className="mx-auto max-w-3xl px-6 pb-16">
+        <section className="mx-auto max-w-3xl px-6 pb-section-y-lg">
           <h2 className="text-2xl font-bold tracking-tight">
             {servicesPage.relatedServicesHeading}
           </h2>

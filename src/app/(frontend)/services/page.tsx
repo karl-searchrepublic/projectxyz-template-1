@@ -29,7 +29,7 @@ export default async function ServicesPage() {
         subtext={servicesPage.pageIntro?.subtext}
       />
 
-      <section className="mx-auto grid max-w-6xl gap-6 px-6 py-16 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="mx-auto grid max-w-6xl gap-6 px-6 py-section-y-lg sm:grid-cols-2 lg:grid-cols-3">
         {services.docs.map((service) => (
           <ServiceCard
             description={service.subtext}
@@ -42,7 +42,7 @@ export default async function ServicesPage() {
       </section>
 
       {servicesPage.howItWorks && servicesPage.howItWorks.length > 0 && (
-        <section className="mx-auto max-w-6xl px-6 py-16">
+        <section className="mx-auto max-w-6xl px-6 py-section-y-lg">
           <h2 className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
             {servicesPage.howItWorksHeading}
           </h2>
@@ -60,7 +60,7 @@ export default async function ServicesPage() {
       )}
 
       {servicesPage.faq && servicesPage.faq.length > 0 && (
-        <section className="mx-auto max-w-3xl px-6 py-16">
+        <section className="mx-auto max-w-3xl px-6 py-section-y-lg">
           <h2 className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
             {servicesPage.faqHeading}
           </h2>

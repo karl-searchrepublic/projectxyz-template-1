@@ -17,7 +17,7 @@ export function CTABanner({
 
   return (
     <section className="border-t border-border bg-muted/40">
-      <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-8 py-16 text-center">
+      <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-8 py-section-y-lg text-center">
         {heading && <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{heading}</h2>}
         {subtext && <p className="text-lg text-muted-foreground">{subtext}</p>}
         {buttonLabel && buttonHref && (
