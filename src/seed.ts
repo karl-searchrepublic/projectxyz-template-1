@@ -76,6 +76,7 @@ export const seed = async (payload: Payload): Promise<void> => {
         ],
         ctaLabel: 'Get a Quote',
         ctaHref: '/contact',
+        callButtonLabel: 'Call Now',
       },
     })
   } else if (!header.metaDescription) {

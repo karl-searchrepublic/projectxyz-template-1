@@ -58,5 +58,13 @@ export const Header: GlobalConfig = {
       name: 'ctaHref',
       type: 'text',
     },
+    {
+      name: 'callButtonLabel',
+      type: 'text',
+      defaultValue: 'Call Now',
+      admin: {
+        description: 'Label for the "call" button on the mobile sticky CTA bar',
+      },
+    },
   ],
 }

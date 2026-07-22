@@ -4,6 +4,7 @@ import React from 'react'
 import config from '@/payload.config'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { MobileCtaBar } from '@/components/MobileCtaBar'
 import { getContrastColor } from '@/lib/theme'
 import './styles.css'
 
@@ -41,10 +42,16 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en" style={themeStyle}>
-      <body>
+      <body className="pb-20 md:pb-0">
         <Header data={header} />
         <main>{children}</main>
         <Footer companyInfo={companyInfo} data={footer} />
+        <MobileCtaBar
+          callLabel={header.callButtonLabel}
+          phone={companyInfo.phone}
+          quoteHref={header.ctaHref}
+          quoteLabel={header.ctaLabel}
+        />
       </body>
     </html>
   )

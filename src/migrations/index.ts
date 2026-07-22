@@ -11,6 +11,7 @@ import * as migration_20260722_061646_add_company_stats from './20260722_061646_
 import * as migration_20260722_061659_remove_credentials_strip from './20260722_061659_remove_credentials_strip';
 import * as migration_20260722_214154_add_company_info from './20260722_214154_add_company_info';
 import * as migration_20260722_220207_remove_hero_secondary_cta from './20260722_220207_remove_hero_secondary_cta';
+import * as migration_20260722_222202_add_header_call_button_label from './20260722_222202_add_header_call_button_label';
 
 export const migrations = [
   {
@@ -76,6 +77,11 @@ export const migrations = [
   {
     up: migration_20260722_220207_remove_hero_secondary_cta.up,
     down: migration_20260722_220207_remove_hero_secondary_cta.down,
-    name: '20260722_220207_remove_hero_secondary_cta'
+    name: '20260722_220207_remove_hero_secondary_cta',
+  },
+  {
+    up: migration_20260722_222202_add_header_call_button_label.up,
+    down: migration_20260722_222202_add_header_call_button_label.down,
+    name: '20260722_222202_add_header_call_button_label'
   },
 ];

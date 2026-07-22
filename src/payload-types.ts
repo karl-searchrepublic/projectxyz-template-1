@@ -455,6 +455,10 @@ export interface Header {
     | null;
   ctaLabel?: string | null;
   ctaHref?: string | null;
+  /**
+   * Label for the "call" button on the mobile sticky CTA bar
+   */
+  callButtonLabel?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -695,6 +699,7 @@ export interface HeaderSelect<T extends boolean = true> {
       };
   ctaLabel?: T;
   ctaHref?: T;
+  callButtonLabel?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
