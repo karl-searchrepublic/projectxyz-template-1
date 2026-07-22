@@ -23,7 +23,8 @@ export const Theme: GlobalConfig = {
       required: true,
       defaultValue: '#171717',
       admin: {
-        description: 'Main brand color — buttons, links, active states',
+        description:
+          'Main brand color — solid buttons (Get a Quote, Call Now, etc.), text links, and icon accents like service checkmarks. Text shown on top of it is calculated automatically for contrast.',
       },
     },
     {
@@ -32,7 +33,8 @@ export const Theme: GlobalConfig = {
       required: true,
       defaultValue: '#ffffff',
       admin: {
-        description: 'Page background color',
+        description:
+          'Page and card background color. Also blended with the text color to produce the derived border, input outline, and focus ring tones.',
       },
     },
     {
@@ -42,7 +44,7 @@ export const Theme: GlobalConfig = {
       defaultValue: '#ffffff',
       admin: {
         description:
-          "Header/nav bar background color. Set this per client to match the background baked into their logo file, so the logo sits cleanly on the header — independent of the general page background.",
+          'Header/nav bar background color (desktop bar and mobile dropdown menu). Set this per client to match the background baked into their logo file, so the logo sits cleanly on the header — independent of the general page background. Nav text color is calculated automatically for contrast against it.',
       },
     },
     {
@@ -51,7 +53,8 @@ export const Theme: GlobalConfig = {
       required: true,
       defaultValue: '#1a1a1a',
       admin: {
-        description: 'Main text color',
+        description:
+          'Main text color. Also blended with the background color to produce derived tones — muted/secondary text, borders, input outlines, and focus rings.',
       },
     },
     {
@@ -60,7 +63,8 @@ export const Theme: GlobalConfig = {
       required: true,
       defaultValue: '#f5f5f5',
       admin: {
-        description: 'Secondary background — muted sections, card hovers, badges',
+        description:
+          'Secondary background — badges/chips, hover backgrounds on nav links and outline buttons, and muted section backgrounds like the final CTA banner.',
       },
     },
   ],
