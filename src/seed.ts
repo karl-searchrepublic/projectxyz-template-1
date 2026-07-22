@@ -102,8 +102,6 @@ export const seed = async (payload: Payload): Promise<void> => {
           { label: 'Services', href: '/services' },
           { label: 'Contact', href: '/contact' },
         ],
-        contactPhone: '(555) 123-4567',
-        contactEmail: 'hello@projectxyz.example',
       },
     })
   }
@@ -205,6 +203,20 @@ export const seed = async (payload: Payload): Promise<void> => {
     })
   }
 
+  const companyInfo = await payload.findGlobal({ slug: 'company-info' })
+  if (!companyInfo.phone) {
+    payload.logger.info('Seeding company-info global...')
+    await payload.updateGlobal({
+      slug: 'company-info',
+      data: {
+        phone: '(555) 123-4567',
+        email: 'hello@projectxyz.example',
+        address: '123 Example Street, Your Town',
+        hours: 'Mon-Fri: 7am-5pm\nSat: 8am-1pm\nSun: Emergency callouts only',
+      },
+    })
+  }
+
   const servicesPage = await payload.findGlobal({ slug: 'services-page' })
   if (!servicesPage.pageIntro?.headline) {
     payload.logger.info('Seeding services-page global...')
@@ -270,7 +282,6 @@ export const seed = async (payload: Payload): Promise<void> => {
         emergencyCallout: {
           show: true,
           message: 'Got a plumbing emergency? Call us now, we are available 24/7.',
-          phone: '(555) 123-4567',
         },
         pageIntro: {
           eyebrow: 'Contact',
@@ -279,13 +290,9 @@ export const seed = async (payload: Payload): Promise<void> => {
         },
         contactDetails: {
           phoneLabel: 'Phone',
-          phone: '(555) 123-4567',
           emailLabel: 'Email',
-          email: 'hello@projectxyz.example',
           addressLabel: 'Address',
-          address: '123 Example Street, Your Town',
           hoursLabel: 'Hours',
-          hours: 'Mon-Fri: 7am-5pm\nSat: 8am-1pm\nSun: Emergency callouts only',
         },
         mapPlaceholder: {
           placeholderLabel: 'Map coming soon',

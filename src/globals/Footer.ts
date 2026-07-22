@@ -34,13 +34,5 @@ export const Footer: GlobalConfig = {
         },
       ],
     },
-    {
-      name: 'contactPhone',
-      type: 'text',
-    },
-    {
-      name: 'contactEmail',
-      type: 'text',
-    },
   ],
 }

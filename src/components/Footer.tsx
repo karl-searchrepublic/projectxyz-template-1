@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-import type { Footer as FooterGlobal } from '@/payload-types'
+import type { CompanyInfo, Footer as FooterGlobal } from '@/payload-types'
 
-export function Footer({ data }: { data: FooterGlobal }) {
+export function Footer({ data, companyInfo }: { data: FooterGlobal; companyInfo: CompanyInfo }) {
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12">
@@ -19,22 +19,22 @@ export function Footer({ data }: { data: FooterGlobal }) {
             ))}
           </nav>
 
-          {(data.contactPhone || data.contactEmail) && (
+          {(companyInfo.phone || companyInfo.email) && (
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-              {data.contactPhone && (
+              {companyInfo.phone && (
                 <a
                   className="transition-colors hover:text-foreground"
-                  href={`tel:${data.contactPhone.replace(/[^\d+]/g, '')}`}
+                  href={`tel:${companyInfo.phone.replace(/[^\d+]/g, '')}`}
                 >
-                  {data.contactPhone}
+                  {companyInfo.phone}
                 </a>
               )}
-              {data.contactEmail && (
+              {companyInfo.email && (
                 <a
                   className="transition-colors hover:text-foreground"
-                  href={`mailto:${data.contactEmail}`}
+                  href={`mailto:${companyInfo.email}`}
                 >
-                  {data.contactEmail}
+                  {companyInfo.email}
                 </a>
               )}
             </div>

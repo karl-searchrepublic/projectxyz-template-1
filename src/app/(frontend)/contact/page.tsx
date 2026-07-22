@@ -17,7 +17,10 @@ export async function generateMetadata() {
 export default async function ContactPage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const contact = await payload.findGlobal({ slug: 'contact-page' })
+  const [contact, companyInfo] = await Promise.all([
+    payload.findGlobal({ slug: 'contact-page' }),
+    payload.findGlobal({ slug: 'company-info' }),
+  ])
 
   return (
     <>
@@ -25,13 +28,13 @@ export default async function ContactPage() {
         <section className="border-b border-border bg-destructive/10">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 px-6 py-3 text-center">
             <p className="font-medium">{contact.emergencyCallout.message}</p>
-            {contact.emergencyCallout.phone && (
+            {companyInfo.phone && (
               <a
                 className="flex items-center gap-1.5 font-semibold text-destructive hover:underline"
-                href={`tel:${contact.emergencyCallout.phone.replace(/[^\d+]/g, '')}`}
+                href={`tel:${companyInfo.phone.replace(/[^\d+]/g, '')}`}
               >
                 <Phone className="size-4" />
-                {contact.emergencyCallout.phone}
+                {companyInfo.phone}
               </a>
             )}
           </div>
@@ -48,30 +51,28 @@ export default async function ContactPage() {
         <ContactForm />
 
         <div className="flex flex-col gap-6">
-          {contact.contactDetails?.phone && (
+          {companyInfo.phone && (
             <div>
-              <h3 className="font-semibold">{contact.contactDetails.phoneLabel}</h3>
-              <p className="text-muted-foreground">{contact.contactDetails.phone}</p>
+              <h3 className="font-semibold">{contact.contactDetails?.phoneLabel}</h3>
+              <p className="text-muted-foreground">{companyInfo.phone}</p>
             </div>
           )}
-          {contact.contactDetails?.email && (
+          {companyInfo.email && (
             <div>
-              <h3 className="font-semibold">{contact.contactDetails.emailLabel}</h3>
-              <p className="text-muted-foreground">{contact.contactDetails.email}</p>
+              <h3 className="font-semibold">{contact.contactDetails?.emailLabel}</h3>
+              <p className="text-muted-foreground">{companyInfo.email}</p>
             </div>
           )}
-          {contact.contactDetails?.address && (
+          {companyInfo.address && (
             <div>
-              <h3 className="font-semibold">{contact.contactDetails.addressLabel}</h3>
-              <p className="text-muted-foreground">{contact.contactDetails.address}</p>
+              <h3 className="font-semibold">{contact.contactDetails?.addressLabel}</h3>
+              <p className="text-muted-foreground">{companyInfo.address}</p>
             </div>
           )}
-          {contact.contactDetails?.hours && (
+          {companyInfo.hours && (
             <div>
-              <h3 className="font-semibold">{contact.contactDetails.hoursLabel}</h3>
-              <p className="whitespace-pre-line text-muted-foreground">
-                {contact.contactDetails.hours}
-              </p>
+              <h3 className="font-semibold">{contact.contactDetails?.hoursLabel}</h3>
+              <p className="whitespace-pre-line text-muted-foreground">{companyInfo.hours}</p>
             </div>
           )}
         </div>

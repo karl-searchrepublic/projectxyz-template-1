@@ -100,6 +100,7 @@ export interface Config {
     'contact-page': ContactPage;
     theme: Theme;
     'company-stats': CompanyStat;
+    'company-info': CompanyInfo;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -110,6 +111,7 @@ export interface Config {
     'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
     theme: ThemeSelect<false> | ThemeSelect<true>;
     'company-stats': CompanyStatsSelect<false> | CompanyStatsSelect<true>;
+    'company-info': CompanyInfoSelect<false> | CompanyInfoSelect<true>;
   };
   locale: null;
   widgets: {
@@ -470,8 +472,6 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
-  contactPhone?: string | null;
-  contactEmail?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -596,7 +596,6 @@ export interface ContactPage {
   emergencyCallout?: {
     show?: boolean | null;
     message?: string | null;
-    phone?: string | null;
   };
   pageIntro: {
     eyebrow?: string | null;
@@ -605,13 +604,9 @@ export interface ContactPage {
   };
   contactDetails?: {
     phoneLabel?: string | null;
-    phone?: string | null;
     emailLabel?: string | null;
-    email?: string | null;
     addressLabel?: string | null;
-    address?: string | null;
     hoursLabel?: string | null;
-    hours?: string | null;
   };
   mapPlaceholder?: {
     embedUrl?: string | null;
@@ -673,6 +668,21 @@ export interface CompanyStat {
   createdAt?: string | null;
 }
 /**
+ * Shared business contact details, used across the Footer and Contact page (including the emergency callout phone number).
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company-info".
+ */
+export interface CompanyInfo {
+  id: number;
+  phone?: string | null;
+  email?: string | null;
+  address?: string | null;
+  hours?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
@@ -706,8 +716,6 @@ export interface FooterSelect<T extends boolean = true> {
         href?: T;
         id?: T;
       };
-  contactPhone?: T;
-  contactEmail?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -848,7 +856,6 @@ export interface ContactPageSelect<T extends boolean = true> {
     | {
         show?: T;
         message?: T;
-        phone?: T;
       };
   pageIntro?:
     | T
@@ -861,13 +868,9 @@ export interface ContactPageSelect<T extends boolean = true> {
     | T
     | {
         phoneLabel?: T;
-        phone?: T;
         emailLabel?: T;
-        email?: T;
         addressLabel?: T;
-        address?: T;
         hoursLabel?: T;
-        hours?: T;
       };
   mapPlaceholder?:
     | T
@@ -911,6 +914,19 @@ export interface CompanyStatsSelect<T extends boolean = true> {
         value?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company-info_select".
+ */
+export interface CompanyInfoSelect<T extends boolean = true> {
+  phone?: T;
+  email?: T;
+  address?: T;
+  hours?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

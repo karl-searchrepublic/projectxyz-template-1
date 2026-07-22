@@ -20,7 +20,6 @@ export const ContactPage: GlobalConfig = {
       fields: [
         { name: 'show', type: 'checkbox', defaultValue: true },
         { name: 'message', type: 'text' },
-        { name: 'phone', type: 'text' },
       ],
     },
     {
@@ -37,13 +36,9 @@ export const ContactPage: GlobalConfig = {
       type: 'group',
       fields: [
         { name: 'phoneLabel', type: 'text', defaultValue: 'Phone' },
-        { name: 'phone', type: 'text' },
         { name: 'emailLabel', type: 'text', defaultValue: 'Email' },
-        { name: 'email', type: 'text' },
         { name: 'addressLabel', type: 'text', defaultValue: 'Address' },
-        { name: 'address', type: 'textarea' },
         { name: 'hoursLabel', type: 'text', defaultValue: 'Hours' },
-        { name: 'hours', type: 'textarea' },
       ],
     },
     {

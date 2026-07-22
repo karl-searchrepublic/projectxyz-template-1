@@ -9,6 +9,7 @@ import * as migration_20260722_044213_remove_hero_eyebrow from './20260722_04421
 import * as migration_20260722_055841_add_theme from './20260722_055841_add_theme';
 import * as migration_20260722_061646_add_company_stats from './20260722_061646_add_company_stats';
 import * as migration_20260722_061659_remove_credentials_strip from './20260722_061659_remove_credentials_strip';
+import * as migration_20260722_214154_add_company_info from './20260722_214154_add_company_info';
 
 export const migrations = [
   {
@@ -64,6 +65,11 @@ export const migrations = [
   {
     up: migration_20260722_061659_remove_credentials_strip.up,
     down: migration_20260722_061659_remove_credentials_strip.down,
-    name: '20260722_061659_remove_credentials_strip'
+    name: '20260722_061659_remove_credentials_strip',
+  },
+  {
+    up: migration_20260722_214154_add_company_info.up,
+    down: migration_20260722_214154_add_company_info.down,
+    name: '20260722_214154_add_company_info'
   },
 ];
