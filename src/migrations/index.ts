@@ -6,6 +6,7 @@ import * as migration_20260722_033359_add_home_page_sections from './20260722_03
 import * as migration_20260722_035555_add_header_logo from './20260722_035555_add_header_logo';
 import * as migration_20260722_044143_add_hero_image from './20260722_044143_add_hero_image';
 import * as migration_20260722_044213_remove_hero_eyebrow from './20260722_044213_remove_hero_eyebrow';
+import * as migration_20260722_055841_add_theme from './20260722_055841_add_theme';
 
 export const migrations = [
   {
@@ -46,6 +47,11 @@ export const migrations = [
   {
     up: migration_20260722_044213_remove_hero_eyebrow.up,
     down: migration_20260722_044213_remove_hero_eyebrow.down,
-    name: '20260722_044213_remove_hero_eyebrow'
+    name: '20260722_044213_remove_hero_eyebrow',
+  },
+  {
+    up: migration_20260722_055841_add_theme.up,
+    down: migration_20260722_055841_add_theme.down,
+    name: '20260722_055841_add_theme'
   },
 ];

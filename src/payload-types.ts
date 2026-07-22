@@ -98,6 +98,7 @@ export interface Config {
     'about-page': AboutPage;
     'services-page': ServicesPage;
     'contact-page': ContactPage;
+    theme: Theme;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -106,6 +107,7 @@ export interface Config {
     'about-page': AboutPageSelect<false> | AboutPageSelect<true>;
     'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
     'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
+    theme: ThemeSelect<false> | ThemeSelect<true>;
   };
   locale: null;
   widgets: {
@@ -631,6 +633,33 @@ export interface ContactPage {
   createdAt?: string | null;
 }
 /**
+ * Brand colors for this site. Enter hex codes (e.g. #1a56db). Readable text color on Primary/Accent is calculated automatically.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "theme".
+ */
+export interface Theme {
+  id: number;
+  /**
+   * Main brand color — buttons, links, active states
+   */
+  primaryColor: string;
+  /**
+   * Page background color
+   */
+  backgroundColor: string;
+  /**
+   * Main text color
+   */
+  foregroundColor: string;
+  /**
+   * Secondary background — muted sections, card hovers, badges
+   */
+  accentColor: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
@@ -847,6 +876,19 @@ export interface ContactPageSelect<T extends boolean = true> {
         name?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "theme_select".
+ */
+export interface ThemeSelect<T extends boolean = true> {
+  primaryColor?: T;
+  backgroundColor?: T;
+  foregroundColor?: T;
+  accentColor?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
