@@ -46,20 +46,20 @@ export function Header({ data, phone }: { data: HeaderGlobal; phone?: string | n
           </nav>
 
           <div className="hidden items-center gap-3 md:flex">
-            {phone && (
-              <Button asChild size="sm">
-                <a href={`tel:${phone.replace(/[^\d+]/g, '')}`}>
-                  <Phone />
-                  {phone}
-                </a>
-              </Button>
-            )}
             {data.ctaLabel && data.ctaHref && (
               <Button asChild size="sm" variant="outline">
                 <Link href={data.ctaHref}>
                   {data.ctaLabel}
                   <ArrowRight />
                 </Link>
+              </Button>
+            )}
+            {phone && (
+              <Button asChild size="sm">
+                <a href={`tel:${phone.replace(/[^\d+]/g, '')}`}>
+                  <Phone />
+                  {phone}
+                </a>
               </Button>
             )}
           </div>
