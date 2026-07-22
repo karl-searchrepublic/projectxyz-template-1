@@ -117,7 +117,6 @@ export const seed = async (payload: Payload): Promise<void> => {
           subtext:
             'From blocked drains to full hot water system installs, our licensed team gets the job done right the first time.',
           primaryCta: { label: 'Get a Quote', href: '/contact' },
-          secondaryCta: { label: 'View Services', href: '/services' },
         },
         servicesPreview: {
           heading: 'Our Services',

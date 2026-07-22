@@ -19,9 +19,10 @@ export async function generateMetadata() {
 export default async function Page() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const [homePage, companyStats] = await Promise.all([
+  const [homePage, companyStats, companyInfo] = await Promise.all([
     payload.findGlobal({ slug: 'home-page' }),
     payload.findGlobal({ slug: 'company-stats' }),
+    payload.findGlobal({ slug: 'company-info' }),
   ])
 
   const featuredServices = (homePage.servicesPreview?.featuredServices ?? []).filter(
@@ -30,7 +31,7 @@ export default async function Page() {
 
   return (
     <>
-      <Hero data={homePage.hero} />
+      <Hero data={homePage.hero} phone={companyInfo.phone} />
 
       <ServicesPreview
         heading={homePage.servicesPreview?.heading}

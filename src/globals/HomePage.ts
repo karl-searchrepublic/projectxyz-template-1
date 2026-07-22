@@ -36,14 +36,6 @@ export const HomePage: GlobalConfig = {
             { name: 'href', type: 'text' },
           ],
         },
-        {
-          name: 'secondaryCta',
-          type: 'group',
-          fields: [
-            { name: 'label', type: 'text' },
-            { name: 'href', type: 'text' },
-          ],
-        },
       ],
     },
     {
@@ -66,7 +58,7 @@ export const HomePage: GlobalConfig = {
       type: 'text',
       label: 'Trust Strip Heading',
       admin: {
-        description: 'Section heading above the stats. The stats themselves come from the About page credentials strip.',
+        description: 'Section heading above the stats. The stats themselves come from Company Stats.',
       },
       defaultValue: 'Why Choose Us',
     },

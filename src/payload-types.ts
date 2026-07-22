@@ -492,10 +492,6 @@ export interface HomePage {
       label?: string | null;
       href?: string | null;
     };
-    secondaryCta?: {
-      label?: string | null;
-      href?: string | null;
-    };
   };
   servicesPreview?: {
     heading?: string | null;
@@ -504,7 +500,7 @@ export interface HomePage {
     viewAllLabel?: string | null;
   };
   /**
-   * Section heading above the stats. The stats themselves come from the About page credentials strip.
+   * Section heading above the stats. The stats themselves come from Company Stats.
    */
   trustStripHeading?: string | null;
   finalCta?: {
@@ -732,12 +728,6 @@ export interface HomePageSelect<T extends boolean = true> {
         subtext?: T;
         image?: T;
         primaryCta?:
-          | T
-          | {
-              label?: T;
-              href?: T;
-            };
-        secondaryCta?:
           | T
           | {
               label?: T;

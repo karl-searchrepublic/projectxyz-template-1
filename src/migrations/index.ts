@@ -10,6 +10,7 @@ import * as migration_20260722_055841_add_theme from './20260722_055841_add_them
 import * as migration_20260722_061646_add_company_stats from './20260722_061646_add_company_stats';
 import * as migration_20260722_061659_remove_credentials_strip from './20260722_061659_remove_credentials_strip';
 import * as migration_20260722_214154_add_company_info from './20260722_214154_add_company_info';
+import * as migration_20260722_220207_remove_hero_secondary_cta from './20260722_220207_remove_hero_secondary_cta';
 
 export const migrations = [
   {
@@ -70,6 +71,11 @@ export const migrations = [
   {
     up: migration_20260722_214154_add_company_info.up,
     down: migration_20260722_214154_add_company_info.down,
-    name: '20260722_214154_add_company_info'
+    name: '20260722_214154_add_company_info',
+  },
+  {
+    up: migration_20260722_220207_remove_hero_secondary_cta.up,
+    down: migration_20260722_220207_remove_hero_secondary_cta.down,
+    name: '20260722_220207_remove_hero_secondary_cta'
   },
 ];

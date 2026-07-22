@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Phone } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import type { HomePage, Media } from '@/payload-types'
 
-export function Hero({ data }: { data: HomePage['hero'] }) {
+export function Hero({ data, phone }: { data: HomePage['hero']; phone?: string | null }) {
   const image = data.image && typeof data.image === 'object' ? (data.image as Media) : null
 
   return (
@@ -20,7 +20,7 @@ export function Hero({ data }: { data: HomePage['hero'] }) {
               {data.subtext}
             </p>
           )}
-          {(data.primaryCta?.label || data.secondaryCta?.label) && (
+          {(data.primaryCta?.label || phone) && (
             <div className="flex flex-wrap items-center gap-3">
               {data.primaryCta?.label && data.primaryCta?.href && (
                 <Button asChild size="lg">
@@ -30,9 +30,12 @@ export function Hero({ data }: { data: HomePage['hero'] }) {
                   </Link>
                 </Button>
               )}
-              {data.secondaryCta?.label && data.secondaryCta?.href && (
+              {phone && (
                 <Button asChild size="lg" variant="outline">
-                  <Link href={data.secondaryCta.href}>{data.secondaryCta.label}</Link>
+                  <a href={`tel:${phone.replace(/[^\d+]/g, '')}`}>
+                    <Phone />
+                    {phone}
+                  </a>
                 </Button>
               )}
             </div>
