@@ -11,12 +11,12 @@ export function Hero({ data }: { data: HomePage['hero'] }) {
   return (
     <section className="bg-background text-foreground">
       <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 lg:grid-cols-12 lg:gap-16 lg:py-24">
-        <div className="flex flex-col justify-center lg:col-span-7">
-          <h1 className="mb-4 max-w-2xl text-4xl font-extrabold tracking-tight text-balance md:text-5xl xl:text-6xl">
+        <div className="flex flex-col justify-center lg:col-span-6">
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-balance md:text-5xl">
             {data.headline}
           </h1>
           {data.subtext && (
-            <p className="mb-6 max-w-2xl text-lg font-light text-muted-foreground lg:mb-8 lg:text-xl">
+            <p className="mb-6 text-lg font-light text-muted-foreground lg:mb-8 lg:text-xl">
               {data.subtext}
             </p>
           )}
@@ -40,10 +40,11 @@ export function Hero({ data }: { data: HomePage['hero'] }) {
         </div>
 
         {image?.url && (
-          <div className="hidden items-center justify-center lg:col-span-5 lg:flex">
-            <div className="overflow-hidden rounded-xl border border-border">
+          <div className="hidden items-center lg:col-span-6 lg:flex">
+            <div className="w-full overflow-hidden rounded-xl border border-border">
               <Image
                 alt={image.alt}
+                className="h-auto w-full object-cover"
                 height={image.height ?? 400}
                 src={image.url}
                 width={image.width ?? 400}
