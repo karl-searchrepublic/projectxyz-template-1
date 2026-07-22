@@ -23,7 +23,7 @@ export function Hero({ data, phone }: { data: HomePage['hero']; phone?: string |
           {(data.primaryCta?.label || phone) && (
             <div className="flex flex-wrap items-center gap-3">
               {data.primaryCta?.label && data.primaryCta?.href && (
-                <Button asChild size="lg">
+                <Button asChild size="lg" variant="outline">
                   <Link href={data.primaryCta.href}>
                     {data.primaryCta.label}
                     <ArrowRight />
@@ -31,7 +31,7 @@ export function Hero({ data, phone }: { data: HomePage['hero']; phone?: string |
                 </Button>
               )}
               {phone && (
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg">
                   <a href={`tel:${phone.replace(/[^\d+]/g, '')}`}>
                     <Phone />
                     {phone}
