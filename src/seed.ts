@@ -94,6 +94,24 @@ export const seed = async (payload: Payload): Promise<void> => {
     })
   }
 
+  const homePage = await payload.findGlobal({ slug: 'home-page' })
+  if (!homePage.hero?.headline) {
+    payload.logger.info('Seeding home-page global...')
+    await payload.updateGlobal({
+      slug: 'home-page',
+      data: {
+        hero: {
+          eyebrow: 'Trusted Local Plumbers',
+          headline: 'Fast, reliable plumbing when you need it most',
+          subtext:
+            'From blocked drains to full hot water system installs, our licensed team gets the job done right the first time.',
+          primaryCta: { label: 'Get a Quote', href: '/contact' },
+          secondaryCta: { label: 'View Services', href: '/services' },
+        },
+      },
+    })
+  }
+
   const aboutPage = await payload.findGlobal({ slug: 'about-page' })
   if (!aboutPage.pageIntro?.headline) {
     payload.logger.info('Seeding about-page global...')

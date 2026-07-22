@@ -11,6 +11,7 @@ import { Services } from './collections/Services'
 import { ContactSubmissions } from './collections/ContactSubmissions'
 import { Header } from './globals/Header'
 import { Footer } from './globals/Footer'
+import { HomePage } from './globals/HomePage'
 import { AboutPage } from './globals/AboutPage'
 import { ServicesPage } from './globals/ServicesPage'
 import { ContactPage } from './globals/ContactPage'
@@ -27,7 +28,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Services, ContactSubmissions],
-  globals: [Header, Footer, AboutPage, ServicesPage, ContactPage],
+  globals: [Header, Footer, HomePage, AboutPage, ServicesPage, ContactPage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
