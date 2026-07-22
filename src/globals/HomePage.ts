@@ -15,9 +15,16 @@ export const HomePage: GlobalConfig = {
       name: 'hero',
       type: 'group',
       fields: [
-        { name: 'eyebrow', type: 'text' },
         { name: 'headline', type: 'text', required: true },
         { name: 'subtext', type: 'textarea' },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          admin: {
+            description: 'Shown alongside the headline on larger screens',
+          },
+        },
         {
           name: 'primaryCta',
           type: 'group',

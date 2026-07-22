@@ -478,9 +478,12 @@ export interface Footer {
 export interface HomePage {
   id: number;
   hero: {
-    eyebrow?: string | null;
     headline: string;
     subtext?: string | null;
+    /**
+     * Shown alongside the headline on larger screens
+     */
+    image?: (number | null) | Media;
     primaryCta?: {
       label?: string | null;
       href?: string | null;
@@ -675,9 +678,9 @@ export interface HomePageSelect<T extends boolean = true> {
   hero?:
     | T
     | {
-        eyebrow?: T;
         headline?: T;
         subtext?: T;
+        image?: T;
         primaryCta?:
           | T
           | {

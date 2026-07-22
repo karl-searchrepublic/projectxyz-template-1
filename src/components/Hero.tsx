@@ -1,35 +1,47 @@
+import Image from 'next/image'
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import type { HomePage } from '@/payload-types'
+import type { HomePage, Media } from '@/payload-types'
 
 export function Hero({ data }: { data: HomePage['hero'] }) {
+  const image = data.image && typeof data.image === 'object' ? (data.image as Media) : null
+
   return (
     <section className="bg-background text-foreground">
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-8 py-24 text-center sm:py-32">
-        {data.eyebrow && (
-          <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
-            {data.eyebrow}
-          </p>
-        )}
-        <h1 className="text-4xl font-bold tracking-tight text-balance sm:text-6xl">
-          {data.headline}
-        </h1>
-        {data.subtext && (
-          <p className="max-w-2xl text-lg text-muted-foreground text-balance">{data.subtext}</p>
-        )}
-        {(data.primaryCta?.label || data.secondaryCta?.label) && (
-          <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
-            {data.primaryCta?.label && data.primaryCta?.href && (
-              <Button asChild size="lg">
-                <Link href={data.primaryCta.href}>{data.primaryCta.label}</Link>
-              </Button>
-            )}
-            {data.secondaryCta?.label && data.secondaryCta?.href && (
-              <Button asChild size="lg" variant="outline">
-                <Link href={data.secondaryCta.href}>{data.secondaryCta.label}</Link>
-              </Button>
-            )}
+      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 lg:grid-cols-12 lg:gap-0 lg:py-24">
+        <div className="flex flex-col justify-center lg:col-span-7">
+          <h1 className="mb-4 max-w-2xl text-4xl font-extrabold tracking-tight text-balance md:text-5xl xl:text-6xl">
+            {data.headline}
+          </h1>
+          {data.subtext && (
+            <p className="mb-6 max-w-2xl text-lg font-light text-muted-foreground lg:mb-8 lg:text-xl">
+              {data.subtext}
+            </p>
+          )}
+          {(data.primaryCta?.label || data.secondaryCta?.label) && (
+            <div className="flex flex-wrap items-center gap-3">
+              {data.primaryCta?.label && data.primaryCta?.href && (
+                <Button asChild size="lg">
+                  <Link href={data.primaryCta.href}>
+                    {data.primaryCta.label}
+                    <ArrowRight />
+                  </Link>
+                </Button>
+              )}
+              {data.secondaryCta?.label && data.secondaryCta?.href && (
+                <Button asChild size="lg" variant="outline">
+                  <Link href={data.secondaryCta.href}>{data.secondaryCta.label}</Link>
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
+
+        {image?.url && (
+          <div className="hidden items-center justify-center lg:col-span-5 lg:flex">
+            <Image alt={image.alt} height={image.height ?? 400} src={image.url} width={image.width ?? 400} />
           </div>
         )}
       </div>

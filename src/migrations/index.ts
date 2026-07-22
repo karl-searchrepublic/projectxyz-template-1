@@ -4,6 +4,8 @@ import * as migration_20260722_024920_add_home_page from './20260722_024920_add_
 import * as migration_20260722_031515_add_content_headings from './20260722_031515_add_content_headings';
 import * as migration_20260722_033359_add_home_page_sections from './20260722_033359_add_home_page_sections';
 import * as migration_20260722_035555_add_header_logo from './20260722_035555_add_header_logo';
+import * as migration_20260722_044143_add_hero_image from './20260722_044143_add_hero_image';
+import * as migration_20260722_044213_remove_hero_eyebrow from './20260722_044213_remove_hero_eyebrow';
 
 export const migrations = [
   {
@@ -34,6 +36,16 @@ export const migrations = [
   {
     up: migration_20260722_035555_add_header_logo.up,
     down: migration_20260722_035555_add_header_logo.down,
-    name: '20260722_035555_add_header_logo'
+    name: '20260722_035555_add_header_logo',
+  },
+  {
+    up: migration_20260722_044143_add_hero_image.up,
+    down: migration_20260722_044143_add_hero_image.down,
+    name: '20260722_044143_add_hero_image',
+  },
+  {
+    up: migration_20260722_044213_remove_hero_eyebrow.up,
+    down: migration_20260722_044213_remove_hero_eyebrow.down,
+    name: '20260722_044213_remove_hero_eyebrow'
   },
 ];

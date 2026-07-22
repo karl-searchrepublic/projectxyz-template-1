@@ -115,7 +115,6 @@ export const seed = async (payload: Payload): Promise<void> => {
       slug: 'home-page',
       data: {
         hero: {
-          eyebrow: 'Trusted Local Plumbers',
           headline: 'Fast, reliable plumbing when you need it most',
           subtext:
             'From blocked drains to full hot water system installs, our licensed team gets the job done right the first time.',
