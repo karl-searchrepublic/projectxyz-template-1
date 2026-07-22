@@ -208,28 +208,20 @@ svg {
 
 /* Structure & spacing only — no visual design yet */
 
-.site-header__inner,
 .site-footer__inner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 16px;
   max-width: 1024px;
   margin: 0 auto;
   padding: 24px 45px;
 }
 
-.site-header__nav,
 .site-footer__nav {
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
-}
-
-.site-footer__inner {
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 .site-footer__contact {
