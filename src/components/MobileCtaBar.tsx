@@ -17,7 +17,7 @@ export function MobileCtaBar({
   if (!phone && !(quoteLabel && quoteHref)) return null
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 bg-primary/50 p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] shadow-[0_-2px_10px_rgba(0,0,0,0.1)] backdrop-blur md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 bg-primary/20 p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] shadow-[0_-2px_10px_rgba(0,0,0,0.1)] backdrop-blur md:hidden">
       {phone && (
         <Button asChild className="flex-1" size="lg" variant="default">
           <a href={`tel:${phone.replace(/[^\d+]/g, '')}`}>
