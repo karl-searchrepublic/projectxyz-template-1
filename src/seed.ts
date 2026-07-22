@@ -78,6 +78,16 @@ export const seed = async (payload: Payload): Promise<void> => {
         ctaHref: '/contact',
       },
     })
+  } else if (!header.metaDescription) {
+    // Backfill: metaDescription was added after header was first seeded elsewhere
+    payload.logger.info('Backfilling header.metaDescription...')
+    await payload.updateGlobal({
+      slug: 'header',
+      data: {
+        metaDescription:
+          'Fast, reliable plumbing services for homes and businesses. Licensed, insured, and available for emergency callouts.',
+      },
+    })
   }
 
   const footer = await payload.findGlobal({ slug: 'footer' })
@@ -119,6 +129,30 @@ export const seed = async (payload: Payload): Promise<void> => {
           viewAllLabel: 'View All Services',
         },
         trustStripHeading: 'Why Choose Us',
+        finalCta: {
+          heading: 'Ready to get started?',
+          subtext: 'Get in touch for a fast, free quote on your next job.',
+          buttonLabel: 'Get a Quote',
+          buttonHref: '/contact',
+        },
+      },
+    })
+  } else if (!homePage.finalCta?.heading || !homePage.servicesPreview?.featuredServices?.length) {
+    // Backfill: unlike heading/viewAllLabel/trustStripHeading (which have a
+    // defaultValue and get backfilled automatically when the migration adds
+    // the column), featuredServices and finalCta have no default, so a
+    // home-page doc that existed before these fields were added needs this.
+    payload.logger.info('Backfilling home-page featuredServices/finalCta...')
+    await payload.updateGlobal({
+      slug: 'home-page',
+      data: {
+        servicesPreview: {
+          ...homePage.servicesPreview,
+          subtext:
+            homePage.servicesPreview?.subtext ??
+            'A few of the ways we help keep your home or business running smoothly.',
+          featuredServices: allServices.map((service) => service.id),
+        },
         finalCta: {
           heading: 'Ready to get started?',
           subtext: 'Get in touch for a fast, free quote on your next job.',
@@ -214,6 +248,9 @@ export const seed = async (payload: Payload): Promise<void> => {
       },
     })
   }
+  // No backfill needed for howItWorksHeading/faqHeading/whatsIncludedHeading/
+  // relatedServicesHeading: each has a defaultValue, so Postgres backfills
+  // the column itself when the migration adds it — even on a pre-existing doc.
 
   const contactPage = await payload.findGlobal({ slug: 'contact-page' })
   if (!contactPage.pageIntro?.headline) {
@@ -256,4 +293,7 @@ export const seed = async (payload: Payload): Promise<void> => {
       },
     })
   }
+  // No backfill needed for contactDetails.*Label or serviceAreaHeading: each
+  // has a defaultValue, so Postgres backfills the column itself when the
+  // migration adds it — even on a pre-existing doc.
 }
