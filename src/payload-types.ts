@@ -433,6 +433,10 @@ export interface Header {
   id: number;
   siteName: string;
   /**
+   * Shown in the header in place of the site name text, if uploaded
+   */
+  logo?: (number | null) | Media;
+  /**
    * Default SEO description used in the browser tab / search results
    */
   metaDescription?: string | null;
@@ -629,6 +633,7 @@ export interface ContactPage {
  */
 export interface HeaderSelect<T extends boolean = true> {
   siteName?: T;
+  logo?: T;
   metaDescription?: T;
   navLinks?:
     | T

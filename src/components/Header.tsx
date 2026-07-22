@@ -1,21 +1,35 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import type { Header as HeaderGlobal } from '@/payload-types'
+import type { Header as HeaderGlobal, Media } from '@/payload-types'
 
 export function Header({ data }: { data: HeaderGlobal }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  const logo = data.logo && typeof data.logo === 'object' ? (data.logo as Media) : null
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link className="text-lg font-semibold tracking-tight" href="/">
-          {data.siteName}
+        <Link className="flex items-center text-lg font-semibold tracking-tight" href="/">
+          {logo?.url ? (
+            <Image
+              alt={logo.alt}
+              className="h-8 w-auto"
+              height={logo.height ?? 32}
+              priority
+              src={logo.url}
+              width={logo.width ?? 120}
+            />
+          ) : (
+            data.siteName
+          )}
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">

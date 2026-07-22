@@ -17,6 +17,14 @@ export const Header: GlobalConfig = {
       required: true,
     },
     {
+      name: 'logo',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Shown in the header in place of the site name text, if uploaded',
+      },
+    },
+    {
       name: 'metaDescription',
       type: 'textarea',
       admin: {
