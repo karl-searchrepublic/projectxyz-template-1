@@ -1,0 +1,215 @@
+import type { Payload } from 'payload'
+
+const services = [
+  {
+    title: 'Blocked Drains',
+    slug: 'blocked-drains',
+    eyebrow: 'Drainage',
+    icon: '🚰',
+    subtext: 'Fast, reliable clearing for blocked and slow-running drains.',
+    description:
+      'Blocked drains can bring a household or business to a standstill. Our team uses CCTV drain cameras and high-pressure water jetting to find the cause of the blockage and clear it quickly, without unnecessary digging.',
+    whatsIncluded: [
+      { item: 'CCTV drain inspection' },
+      { item: 'High-pressure water jetting' },
+      { item: 'Root and debris removal' },
+      { item: 'Follow-up drain camera report' },
+    ],
+  },
+  {
+    title: 'Hot Water Systems',
+    slug: 'hot-water-systems',
+    eyebrow: 'Hot Water',
+    icon: '🔥',
+    subtext: 'Installation, repair, and replacement for all hot water system types.',
+    description:
+      'From electric and gas storage tanks to continuous flow and heat pump systems, we install, service, and repair hot water systems of every type and brand, with same-day emergency callouts available.',
+    whatsIncluded: [
+      { item: 'System diagnosis and repair' },
+      { item: 'Full replacement and installation' },
+      { item: 'Gas, electric, solar, and heat pump systems' },
+      { item: 'Same-day emergency service' },
+    ],
+  },
+  {
+    title: 'Leak Detection',
+    slug: 'leak-detection',
+    eyebrow: 'Leak Detection',
+    icon: '💧',
+    subtext: 'Non-invasive leak detection to find hidden leaks before they cause damage.',
+    description:
+      'Hidden leaks behind walls, under slabs, or underground can waste thousands of litres of water and cause serious damage. We use acoustic listening devices and thermal imaging to pinpoint leaks without unnecessary excavation.',
+    whatsIncluded: [
+      { item: 'Acoustic leak detection' },
+      { item: 'Thermal imaging inspection' },
+      { item: 'Underground and slab leak detection' },
+      { item: 'Detailed findings report' },
+    ],
+  },
+]
+
+export const seed = async (payload: Payload): Promise<void> => {
+  const { totalDocs: serviceCount } = await payload.count({ collection: 'services' })
+
+  if (serviceCount === 0) {
+    payload.logger.info('Seeding services collection...')
+    for (const service of services) {
+      await payload.create({ collection: 'services', data: service })
+    }
+  }
+
+  const header = await payload.findGlobal({ slug: 'header' })
+  if (!header.siteName) {
+    payload.logger.info('Seeding header global...')
+    await payload.updateGlobal({
+      slug: 'header',
+      data: {
+        siteName: 'ProjectXYZ Plumbing',
+        navLinks: [
+          { label: 'About', href: '/about' },
+          { label: 'Services', href: '/services' },
+          { label: 'Contact', href: '/contact' },
+        ],
+        ctaLabel: 'Get a Quote',
+        ctaHref: '/contact',
+      },
+    })
+  }
+
+  const footer = await payload.findGlobal({ slug: 'footer' })
+  if (!footer.copyrightText) {
+    payload.logger.info('Seeding footer global...')
+    await payload.updateGlobal({
+      slug: 'footer',
+      data: {
+        copyrightText: `© ${new Date().getFullYear()} ProjectXYZ Plumbing. All rights reserved.`,
+        navLinks: [
+          { label: 'About', href: '/about' },
+          { label: 'Services', href: '/services' },
+          { label: 'Contact', href: '/contact' },
+        ],
+        contactPhone: '(555) 123-4567',
+        contactEmail: 'hello@projectxyz.example',
+      },
+    })
+  }
+
+  const aboutPage = await payload.findGlobal({ slug: 'about-page' })
+  if (!aboutPage.pageIntro?.headline) {
+    payload.logger.info('Seeding about-page global...')
+    await payload.updateGlobal({
+      slug: 'about-page',
+      data: {
+        pageIntro: {
+          eyebrow: 'About Us',
+          headline: 'Local plumbers, doing things properly',
+          subtext:
+            "We've been keeping local homes and businesses running smoothly for years, one job at a time.",
+        },
+        ourStory: {
+          heading: 'Our Story',
+          body: 'Founded by tradespeople who were tired of rushed jobs and callback fees, we built a plumbing company around doing the job right the first time. Today our licensed team handles everything from blocked drains to full hot water system installs.',
+        },
+        credentialsStrip: [
+          { label: 'Years in business', value: '15+' },
+          { label: 'Licensed & insured', value: '100%' },
+          { label: 'Jobs completed', value: '10,000+' },
+          { label: 'Average response time', value: '< 2 hrs' },
+        ],
+        teamGrid: [],
+        finalCta: {
+          heading: 'Ready to get started?',
+          subtext: 'Get in touch for a fast, free quote on your next job.',
+          buttonLabel: 'Contact Us',
+          buttonHref: '/contact',
+        },
+      },
+    })
+  }
+
+  const servicesPage = await payload.findGlobal({ slug: 'services-page' })
+  if (!servicesPage.pageIntro?.headline) {
+    payload.logger.info('Seeding services-page global...')
+    await payload.updateGlobal({
+      slug: 'services-page',
+      data: {
+        pageIntro: {
+          eyebrow: 'Services',
+          headline: 'Plumbing services you can rely on',
+          subtext: 'From urgent repairs to full installations, we cover it all.',
+        },
+        howItWorks: [
+          {
+            title: '1. Get in touch',
+            description: 'Call, email, or fill out our contact form to describe the job.',
+          },
+          {
+            title: '2. We assess the job',
+            description: 'We confirm scope and provide an upfront, no-obligation quote.',
+          },
+          {
+            title: '3. We get it done',
+            description: 'Our licensed team completes the work and cleans up after themselves.',
+          },
+        ],
+        faq: [
+          {
+            question: 'Do you offer emergency callouts?',
+            answer: 'Yes, we offer same-day emergency service for urgent plumbing issues.',
+          },
+          {
+            question: 'Are your plumbers licensed?',
+            answer: 'All of our plumbers are fully licensed and insured.',
+          },
+          {
+            question: 'Do you provide upfront pricing?',
+            answer: 'Yes, we always confirm pricing with you before starting any work.',
+          },
+        ],
+        finalCta: {
+          heading: 'Need a hand with a plumbing job?',
+          subtext: 'Reach out today and we will get back to you fast.',
+          buttonLabel: 'Get a Quote',
+          buttonHref: '/contact',
+        },
+      },
+    })
+  }
+
+  const contactPage = await payload.findGlobal({ slug: 'contact-page' })
+  if (!contactPage.pageIntro?.headline) {
+    payload.logger.info('Seeding contact-page global...')
+    await payload.updateGlobal({
+      slug: 'contact-page',
+      data: {
+        emergencyCallout: {
+          show: true,
+          message: 'Got a plumbing emergency? Call us now, we are available 24/7.',
+          phone: '(555) 123-4567',
+        },
+        pageIntro: {
+          eyebrow: 'Contact',
+          headline: "Let's talk about your job",
+          subtext: 'Send us a message or reach out directly, we typically reply within the hour.',
+        },
+        contactDetails: {
+          phone: '(555) 123-4567',
+          email: 'hello@projectxyz.example',
+          address: '123 Example Street, Your Town',
+          hours: 'Mon-Fri: 7am-5pm\nSat: 8am-1pm\nSun: Emergency callouts only',
+        },
+        mapPlaceholder: {
+          placeholderLabel: 'Map coming soon',
+        },
+        serviceAreaSuburbs: [
+          { name: 'Downtown' },
+          { name: 'Riverside' },
+          { name: 'Northgate' },
+          { name: 'Eastwood' },
+          { name: 'Fairview' },
+          { name: 'Lakeside' },
+        ],
+      },
+    })
+  }
+}
