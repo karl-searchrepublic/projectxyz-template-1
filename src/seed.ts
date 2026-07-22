@@ -178,12 +178,6 @@ export const seed = async (payload: Payload): Promise<void> => {
           heading: 'Our Story',
           body: 'Founded by tradespeople who were tired of rushed jobs and callback fees, we built a plumbing company around doing the job right the first time. Today our licensed team handles everything from blocked drains to full hot water system installs.',
         },
-        credentialsStrip: [
-          { label: 'Years in business', value: '15+' },
-          { label: 'Licensed & insured', value: '100%' },
-          { label: 'Jobs completed', value: '10,000+' },
-          { label: 'Average response time', value: '< 2 hrs' },
-        ],
         teamGrid: [],
         finalCta: {
           heading: 'Ready to get started?',
@@ -191,6 +185,22 @@ export const seed = async (payload: Payload): Promise<void> => {
           buttonLabel: 'Contact Us',
           buttonHref: '/contact',
         },
+      },
+    })
+  }
+
+  const companyStats = await payload.findGlobal({ slug: 'company-stats' })
+  if (!companyStats.stats || companyStats.stats.length === 0) {
+    payload.logger.info('Seeding company-stats global...')
+    await payload.updateGlobal({
+      slug: 'company-stats',
+      data: {
+        stats: [
+          { label: 'Years in business', value: '15+' },
+          { label: 'Licensed & insured', value: '100%' },
+          { label: 'Jobs completed', value: '10,000+' },
+          { label: 'Average response time', value: '< 2 hrs' },
+        ],
       },
     })
   }

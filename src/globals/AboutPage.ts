@@ -30,18 +30,6 @@ export const AboutPage: GlobalConfig = {
       ],
     },
     {
-      name: 'credentialsStrip',
-      type: 'array',
-      labels: {
-        singular: 'Credential',
-        plural: 'Credentials',
-      },
-      fields: [
-        { name: 'label', type: 'text', required: true },
-        { name: 'value', type: 'text', required: true },
-      ],
-    },
-    {
       name: 'teamGrid',
       type: 'array',
       labels: {

@@ -17,6 +17,7 @@ import { AboutPage } from './globals/AboutPage'
 import { ServicesPage } from './globals/ServicesPage'
 import { ContactPage } from './globals/ContactPage'
 import { Theme } from './globals/Theme'
+import { CompanyStats } from './globals/CompanyStats'
 import { seed } from './seed'
 
 const filename = fileURLToPath(import.meta.url)
@@ -30,7 +31,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Services, ContactSubmissions],
-  globals: [Header, Footer, HomePage, AboutPage, ServicesPage, ContactPage, Theme],
+  globals: [Header, Footer, HomePage, AboutPage, ServicesPage, ContactPage, Theme, CompanyStats],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

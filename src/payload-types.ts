@@ -99,6 +99,7 @@ export interface Config {
     'services-page': ServicesPage;
     'contact-page': ContactPage;
     theme: Theme;
+    'company-stats': CompanyStat;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -108,6 +109,7 @@ export interface Config {
     'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
     'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
     theme: ThemeSelect<false> | ThemeSelect<true>;
+    'company-stats': CompanyStatsSelect<false> | CompanyStatsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -530,13 +532,6 @@ export interface AboutPage {
     body?: string | null;
     image?: (number | null) | Media;
   };
-  credentialsStrip?:
-    | {
-        label: string;
-        value: string;
-        id?: string | null;
-      }[]
-    | null;
   teamGrid?:
     | {
         name: string;
@@ -660,6 +655,24 @@ export interface Theme {
   createdAt?: string | null;
 }
 /**
+ * Shared credential/stat numbers shown on both the About page and the homepage trust strip.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company-stats".
+ */
+export interface CompanyStat {
+  id: number;
+  stats?:
+    | {
+        label: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
@@ -762,13 +775,6 @@ export interface AboutPageSelect<T extends boolean = true> {
         heading?: T;
         body?: T;
         image?: T;
-      };
-  credentialsStrip?:
-    | T
-    | {
-        label?: T;
-        value?: T;
-        id?: T;
       };
   teamGrid?:
     | T
@@ -889,6 +895,22 @@ export interface ThemeSelect<T extends boolean = true> {
   backgroundColor?: T;
   foregroundColor?: T;
   accentColor?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company-stats_select".
+ */
+export interface CompanyStatsSelect<T extends boolean = true> {
+  stats?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -18,7 +18,10 @@ export async function generateMetadata() {
 export default async function AboutPage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const about = await payload.findGlobal({ slug: 'about-page' })
+  const [about, companyStats] = await Promise.all([
+    payload.findGlobal({ slug: 'about-page' }),
+    payload.findGlobal({ slug: 'company-stats' }),
+  ])
 
   const storyImage =
     about.ourStory?.image && typeof about.ourStory.image === 'object'
@@ -58,7 +61,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <CredentialsStrip items={about.credentialsStrip ?? []} />
+      <CredentialsStrip items={companyStats.stats ?? []} />
 
       {about.teamGrid && about.teamGrid.length > 0 && (
         <section className="mx-auto max-w-6xl px-6 py-16">
