@@ -4,6 +4,7 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { PageIntro } from '@/components/PageIntro'
 import { CTABanner } from '@/components/CTABanner'
+import { CredentialsStrip } from '@/components/CredentialsStrip'
 import type { Media } from '@/payload-types'
 
 export async function generateMetadata() {
@@ -49,16 +50,7 @@ export default async function AboutPage() {
         )}
       </section>
 
-      {about.credentialsStrip && about.credentialsStrip.length > 0 && (
-        <section className="credentials-strip">
-          {about.credentialsStrip.map((credential) => (
-            <div className="credentials-strip__item" key={credential.id ?? credential.label}>
-              <span className="credentials-strip__value">{credential.value}</span>
-              <span className="credentials-strip__label">{credential.label}</span>
-            </div>
-          ))}
-        </section>
-      )}
+      <CredentialsStrip items={about.credentialsStrip ?? []} />
 
       {about.teamGrid && about.teamGrid.length > 0 && (
         <section className="team-grid">

@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+
 export function ServiceCard({
   icon,
   title,
@@ -12,10 +14,14 @@ export function ServiceCard({
   href: string
 }) {
   return (
-    <Link className="service-card" href={href}>
-      {icon && <span className="service-card__icon">{icon}</span>}
-      <h3 className="service-card__title">{title}</h3>
-      {description && <p className="service-card__description">{description}</p>}
+    <Link className="block h-full" href={href}>
+      <Card className="h-full transition-colors hover:border-foreground/20 hover:bg-accent/50">
+        <CardHeader>
+          {icon && <span className="mb-2 text-3xl">{icon}</span>}
+          <CardTitle className="text-lg">{title}</CardTitle>
+          {description && <CardDescription>{description}</CardDescription>}
+        </CardHeader>
+      </Card>
     </Link>
   )
 }

@@ -36,5 +36,40 @@ export const HomePage: GlobalConfig = {
         },
       ],
     },
+    {
+      name: 'servicesPreview',
+      type: 'group',
+      fields: [
+        { name: 'heading', type: 'text', defaultValue: 'Our Services' },
+        { name: 'subtext', type: 'textarea' },
+        {
+          name: 'featuredServices',
+          type: 'relationship',
+          relationTo: 'services',
+          hasMany: true,
+        },
+        { name: 'viewAllLabel', type: 'text', defaultValue: 'View All Services' },
+      ],
+    },
+    {
+      name: 'trustStripHeading',
+      type: 'text',
+      label: 'Trust Strip Heading',
+      admin: {
+        description: 'Section heading above the stats. The stats themselves come from the About page credentials strip.',
+      },
+      defaultValue: 'Why Choose Us',
+    },
+    {
+      name: 'finalCta',
+      type: 'group',
+      label: 'Final CTA Banner',
+      fields: [
+        { name: 'heading', type: 'text' },
+        { name: 'subtext', type: 'textarea' },
+        { name: 'buttonLabel', type: 'text' },
+        { name: 'buttonHref', type: 'text' },
+      ],
+    },
   ],
 }

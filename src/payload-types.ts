@@ -486,6 +486,22 @@ export interface HomePage {
       href?: string | null;
     };
   };
+  servicesPreview?: {
+    heading?: string | null;
+    subtext?: string | null;
+    featuredServices?: (number | Service)[] | null;
+    viewAllLabel?: string | null;
+  };
+  /**
+   * Section heading above the stats. The stats themselves come from the About page credentials strip.
+   */
+  trustStripHeading?: string | null;
+  finalCta?: {
+    heading?: string | null;
+    subtext?: string | null;
+    buttonLabel?: string | null;
+    buttonHref?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -669,6 +685,23 @@ export interface HomePageSelect<T extends boolean = true> {
               label?: T;
               href?: T;
             };
+      };
+  servicesPreview?:
+    | T
+    | {
+        heading?: T;
+        subtext?: T;
+        featuredServices?: T;
+        viewAllLabel?: T;
+      };
+  trustStripHeading?: T;
+  finalCta?:
+    | T
+    | {
+        heading?: T;
+        subtext?: T;
+        buttonLabel?: T;
+        buttonHref?: T;
       };
   updatedAt?: T;
   createdAt?: T;

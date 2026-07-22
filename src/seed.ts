@@ -58,6 +58,8 @@ export const seed = async (payload: Payload): Promise<void> => {
     }
   }
 
+  const { docs: allServices } = await payload.find({ collection: 'services', limit: 100 })
+
   const header = await payload.findGlobal({ slug: 'header' })
   if (!header.siteName) {
     payload.logger.info('Seeding header global...')
@@ -109,6 +111,19 @@ export const seed = async (payload: Payload): Promise<void> => {
             'From blocked drains to full hot water system installs, our licensed team gets the job done right the first time.',
           primaryCta: { label: 'Get a Quote', href: '/contact' },
           secondaryCta: { label: 'View Services', href: '/services' },
+        },
+        servicesPreview: {
+          heading: 'Our Services',
+          subtext: 'A few of the ways we help keep your home or business running smoothly.',
+          featuredServices: allServices.map((service) => service.id),
+          viewAllLabel: 'View All Services',
+        },
+        trustStripHeading: 'Why Choose Us',
+        finalCta: {
+          heading: 'Ready to get started?',
+          subtext: 'Get in touch for a fast, free quote on your next job.',
+          buttonLabel: 'Get a Quote',
+          buttonHref: '/contact',
         },
       },
     })
