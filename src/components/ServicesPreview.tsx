@@ -18,31 +18,33 @@ export function ServicesPreview({
   if (services.length === 0) return null
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-16">
-      <div className="mx-auto mb-10 flex max-w-2xl flex-col items-center gap-3 text-center">
-        {heading && <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{heading}</h2>}
-        {subtext && <p className="text-muted-foreground">{subtext}</p>}
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
-          <ServiceCard
-            description={service.subtext}
-            href={`/services/${service.slug}`}
-            icon={service.icon}
-            key={service.id}
-            title={service.title}
-          />
-        ))}
-      </div>
-
-      {viewAllLabel && (
-        <div className="mt-10 flex justify-center">
-          <Button asChild variant="outline">
-            <Link href="/services">{viewAllLabel}</Link>
-          </Button>
+    <section className="border-t border-border bg-accent">
+      <div className="mx-auto max-w-6xl px-6 py-16">
+        <div className="mx-auto mb-10 flex max-w-2xl flex-col items-center gap-3 text-center">
+          {heading && <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{heading}</h2>}
+          {subtext && <p className="text-muted-foreground">{subtext}</p>}
         </div>
-      )}
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => (
+            <ServiceCard
+              description={service.subtext}
+              href={`/services/${service.slug}`}
+              icon={service.icon}
+              key={service.id}
+              title={service.title}
+            />
+          ))}
+        </div>
+
+        {viewAllLabel && (
+          <div className="mt-10 flex justify-center">
+            <Button asChild variant="outline">
+              <Link href="/services">{viewAllLabel}</Link>
+            </Button>
+          </div>
+        )}
+      </div>
     </section>
   )
 }
