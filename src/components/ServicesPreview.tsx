@@ -18,7 +18,7 @@ export function ServicesPreview({
   if (services.length === 0) return null
 
   return (
-    <section className="border-t border-border bg-accent">
+    <section className="border-t border-border bg-background">
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="mx-auto mb-10 flex max-w-2xl flex-col items-center gap-3 text-center">
           {heading && <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{heading}</h2>}
