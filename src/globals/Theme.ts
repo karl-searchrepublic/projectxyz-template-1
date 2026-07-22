@@ -36,6 +36,16 @@ export const Theme: GlobalConfig = {
       },
     },
     {
+      name: 'headerBackgroundColor',
+      type: 'text',
+      required: true,
+      defaultValue: '#ffffff',
+      admin: {
+        description:
+          "Header/nav bar background color. Set this per client to match the background baked into their logo file, so the logo sits cleanly on the header — independent of the general page background.",
+      },
+    },
+    {
       name: 'foregroundColor',
       type: 'text',
       required: true,

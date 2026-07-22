@@ -38,6 +38,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     '--primary-foreground': getContrastColor(theme.primaryColor),
     '--accent': theme.accentColor,
     '--accent-foreground': getContrastColor(theme.accentColor),
+    '--header-background': theme.headerBackgroundColor,
+    '--header-foreground': getContrastColor(theme.headerBackgroundColor),
   } as React.CSSProperties
 
   return (

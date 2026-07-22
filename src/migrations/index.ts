@@ -12,6 +12,7 @@ import * as migration_20260722_061659_remove_credentials_strip from './20260722_
 import * as migration_20260722_214154_add_company_info from './20260722_214154_add_company_info';
 import * as migration_20260722_220207_remove_hero_secondary_cta from './20260722_220207_remove_hero_secondary_cta';
 import * as migration_20260722_222202_add_header_call_button_label from './20260722_222202_add_header_call_button_label';
+import * as migration_20260722_225822_add_header_background_color from './20260722_225822_add_header_background_color';
 
 export const migrations = [
   {
@@ -82,6 +83,11 @@ export const migrations = [
   {
     up: migration_20260722_222202_add_header_call_button_label.up,
     down: migration_20260722_222202_add_header_call_button_label.down,
-    name: '20260722_222202_add_header_call_button_label'
+    name: '20260722_222202_add_header_call_button_label',
+  },
+  {
+    up: migration_20260722_225822_add_header_background_color.up,
+    down: migration_20260722_225822_add_header_background_color.down,
+    name: '20260722_225822_add_header_background_color'
   },
 ];

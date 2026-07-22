@@ -639,6 +639,10 @@ export interface Theme {
    */
   backgroundColor: string;
   /**
+   * Header/nav bar background color. Set this per client to match the background baked into their logo file, so the logo sits cleanly on the header — independent of the general page background.
+   */
+  headerBackgroundColor: string;
+  /**
    * Main text color
    */
   foregroundColor: string;
@@ -891,6 +895,7 @@ export interface ContactPageSelect<T extends boolean = true> {
 export interface ThemeSelect<T extends boolean = true> {
   primaryColor?: T;
   backgroundColor?: T;
+  headerBackgroundColor?: T;
   foregroundColor?: T;
   accentColor?: T;
   updatedAt?: T;

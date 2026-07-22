@@ -15,7 +15,7 @@ export function Header({ data }: { data: HeaderGlobal }) {
   const logo = data.logo && typeof data.logo === 'object' ? (data.logo as Media) : null
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-header-background/95 text-header-foreground backdrop-blur supports-[backdrop-filter]:bg-header-background/80">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link className="flex shrink-0 items-center text-lg font-semibold tracking-tight" href="/">
           {logo?.url ? (
@@ -32,10 +32,10 @@ export function Header({ data }: { data: HeaderGlobal }) {
           )}
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
+        <nav className="hidden items-center gap-8 text-sm font-medium md:flex">
           {data.navLinks?.map((link) => (
             <Link
-              className="transition-colors hover:text-foreground"
+              className="text-header-foreground/70 transition-colors hover:text-header-foreground"
               href={link.href}
               key={link.id ?? link.href}
             >
@@ -66,13 +66,13 @@ export function Header({ data }: { data: HeaderGlobal }) {
 
       <div
         className={cn(
-          'border-t border-border bg-background md:hidden',
+          'border-t border-border bg-header-background md:hidden',
           isMenuOpen ? 'flex flex-col gap-1 px-6 py-4' : 'hidden',
         )}
       >
         {data.navLinks?.map((link) => (
           <Link
-            className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            className="rounded-md px-3 py-2 text-sm font-medium text-header-foreground/70 transition-colors hover:bg-accent hover:text-header-foreground"
             href={link.href}
             key={link.id ?? link.href}
             onClick={() => setIsMenuOpen(false)}
