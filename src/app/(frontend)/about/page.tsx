@@ -6,8 +6,12 @@ import { PageIntro } from '@/components/PageIntro'
 import { CTABanner } from '@/components/CTABanner'
 import type { Media } from '@/payload-types'
 
-export const metadata = {
-  title: 'About',
+export async function generateMetadata() {
+  const payloadConfig = await config
+  const payload = await getPayload({ config: payloadConfig })
+  const about = await payload.findGlobal({ slug: 'about-page' })
+
+  return { title: about.pageIntro?.headline ?? 'About' }
 }
 
 export default async function AboutPage() {

@@ -5,8 +5,12 @@ import { PageIntro } from '@/components/PageIntro'
 import { ContactForm } from '@/components/ContactForm'
 import { Chip } from '@/components/Chip'
 
-export const metadata = {
-  title: 'Contact',
+export async function generateMetadata() {
+  const payloadConfig = await config
+  const payload = await getPayload({ config: payloadConfig })
+  const contact = await payload.findGlobal({ slug: 'contact-page' })
+
+  return { title: contact.pageIntro?.headline ?? 'Contact' }
 }
 
 export default async function ContactPage() {
@@ -39,25 +43,25 @@ export default async function ContactPage() {
         <div className="contact-details">
           {contact.contactDetails?.phone && (
             <div>
-              <h3>Phone</h3>
+              <h3>{contact.contactDetails.phoneLabel}</h3>
               <p>{contact.contactDetails.phone}</p>
             </div>
           )}
           {contact.contactDetails?.email && (
             <div>
-              <h3>Email</h3>
+              <h3>{contact.contactDetails.emailLabel}</h3>
               <p>{contact.contactDetails.email}</p>
             </div>
           )}
           {contact.contactDetails?.address && (
             <div>
-              <h3>Address</h3>
+              <h3>{contact.contactDetails.addressLabel}</h3>
               <p>{contact.contactDetails.address}</p>
             </div>
           )}
           {contact.contactDetails?.hours && (
             <div>
-              <h3>Hours</h3>
+              <h3>{contact.contactDetails.hoursLabel}</h3>
               <p style={{ whiteSpace: 'pre-line' }}>{contact.contactDetails.hours}</p>
             </div>
           )}
@@ -80,7 +84,7 @@ export default async function ContactPage() {
 
       {contact.serviceAreaSuburbs && contact.serviceAreaSuburbs.length > 0 && (
         <section className="service-area">
-          <h2>Areas We Service</h2>
+          <h2>{contact.serviceAreaHeading}</h2>
           <div className="service-area__chips">
             {contact.serviceAreaSuburbs.map((suburb) => (
               <Chip key={suburb.id ?? suburb.name} label={suburb.name} />

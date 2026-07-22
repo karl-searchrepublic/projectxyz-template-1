@@ -28,9 +28,13 @@ export const ContactPage: GlobalConfig = {
       name: 'contactDetails',
       type: 'group',
       fields: [
+        { name: 'phoneLabel', type: 'text', defaultValue: 'Phone' },
         { name: 'phone', type: 'text' },
+        { name: 'emailLabel', type: 'text', defaultValue: 'Email' },
         { name: 'email', type: 'text' },
+        { name: 'addressLabel', type: 'text', defaultValue: 'Address' },
         { name: 'address', type: 'textarea' },
+        { name: 'hoursLabel', type: 'text', defaultValue: 'Hours' },
         { name: 'hours', type: 'textarea' },
       ],
     },
@@ -42,6 +46,7 @@ export const ContactPage: GlobalConfig = {
         { name: 'placeholderLabel', type: 'text', defaultValue: 'Map coming soon' },
       ],
     },
+    { name: 'serviceAreaHeading', type: 'text', defaultValue: 'Areas We Service' },
     {
       name: 'serviceAreaSuburbs',
       type: 'array',

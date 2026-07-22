@@ -432,6 +432,10 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Header {
   id: number;
   siteName: string;
+  /**
+   * Default SEO description used in the browser tab / search results
+   */
+  metaDescription?: string | null;
   navLinks?:
     | {
         label: string;
@@ -536,6 +540,7 @@ export interface ServicesPage {
     headline: string;
     subtext?: string | null;
   };
+  howItWorksHeading?: string | null;
   howItWorks?:
     | {
         title: string;
@@ -543,6 +548,7 @@ export interface ServicesPage {
         id?: string | null;
       }[]
     | null;
+  faqHeading?: string | null;
   faq?:
     | {
         question: string;
@@ -550,6 +556,8 @@ export interface ServicesPage {
         id?: string | null;
       }[]
     | null;
+  whatsIncludedHeading?: string | null;
+  relatedServicesHeading?: string | null;
   finalCta?: {
     heading?: string | null;
     subtext?: string | null;
@@ -576,15 +584,20 @@ export interface ContactPage {
     subtext?: string | null;
   };
   contactDetails?: {
+    phoneLabel?: string | null;
     phone?: string | null;
+    emailLabel?: string | null;
     email?: string | null;
+    addressLabel?: string | null;
     address?: string | null;
+    hoursLabel?: string | null;
     hours?: string | null;
   };
   mapPlaceholder?: {
     embedUrl?: string | null;
     placeholderLabel?: string | null;
   };
+  serviceAreaHeading?: string | null;
   serviceAreaSuburbs?:
     | {
         name: string;
@@ -600,6 +613,7 @@ export interface ContactPage {
  */
 export interface HeaderSelect<T extends boolean = true> {
   siteName?: T;
+  metaDescription?: T;
   navLinks?:
     | T
     | {
@@ -718,6 +732,7 @@ export interface ServicesPageSelect<T extends boolean = true> {
         headline?: T;
         subtext?: T;
       };
+  howItWorksHeading?: T;
   howItWorks?:
     | T
     | {
@@ -725,6 +740,7 @@ export interface ServicesPageSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  faqHeading?: T;
   faq?:
     | T
     | {
@@ -732,6 +748,8 @@ export interface ServicesPageSelect<T extends boolean = true> {
         answer?: T;
         id?: T;
       };
+  whatsIncludedHeading?: T;
+  relatedServicesHeading?: T;
   finalCta?:
     | T
     | {
@@ -766,9 +784,13 @@ export interface ContactPageSelect<T extends boolean = true> {
   contactDetails?:
     | T
     | {
+        phoneLabel?: T;
         phone?: T;
+        emailLabel?: T;
         email?: T;
+        addressLabel?: T;
         address?: T;
+        hoursLabel?: T;
         hours?: T;
       };
   mapPlaceholder?:
@@ -777,6 +799,7 @@ export interface ContactPageSelect<T extends boolean = true> {
         embedUrl?: T;
         placeholderLabel?: T;
       };
+  serviceAreaHeading?: T;
   serviceAreaSuburbs?:
     | T
     | {

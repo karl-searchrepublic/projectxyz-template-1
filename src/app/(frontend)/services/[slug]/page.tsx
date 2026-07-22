@@ -41,7 +41,12 @@ export default async function ServiceDetailPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const service = await getService(slug)
+  const payloadConfig = await config
+  const payload = await getPayload({ config: payloadConfig })
+  const [service, servicesPage] = await Promise.all([
+    getService(slug),
+    payload.findGlobal({ slug: 'services-page' }),
+  ])
 
   if (!service) {
     notFound()
@@ -77,7 +82,7 @@ export default async function ServiceDetailPage({
 
       {service.whatsIncluded && service.whatsIncluded.length > 0 && (
         <section className="service-detail__whats-included">
-          <h2>What&apos;s Included</h2>
+          <h2>{servicesPage.whatsIncludedHeading}</h2>
           <ul>
             {service.whatsIncluded.map((entry) => (
               <li key={entry.id ?? entry.item}>{entry.item}</li>
@@ -88,7 +93,7 @@ export default async function ServiceDetailPage({
 
       {relatedServices.length > 0 && (
         <section className="service-detail__related">
-          <h2>Related Services</h2>
+          <h2>{servicesPage.relatedServicesHeading}</h2>
           <div className="service-detail__related-list">
             {relatedServices.map((related) => (
               <Link href={`/services/${related.slug}`} key={related.id}>

@@ -15,6 +15,7 @@ export const ServicesPage: GlobalConfig = {
         { name: 'subtext', type: 'textarea' },
       ],
     },
+    { name: 'howItWorksHeading', type: 'text', defaultValue: 'How It Works' },
     {
       name: 'howItWorks',
       type: 'array',
@@ -28,6 +29,7 @@ export const ServicesPage: GlobalConfig = {
         { name: 'description', type: 'textarea' },
       ],
     },
+    { name: 'faqHeading', type: 'text', defaultValue: 'Frequently Asked Questions' },
     {
       name: 'faq',
       type: 'array',
@@ -40,6 +42,18 @@ export const ServicesPage: GlobalConfig = {
         { name: 'question', type: 'text', required: true },
         { name: 'answer', type: 'textarea', required: true },
       ],
+    },
+    {
+      name: 'whatsIncludedHeading',
+      type: 'text',
+      label: "'What's Included' Heading (service detail pages)",
+      defaultValue: "What's Included",
+    },
+    {
+      name: 'relatedServicesHeading',
+      type: 'text',
+      label: "'Related Services' Heading (service detail pages)",
+      defaultValue: 'Related Services',
     },
     {
       name: 'finalCta',

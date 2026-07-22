@@ -5,8 +5,12 @@ import { PageIntro } from '@/components/PageIntro'
 import { CTABanner } from '@/components/CTABanner'
 import { ServiceCard } from '@/components/ServiceCard'
 
-export const metadata = {
-  title: 'Services',
+export async function generateMetadata() {
+  const payloadConfig = await config
+  const payload = await getPayload({ config: payloadConfig })
+  const servicesPage = await payload.findGlobal({ slug: 'services-page' })
+
+  return { title: servicesPage.pageIntro?.headline ?? 'Services' }
 }
 
 export default async function ServicesPage() {
@@ -39,7 +43,7 @@ export default async function ServicesPage() {
 
       {servicesPage.howItWorks && servicesPage.howItWorks.length > 0 && (
         <section className="how-it-works">
-          <h2>How It Works</h2>
+          <h2>{servicesPage.howItWorksHeading}</h2>
           <div className="how-it-works__steps">
             {servicesPage.howItWorks.map((step) => (
               <div className="how-it-works__step" key={step.id ?? step.title}>
@@ -53,7 +57,7 @@ export default async function ServicesPage() {
 
       {servicesPage.faq && servicesPage.faq.length > 0 && (
         <section className="faq">
-          <h2>Frequently Asked Questions</h2>
+          <h2>{servicesPage.faqHeading}</h2>
           {servicesPage.faq.map((entry) => (
             <div className="faq__item" key={entry.id ?? entry.question}>
               <h3>{entry.question}</h3>

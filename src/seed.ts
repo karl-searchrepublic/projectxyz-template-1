@@ -65,6 +65,8 @@ export const seed = async (payload: Payload): Promise<void> => {
       slug: 'header',
       data: {
         siteName: 'ProjectXYZ Plumbing',
+        metaDescription:
+          'Fast, reliable plumbing services for homes and businesses. Licensed, insured, and available for emergency callouts.',
         navLinks: [
           { label: 'About', href: '/about' },
           { label: 'Services', href: '/services' },
@@ -156,6 +158,7 @@ export const seed = async (payload: Payload): Promise<void> => {
           headline: 'Plumbing services you can rely on',
           subtext: 'From urgent repairs to full installations, we cover it all.',
         },
+        howItWorksHeading: 'How It Works',
         howItWorks: [
           {
             title: '1. Get in touch',
@@ -170,6 +173,7 @@ export const seed = async (payload: Payload): Promise<void> => {
             description: 'Our licensed team completes the work and cleans up after themselves.',
           },
         ],
+        faqHeading: 'Frequently Asked Questions',
         faq: [
           {
             question: 'Do you offer emergency callouts?',
@@ -184,6 +188,8 @@ export const seed = async (payload: Payload): Promise<void> => {
             answer: 'Yes, we always confirm pricing with you before starting any work.',
           },
         ],
+        whatsIncludedHeading: "What's Included",
+        relatedServicesHeading: 'Related Services',
         finalCta: {
           heading: 'Need a hand with a plumbing job?',
           subtext: 'Reach out today and we will get back to you fast.',
@@ -211,14 +217,19 @@ export const seed = async (payload: Payload): Promise<void> => {
           subtext: 'Send us a message or reach out directly, we typically reply within the hour.',
         },
         contactDetails: {
+          phoneLabel: 'Phone',
           phone: '(555) 123-4567',
+          emailLabel: 'Email',
           email: 'hello@projectxyz.example',
+          addressLabel: 'Address',
           address: '123 Example Street, Your Town',
+          hoursLabel: 'Hours',
           hours: 'Mon-Fri: 7am-5pm\nSat: 8am-1pm\nSun: Emergency callouts only',
         },
         mapPlaceholder: {
           placeholderLabel: 'Map coming soon',
         },
+        serviceAreaHeading: 'Areas We Service',
         serviceAreaSuburbs: [
           { name: 'Downtown' },
           { name: 'Riverside' },

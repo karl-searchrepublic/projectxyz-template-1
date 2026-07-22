@@ -6,9 +6,15 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import './styles.css'
 
-export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+export async function generateMetadata() {
+  const payloadConfig = await config
+  const payload = await getPayload({ config: payloadConfig })
+  const header = await payload.findGlobal({ slug: 'header' })
+
+  return {
+    description: header.metaDescription,
+    title: header.siteName,
+  }
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {

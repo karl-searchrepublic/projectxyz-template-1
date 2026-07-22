@@ -12,6 +12,13 @@ export const Header: GlobalConfig = {
       required: true,
     },
     {
+      name: 'metaDescription',
+      type: 'textarea',
+      admin: {
+        description: 'Default SEO description used in the browser tab / search results',
+      },
+    },
+    {
       name: 'navLinks',
       type: 'array',
       fields: [
