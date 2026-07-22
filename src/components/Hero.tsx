@@ -11,7 +11,7 @@ export function Hero({ data, phone }: { data: HomePage['hero']; phone?: string |
   return (
     <section className="bg-background text-foreground">
       <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 lg:grid-cols-12 lg:gap-16 lg:py-24">
-        <div className="flex flex-col justify-center lg:col-span-6">
+        <div className="order-last flex flex-col justify-center lg:order-none lg:col-span-6">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-balance md:text-5xl">
             {data.headline}
           </h1>
@@ -43,7 +43,7 @@ export function Hero({ data, phone }: { data: HomePage['hero']; phone?: string |
         </div>
 
         {image?.url && (
-          <div className="hidden items-center lg:col-span-6 lg:flex">
+          <div className="order-first flex items-center lg:order-none lg:col-span-6">
             <div className="w-full overflow-hidden rounded-xl border border-border">
               <Image
                 alt={image.alt}
