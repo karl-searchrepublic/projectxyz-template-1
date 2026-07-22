@@ -1,3 +1,5 @@
+import { Badge } from '@/components/ui/badge'
+
 export function Chip({ label }: { label: string }) {
-  return <span className="chip">{label}</span>
+  return <Badge variant="secondary">{label}</Badge>
 }

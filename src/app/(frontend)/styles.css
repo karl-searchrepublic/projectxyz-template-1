@@ -49,8 +49,8 @@
  * Base element resets, wrapped in Tailwind's `base` layer so utility classes
  * (which live in the `utilities` layer) correctly override them. Unlayered
  * CSS always beats layered CSS regardless of specificity, so without this,
- * Tailwind classes like `h-8` or `text-4xl` on <img>/<h1> would silently lose
- * to these plain element-selector rules.
+ * Tailwind classes like `h-8` or `text-4xl` would silently lose to plain
+ * element-selector rules.
  */
 @layer base {
   * {
@@ -58,10 +58,6 @@
   }
 
   html {
-    font-size: 18px;
-    line-height: 32px;
-
-    background: rgb(0, 0, 0);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -72,54 +68,15 @@
   }
 
   body {
+    @apply bg-background text-foreground;
     font-family: system-ui;
-    font-size: 18px;
-    line-height: 32px;
-
     margin: 0;
-    color: rgb(1000, 1000, 1000);
-
-    @media (max-width: 1024px) {
-      font-size: 15px;
-      line-height: 24px;
-    }
   }
 
   img {
     max-width: 100%;
     height: auto;
     display: block;
-  }
-
-  h1 {
-    margin: 40px 0;
-    font-size: 64px;
-    line-height: 70px;
-    font-weight: bold;
-
-    @media (max-width: 1024px) {
-      margin: 24px 0;
-      font-size: 42px;
-      line-height: 42px;
-    }
-
-    @media (max-width: 768px) {
-      font-size: 38px;
-      line-height: 38px;
-    }
-
-    @media (max-width: 400px) {
-      font-size: 32px;
-      line-height: 32px;
-    }
-  }
-
-  p {
-    margin: 24px 0;
-
-    @media (max-width: 1024px) {
-      margin: calc(var(--base) * 0.75) 0;
-    }
   }
 
   a {
@@ -139,160 +96,4 @@
   svg {
     vertical-align: middle;
   }
-}
-
-/* Structure & spacing only — no visual design yet */
-
-.page-intro,
-.our-story,
-.team-grid,
-.services-grid,
-.how-it-works,
-.faq,
-.emergency-callout,
-.contact-content,
-.service-area,
-.service-detail__description,
-.service-detail__whats-included,
-.service-detail__related,
-.service-detail__hero-image {
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 32px 45px;
-}
-
-.our-story {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  align-items: center;
-
-  .our-story__text {
-    flex: 1 1 320px;
-  }
-
-  .our-story__image-frame {
-    flex: 1 1 320px;
-    padding: 8px;
-    border: 1px solid currentColor;
-  }
-}
-
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 24px;
-
-  &__member {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-}
-
-.how-it-works__steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 24px;
-  margin-top: 16px;
-}
-
-.faq__item {
-  padding: 16px 0;
-  border-bottom: 1px solid currentColor;
-}
-
-.emergency-callout {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  border-bottom: 1px solid currentColor;
-  text-align: center;
-
-  p {
-    margin: 0;
-  }
-}
-
-.contact-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  label {
-    margin-top: 12px;
-  }
-
-  input,
-  textarea {
-    padding: 8px;
-    font: inherit;
-    background: transparent;
-    color: inherit;
-    border: 1px solid currentColor;
-    border-radius: 4px;
-  }
-
-  button {
-    margin-top: 16px;
-    padding: 12px 24px;
-    font: inherit;
-    background: transparent;
-    color: inherit;
-    border: 1px solid currentColor;
-    border-radius: 4px;
-    cursor: pointer;
-    align-self: flex-start;
-  }
-}
-
-.contact-details {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.contact-map-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  border: 1px dashed currentColor;
-  border-radius: 4px;
-  text-align: center;
-}
-
-.service-area__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.chip {
-  display: inline-block;
-  padding: 6px 16px;
-  border: 1px solid currentColor;
-  border-radius: 999px;
-}
-
-.service-detail__related-list {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 16px;
 }

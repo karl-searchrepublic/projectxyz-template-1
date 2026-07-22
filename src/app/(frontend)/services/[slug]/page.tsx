@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPayload } from 'payload'
+import { CheckCircle2 } from 'lucide-react'
 
 import config from '@/payload.config'
 import { PageIntro } from '@/components/PageIntro'
@@ -35,11 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return { title: service?.title ?? 'Service' }
 }
 
-export default async function ServiceDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>
-}) {
+export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
@@ -53,9 +50,7 @@ export default async function ServiceDetailPage({
   }
 
   const heroImage =
-    service.heroImage && typeof service.heroImage === 'object'
-      ? (service.heroImage as Media)
-      : null
+    service.heroImage && typeof service.heroImage === 'object' ? (service.heroImage as Media) : null
 
   const relatedServices = (service.relatedServices ?? []).filter(
     (related): related is Service => typeof related === 'object',
@@ -66,7 +61,7 @@ export default async function ServiceDetailPage({
       <PageIntro eyebrow={service.eyebrow} headline={service.title} subtext={service.subtext} />
 
       {heroImage?.url && (
-        <div className="service-detail__hero-image">
+        <div className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-border px-6">
           <Image
             alt={heroImage.alt}
             height={heroImage.height ?? 480}
@@ -76,27 +71,36 @@ export default async function ServiceDetailPage({
         </div>
       )}
 
-      <section className="service-detail__description">
-        <p>{service.description}</p>
+      <section className="mx-auto max-w-3xl px-6 py-12">
+        <p className="text-lg text-muted-foreground">{service.description}</p>
       </section>
 
       {service.whatsIncluded && service.whatsIncluded.length > 0 && (
-        <section className="service-detail__whats-included">
-          <h2>{servicesPage.whatsIncludedHeading}</h2>
-          <ul>
+        <section className="mx-auto max-w-3xl px-6 pb-12">
+          <h2 className="text-2xl font-bold tracking-tight">{servicesPage.whatsIncludedHeading}</h2>
+          <ul className="mt-6 flex flex-col gap-3">
             {service.whatsIncluded.map((entry) => (
-              <li key={entry.id ?? entry.item}>{entry.item}</li>
+              <li className="flex items-center gap-3" key={entry.id ?? entry.item}>
+                <CheckCircle2 className="size-5 shrink-0 text-primary" />
+                {entry.item}
+              </li>
             ))}
           </ul>
         </section>
       )}
 
       {relatedServices.length > 0 && (
-        <section className="service-detail__related">
-          <h2>{servicesPage.relatedServicesHeading}</h2>
-          <div className="service-detail__related-list">
+        <section className="mx-auto max-w-3xl px-6 pb-16">
+          <h2 className="text-2xl font-bold tracking-tight">
+            {servicesPage.relatedServicesHeading}
+          </h2>
+          <div className="mt-6 flex flex-wrap gap-3">
             {relatedServices.map((related) => (
-              <Link href={`/services/${related.slug}`} key={related.id}>
+              <Link
+                className="rounded-full border border-input px-4 py-2 text-sm font-medium transition-colors hover:bg-accent"
+                href={`/services/${related.slug}`}
+                key={related.id}
+              >
                 {related.title}
               </Link>
             ))}

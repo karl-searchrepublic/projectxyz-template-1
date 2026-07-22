@@ -29,7 +29,7 @@ export default async function ServicesPage() {
         subtext={servicesPage.pageIntro?.subtext}
       />
 
-      <section className="services-grid">
+      <section className="mx-auto grid max-w-6xl gap-6 px-6 py-16 sm:grid-cols-2 lg:grid-cols-3">
         {services.docs.map((service) => (
           <ServiceCard
             description={service.subtext}
@@ -42,13 +42,17 @@ export default async function ServicesPage() {
       </section>
 
       {servicesPage.howItWorks && servicesPage.howItWorks.length > 0 && (
-        <section className="how-it-works">
-          <h2>{servicesPage.howItWorksHeading}</h2>
-          <div className="how-it-works__steps">
+        <section className="mx-auto max-w-6xl px-6 py-16">
+          <h2 className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
+            {servicesPage.howItWorksHeading}
+          </h2>
+          <div className="mt-10 grid gap-8 sm:grid-cols-3">
             {servicesPage.howItWorks.map((step) => (
-              <div className="how-it-works__step" key={step.id ?? step.title}>
-                <h3>{step.title}</h3>
-                {step.description && <p>{step.description}</p>}
+              <div className="text-center" key={step.id ?? step.title}>
+                <h3 className="font-semibold">{step.title}</h3>
+                {step.description && (
+                  <p className="mt-2 text-muted-foreground">{step.description}</p>
+                )}
               </div>
             ))}
           </div>
@@ -56,14 +60,18 @@ export default async function ServicesPage() {
       )}
 
       {servicesPage.faq && servicesPage.faq.length > 0 && (
-        <section className="faq">
-          <h2>{servicesPage.faqHeading}</h2>
-          {servicesPage.faq.map((entry) => (
-            <div className="faq__item" key={entry.id ?? entry.question}>
-              <h3>{entry.question}</h3>
-              <p>{entry.answer}</p>
-            </div>
-          ))}
+        <section className="mx-auto max-w-3xl px-6 py-16">
+          <h2 className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
+            {servicesPage.faqHeading}
+          </h2>
+          <div className="mt-10 divide-y divide-border">
+            {servicesPage.faq.map((entry) => (
+              <div className="py-6" key={entry.id ?? entry.question}>
+                <h3 className="font-semibold">{entry.question}</h3>
+                <p className="mt-2 text-muted-foreground">{entry.answer}</p>
+              </div>
+            ))}
+          </div>
         </section>
       )}
 
