@@ -1,9 +1,14 @@
 import type { GlobalConfig } from 'payload'
 
+import { revalidateFrontend } from '../hooks/revalidateFrontend'
+
 export const Header: GlobalConfig = {
   slug: 'header',
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [revalidateFrontend],
   },
   fields: [
     {

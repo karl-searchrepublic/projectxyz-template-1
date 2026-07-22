@@ -1,5 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
+import { revalidateFrontend } from '../hooks/revalidateFrontend'
+
 export const Services: CollectionConfig = {
   slug: 'services',
   admin: {
@@ -8,6 +10,10 @@ export const Services: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [revalidateFrontend],
+    afterDelete: [revalidateFrontend],
   },
   fields: [
     {
