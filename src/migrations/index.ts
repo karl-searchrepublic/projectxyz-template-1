@@ -37,6 +37,7 @@ import * as migration_20260723_215150_remove_header_site_name_and_logo from './2
 import * as migration_20260723_230102_split_meta_description_per_page from './20260723_230102_split_meta_description_per_page';
 import * as migration_20260723_231026_add_trust_strip from './20260723_231026_add_trust_strip';
 import * as migration_20260723_231129_remove_home_page_trust_strip_heading_and_company_stats from './20260723_231129_remove_home_page_trust_strip_heading_and_company_stats';
+import * as migration_20260723_232547_add_company_info_social_links from './20260723_232547_add_company_info_social_links';
 
 export const migrations = [
   {
@@ -232,6 +233,11 @@ export const migrations = [
   {
     up: migration_20260723_231129_remove_home_page_trust_strip_heading_and_company_stats.up,
     down: migration_20260723_231129_remove_home_page_trust_strip_heading_and_company_stats.down,
-    name: '20260723_231129_remove_home_page_trust_strip_heading_and_company_stats'
+    name: '20260723_231129_remove_home_page_trust_strip_heading_and_company_stats',
+  },
+  {
+    up: migration_20260723_232547_add_company_info_social_links.up,
+    down: migration_20260723_232547_add_company_info_social_links.down,
+    name: '20260723_232547_add_company_info_social_links'
   },
 ];

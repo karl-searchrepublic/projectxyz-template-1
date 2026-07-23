@@ -498,6 +498,27 @@ export interface CompanyInfo {
    * Google Place ID for this business, used to fetch the live review carousel on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.
    */
   googlePlaceId?: string | null;
+  /**
+   * Shown in the footer, below the phone and email. Leave any blank to hide that icon.
+   */
+  socialLinks?: {
+    /**
+     * Full Facebook page URL
+     */
+    facebook?: string | null;
+    /**
+     * Full Instagram profile URL
+     */
+    instagram?: string | null;
+    /**
+     * Full X/Twitter profile URL
+     */
+    x?: string | null;
+    /**
+     * Full LinkedIn page URL
+     */
+    linkedin?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -809,6 +830,14 @@ export interface CompanyInfoSelect<T extends boolean = true> {
   latitude?: T;
   longitude?: T;
   googlePlaceId?: T;
+  socialLinks?:
+    | T
+    | {
+        facebook?: T;
+        instagram?: T;
+        x?: T;
+        linkedin?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

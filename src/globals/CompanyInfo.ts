@@ -69,5 +69,20 @@ export const CompanyInfo: GlobalConfig = {
           "Google Place ID for this business, used to fetch the live review carousel on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.",
       },
     },
+    {
+      name: 'socialLinks',
+      type: 'group',
+      label: 'Social Links',
+      admin: {
+        description:
+          'Shown in the footer, below the phone and email. Leave any blank to hide that icon.',
+      },
+      fields: [
+        { name: 'facebook', type: 'text', admin: { description: 'Full Facebook page URL' } },
+        { name: 'instagram', type: 'text', admin: { description: 'Full Instagram profile URL' } },
+        { name: 'x', type: 'text', label: 'X (Twitter)', admin: { description: 'Full X/Twitter profile URL' } },
+        { name: 'linkedin', type: 'text', admin: { description: 'Full LinkedIn page URL' } },
+      ],
+    },
   ],
 }
