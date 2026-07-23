@@ -18,6 +18,7 @@ import * as migration_20260723_002547_add_service_area_and_geocoding from './202
 import * as migration_20260723_012210_add_service_card_read_more_label from './20260723_012210_add_service_card_read_more_label';
 import * as migration_20260723_023701_add_company_info_service_area_suburbs from './20260723_023701_add_company_info_service_area_suburbs';
 import * as migration_20260723_023734_remove_contact_page_service_area_suburbs from './20260723_023734_remove_contact_page_service_area_suburbs';
+import * as migration_20260723_030652_add_google_place_id from './20260723_030652_add_google_place_id';
 
 export const migrations = [
   {
@@ -118,6 +119,11 @@ export const migrations = [
   {
     up: migration_20260723_023734_remove_contact_page_service_area_suburbs.up,
     down: migration_20260723_023734_remove_contact_page_service_area_suburbs.down,
-    name: '20260723_023734_remove_contact_page_service_area_suburbs'
+    name: '20260723_023734_remove_contact_page_service_area_suburbs',
+  },
+  {
+    up: migration_20260723_030652_add_google_place_id.up,
+    down: migration_20260723_030652_add_google_place_id.down,
+    name: '20260723_030652_add_google_place_id'
   },
 ];

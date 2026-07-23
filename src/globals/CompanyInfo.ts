@@ -70,5 +70,13 @@ export const CompanyInfo: GlobalConfig = {
       },
       fields: [{ name: 'name', type: 'text', required: true }],
     },
+    {
+      name: 'googlePlaceId',
+      type: 'text',
+      admin: {
+        description:
+          "Google Place ID for this business, used to show the Google rating on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.",
+      },
+    },
   ],
 }

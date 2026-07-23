@@ -717,6 +717,10 @@ export interface CompanyInfo {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Google Place ID for this business, used to show the Google rating on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.
+   */
+  googlePlaceId?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -968,6 +972,7 @@ export interface CompanyInfoSelect<T extends boolean = true> {
         name?: T;
         id?: T;
       };
+  googlePlaceId?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

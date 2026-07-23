@@ -6,6 +6,7 @@ import { ServicesPreview } from '@/components/ServicesPreview'
 import { CredentialsStrip } from '@/components/CredentialsStrip'
 import { ServiceAreaSection } from '@/components/ServiceAreaSection'
 import { CTABanner } from '@/components/CTABanner'
+import { getGoogleRating } from '@/lib/googleRating'
 import type { Service } from '@/payload-types'
 import './styles.css'
 
@@ -30,6 +31,10 @@ export default async function Page() {
     (service): service is Service => typeof service === 'object',
   )
 
+  const googleRating = companyInfo.googlePlaceId
+    ? await getGoogleRating(companyInfo.googlePlaceId)
+    : null
+
   return (
     <>
       <Hero data={homePage.hero} phone={companyInfo.phone} />
@@ -42,7 +47,11 @@ export default async function Page() {
         viewAllLabel={homePage.servicesPreview?.viewAllLabel}
       />
 
-      <CredentialsStrip heading={homePage.trustStripHeading} items={companyStats.stats ?? []} />
+      <CredentialsStrip
+        googleRating={googleRating}
+        heading={homePage.trustStripHeading}
+        items={companyStats.stats ?? []}
+      />
 
       <ServiceAreaSection
         areaLabel={companyInfo.serviceAreaLabel}
