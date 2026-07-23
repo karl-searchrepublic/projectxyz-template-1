@@ -34,6 +34,7 @@ import * as migration_20260723_212549_add_service_area_label from './20260723_21
 import * as migration_20260723_212613_remove_company_info_service_area_label from './20260723_212613_remove_company_info_service_area_label';
 import * as migration_20260723_214933_add_company_info_business_name_and_logo from './20260723_214933_add_company_info_business_name_and_logo';
 import * as migration_20260723_215150_remove_header_site_name_and_logo from './20260723_215150_remove_header_site_name_and_logo';
+import * as migration_20260723_230102_split_meta_description_per_page from './20260723_230102_split_meta_description_per_page';
 
 export const migrations = [
   {
@@ -214,6 +215,11 @@ export const migrations = [
   {
     up: migration_20260723_215150_remove_header_site_name_and_logo.up,
     down: migration_20260723_215150_remove_header_site_name_and_logo.down,
-    name: '20260723_215150_remove_header_site_name_and_logo'
+    name: '20260723_215150_remove_header_site_name_and_logo',
+  },
+  {
+    up: migration_20260723_230102_split_meta_description_per_page.up,
+    down: migration_20260723_230102_split_meta_description_per_page.down,
+    name: '20260723_230102_split_meta_description_per_page'
   },
 ];

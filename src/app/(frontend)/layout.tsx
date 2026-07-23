@@ -11,13 +11,9 @@ import './styles.css'
 export async function generateMetadata() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const [header, companyInfo] = await Promise.all([
-    payload.findGlobal({ slug: 'header' }),
-    payload.findGlobal({ slug: 'company-info' }),
-  ])
+  const companyInfo = await payload.findGlobal({ slug: 'company-info' })
 
   return {
-    description: header.metaDescription,
     title: companyInfo.businessName,
   }
 }

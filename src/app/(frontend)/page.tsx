@@ -16,7 +16,7 @@ export async function generateMetadata() {
   const payload = await getPayload({ config: payloadConfig })
   const homePage = await payload.findGlobal({ slug: 'home-page' })
 
-  return { title: homePage.hero?.headline }
+  return { description: homePage.metaDescription, title: homePage.hero?.headline }
 }
 
 export default async function Page() {

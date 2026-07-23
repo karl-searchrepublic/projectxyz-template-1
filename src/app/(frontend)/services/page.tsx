@@ -10,7 +10,10 @@ export async function generateMetadata() {
   const payload = await getPayload({ config: payloadConfig })
   const servicesPage = await payload.findGlobal({ slug: 'services-page' })
 
-  return { title: servicesPage.pageIntro?.headline ?? 'Services' }
+  return {
+    description: servicesPage.metaDescription,
+    title: servicesPage.pageIntro?.headline ?? 'Services',
+  }
 }
 
 export default async function ServicesPage() {

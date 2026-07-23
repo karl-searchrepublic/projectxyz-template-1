@@ -92,28 +92,28 @@ export interface Config {
   };
   fallbackLocale: null;
   globals: {
+    'company-info': CompanyInfo;
+    theme: Theme;
     header: Header;
     footer: Footer;
     'home-page': HomePage;
     'about-page': AboutPage;
     'services-page': ServicesPage;
     'contact-page': ContactPage;
-    theme: Theme;
     'company-stats': CompanyStat;
-    'company-info': CompanyInfo;
     testimonials: Testimonial;
     'service-area': ServiceArea;
   };
   globalsSelect: {
+    'company-info': CompanyInfoSelect<false> | CompanyInfoSelect<true>;
+    theme: ThemeSelect<false> | ThemeSelect<true>;
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
     'about-page': AboutPageSelect<false> | AboutPageSelect<true>;
     'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
     'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
-    theme: ThemeSelect<false> | ThemeSelect<true>;
     'company-stats': CompanyStatsSelect<false> | CompanyStatsSelect<true>;
-    'company-info': CompanyInfoSelect<false> | CompanyInfoSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'service-area': ServiceAreaSelect<false> | ServiceAreaSelect<true>;
   };
@@ -200,6 +200,10 @@ export interface Service {
    * Used in the URL: /services/[slug]
    */
   slug: string;
+  /**
+   * SEO description shown in search results and social share previews
+   */
+  metaDescription?: string | null;
   eyebrow?: string | null;
   /**
    * Icon shown on the services grid card
@@ -393,6 +397,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface ServicesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  metaDescription?: T;
   eyebrow?: T;
   icon?: T;
   heroImage?: T;
@@ -461,15 +466,82 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   createdAt?: T;
 }
 /**
+ * Shared business contact details, used across the Footer and Contact page (including the emergency callout phone number).
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company-info".
+ */
+export interface CompanyInfo {
+  id: number;
+  businessName: string;
+  /**
+   * Shown in the header in place of the business name text, if uploaded
+   */
+  logo?: (number | null) | Media;
+  phone?: string | null;
+  email?: string | null;
+  address?: string | null;
+  hours?: string | null;
+  /**
+   * Radius (in km) drawn as a circle on the Contact page map, centered on the geocoded business address.
+   */
+  serviceRadiusKm?: number | null;
+  /**
+   * Auto-geocoded from Address — do not edit directly.
+   */
+  latitude?: number | null;
+  /**
+   * Auto-geocoded from Address — do not edit directly.
+   */
+  longitude?: number | null;
+  /**
+   * Google Place ID for this business, used to fetch the live review carousel on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.
+   */
+  googlePlaceId?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Brand colors for this site. Enter hex codes (e.g. #1a56db). Readable text color on Primary/Accent is calculated automatically.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "theme".
+ */
+export interface Theme {
+  id: number;
+  /**
+   * Main brand color — solid buttons (Get a Quote, Call Now, etc.), text links, and icon accents like service checkmarks. Text shown on top of it is calculated automatically for contrast.
+   */
+  primaryColor: string;
+  /**
+   * Page and card background color. Also blended with the text color to produce the derived border, input outline, and focus ring tones.
+   */
+  backgroundColor: string;
+  /**
+   * Header/nav bar background color (desktop bar and mobile dropdown menu). Set this per client to match the background baked into their logo file, so the logo sits cleanly on the header — independent of the general page background. Nav text color is calculated automatically for contrast against it.
+   */
+  headerBackgroundColor: string;
+  /**
+   * Main text color. Also blended with the background color to produce derived tones — muted/secondary text, borders, input outlines, and focus rings.
+   */
+  foregroundColor: string;
+  /**
+   * Optional override for the text/icon color shown on top of the Primary color. Leave blank to auto-calculate a readable black or white based on Primary Color.
+   */
+  primaryTextColor?: string | null;
+  /**
+   * Secondary background — badges/chips, hover backgrounds on nav links and outline buttons, and muted section backgrounds like the final CTA banner.
+   */
+  accentColor: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header".
  */
 export interface Header {
   id: number;
-  /**
-   * Default SEO description used in the browser tab / search results
-   */
-  metaDescription?: string | null;
   navLinks?:
     | {
         label: string;
@@ -509,6 +581,10 @@ export interface Footer {
  */
 export interface HomePage {
   id: number;
+  /**
+   * SEO description shown in search results and social share previews
+   */
+  metaDescription?: string | null;
   hero: {
     headline: string;
     subtext?: string | null;
@@ -553,6 +629,10 @@ export interface HomePage {
  */
 export interface AboutPage {
   id: number;
+  /**
+   * SEO description shown in search results and social share previews
+   */
+  metaDescription?: string | null;
   pageIntro: {
     eyebrow?: string | null;
     headline: string;
@@ -586,6 +666,10 @@ export interface AboutPage {
  */
 export interface ServicesPage {
   id: number;
+  /**
+   * SEO description shown in search results and social share previews
+   */
+  metaDescription?: string | null;
   pageIntro: {
     eyebrow?: string | null;
     headline: string;
@@ -624,6 +708,10 @@ export interface ServicesPage {
  */
 export interface ContactPage {
   id: number;
+  /**
+   * SEO description shown in search results and social share previews
+   */
+  metaDescription?: string | null;
   emergencyCallout?: {
     show?: boolean | null;
     message?: string | null;
@@ -648,41 +736,6 @@ export interface ContactPage {
   createdAt?: string | null;
 }
 /**
- * Brand colors for this site. Enter hex codes (e.g. #1a56db). Readable text color on Primary/Accent is calculated automatically.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "theme".
- */
-export interface Theme {
-  id: number;
-  /**
-   * Main brand color — solid buttons (Get a Quote, Call Now, etc.), text links, and icon accents like service checkmarks. Text shown on top of it is calculated automatically for contrast.
-   */
-  primaryColor: string;
-  /**
-   * Page and card background color. Also blended with the text color to produce the derived border, input outline, and focus ring tones.
-   */
-  backgroundColor: string;
-  /**
-   * Header/nav bar background color (desktop bar and mobile dropdown menu). Set this per client to match the background baked into their logo file, so the logo sits cleanly on the header — independent of the general page background. Nav text color is calculated automatically for contrast against it.
-   */
-  headerBackgroundColor: string;
-  /**
-   * Main text color. Also blended with the background color to produce derived tones — muted/secondary text, borders, input outlines, and focus rings.
-   */
-  foregroundColor: string;
-  /**
-   * Optional override for the text/icon color shown on top of the Primary color. Leave blank to auto-calculate a readable black or white based on Primary Color.
-   */
-  primaryTextColor?: string | null;
-  /**
-   * Secondary background — badges/chips, hover backgrounds on nav links and outline buttons, and muted section backgrounds like the final CTA banner.
-   */
-  accentColor: string;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
  * Shared credential/stat numbers shown on both the About page and the homepage trust strip.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -697,42 +750,6 @@ export interface CompanyStat {
         id?: string | null;
       }[]
     | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * Shared business contact details, used across the Footer and Contact page (including the emergency callout phone number).
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "company-info".
- */
-export interface CompanyInfo {
-  id: number;
-  businessName: string;
-  /**
-   * Shown in the header in place of the business name text, if uploaded
-   */
-  logo?: (number | null) | Media;
-  phone?: string | null;
-  email?: string | null;
-  address?: string | null;
-  hours?: string | null;
-  /**
-   * Radius (in km) drawn as a circle on the Contact page map, centered on the geocoded business address.
-   */
-  serviceRadiusKm?: number | null;
-  /**
-   * Auto-geocoded from Address — do not edit directly.
-   */
-  latitude?: number | null;
-  /**
-   * Auto-geocoded from Address — do not edit directly.
-   */
-  longitude?: number | null;
-  /**
-   * Google Place ID for this business, used to fetch the live review carousel on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.
-   */
-  googlePlaceId?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -779,10 +796,43 @@ export interface ServiceArea {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company-info_select".
+ */
+export interface CompanyInfoSelect<T extends boolean = true> {
+  businessName?: T;
+  logo?: T;
+  phone?: T;
+  email?: T;
+  address?: T;
+  hours?: T;
+  serviceRadiusKm?: T;
+  latitude?: T;
+  longitude?: T;
+  googlePlaceId?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "theme_select".
+ */
+export interface ThemeSelect<T extends boolean = true> {
+  primaryColor?: T;
+  backgroundColor?: T;
+  headerBackgroundColor?: T;
+  foregroundColor?: T;
+  primaryTextColor?: T;
+  accentColor?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
-  metaDescription?: T;
   navLinks?:
     | T
     | {
@@ -819,6 +869,7 @@ export interface FooterSelect<T extends boolean = true> {
  * via the `definition` "home-page_select".
  */
 export interface HomePageSelect<T extends boolean = true> {
+  metaDescription?: T;
   hero?:
     | T
     | {
@@ -859,6 +910,7 @@ export interface HomePageSelect<T extends boolean = true> {
  * via the `definition` "about-page_select".
  */
 export interface AboutPageSelect<T extends boolean = true> {
+  metaDescription?: T;
   pageIntro?:
     | T
     | {
@@ -898,6 +950,7 @@ export interface AboutPageSelect<T extends boolean = true> {
  * via the `definition` "services-page_select".
  */
 export interface ServicesPageSelect<T extends boolean = true> {
+  metaDescription?: T;
   pageIntro?:
     | T
     | {
@@ -940,6 +993,7 @@ export interface ServicesPageSelect<T extends boolean = true> {
  * via the `definition` "contact-page_select".
  */
 export interface ContactPageSelect<T extends boolean = true> {
+  metaDescription?: T;
   emergencyCallout?:
     | T
     | {
@@ -974,21 +1028,6 @@ export interface ContactPageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "theme_select".
- */
-export interface ThemeSelect<T extends boolean = true> {
-  primaryColor?: T;
-  backgroundColor?: T;
-  headerBackgroundColor?: T;
-  foregroundColor?: T;
-  primaryTextColor?: T;
-  accentColor?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "company-stats_select".
  */
 export interface CompanyStatsSelect<T extends boolean = true> {
@@ -999,25 +1038,6 @@ export interface CompanyStatsSelect<T extends boolean = true> {
         value?: T;
         id?: T;
       };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "company-info_select".
- */
-export interface CompanyInfoSelect<T extends boolean = true> {
-  businessName?: T;
-  logo?: T;
-  phone?: T;
-  email?: T;
-  address?: T;
-  hours?: T;
-  serviceRadiusKm?: T;
-  latitude?: T;
-  longitude?: T;
-  googlePlaceId?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

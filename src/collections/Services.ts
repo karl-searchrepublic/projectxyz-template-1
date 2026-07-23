@@ -33,6 +33,14 @@ export const Services: CollectionConfig = {
       },
     },
     {
+      name: 'metaDescription',
+      type: 'textarea',
+      admin: {
+        position: 'sidebar',
+        description: 'SEO description shown in search results and social share previews',
+      },
+    },
+    {
       name: 'eyebrow',
       type: 'text',
     },

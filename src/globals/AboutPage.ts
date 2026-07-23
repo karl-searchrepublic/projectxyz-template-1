@@ -15,6 +15,14 @@ export const AboutPage: GlobalConfig = {
   },
   fields: [
     {
+      name: 'metaDescription',
+      type: 'textarea',
+      admin: {
+        position: 'sidebar',
+        description: 'SEO description shown in search results and social share previews',
+      },
+    },
+    {
       name: 'pageIntro',
       type: 'group',
       fields: [

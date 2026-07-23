@@ -12,7 +12,7 @@ export async function generateMetadata() {
   const payload = await getPayload({ config: payloadConfig })
   const about = await payload.findGlobal({ slug: 'about-page' })
 
-  return { title: about.pageIntro?.headline ?? 'About' }
+  return { description: about.metaDescription, title: about.pageIntro?.headline ?? 'About' }
 }
 
 export default async function AboutPage() {

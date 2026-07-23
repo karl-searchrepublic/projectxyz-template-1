@@ -10,6 +10,8 @@ const services = [
     eyebrow: 'Drainage',
     icon: 'waves' as const,
     subtext: 'Fast, reliable clearing for blocked and slow-running drains.',
+    metaDescription:
+      'Fast, reliable blocked drain clearing using CCTV drain cameras and high-pressure water jetting. Licensed and available for emergency callouts.',
     description:
       'Blocked drains can bring a household or business to a standstill. Our team uses CCTV drain cameras and high-pressure water jetting to find the cause of the blockage and clear it quickly, without unnecessary digging.',
     whatsIncluded: [
@@ -25,6 +27,8 @@ const services = [
     eyebrow: 'Hot Water',
     icon: 'flame' as const,
     subtext: 'Installation, repair, and replacement for all hot water system types.',
+    metaDescription:
+      'Hot water system installation, repair, and replacement for gas, electric, solar, and heat pump systems, with same-day emergency service.',
     description:
       'From electric and gas storage tanks to continuous flow and heat pump systems, we install, service, and repair hot water systems of every type and brand, with same-day emergency callouts available.',
     whatsIncluded: [
@@ -40,6 +44,8 @@ const services = [
     eyebrow: 'Leak Detection',
     icon: 'droplets' as const,
     subtext: 'Non-invasive leak detection to find hidden leaks before they cause damage.',
+    metaDescription:
+      'Non-invasive leak detection using acoustic listening devices and thermal imaging to find hidden leaks before they cause serious damage.',
     description:
       'Hidden leaks behind walls, under slabs, or underground can waste thousands of litres of water and cause serious damage. We use acoustic listening devices and thermal imaging to pinpoint leaks without unnecessary excavation.',
     whatsIncluded: [
@@ -86,8 +92,6 @@ export const seed = async (payload: Payload): Promise<void> => {
     await payload.updateGlobal({
       slug: 'header',
       data: {
-        metaDescription:
-          'Fast, reliable plumbing services for homes and businesses. Licensed, insured, and available for emergency callouts.',
         navLinks: [
           { label: 'About', href: '/about' },
           { label: 'Services', href: '/services' },
@@ -96,16 +100,6 @@ export const seed = async (payload: Payload): Promise<void> => {
         ctaLabel: 'Get a Quote',
         ctaHref: '/contact',
         callButtonLabel: 'Call Now',
-      },
-    })
-  } else if (!header.metaDescription) {
-    // Backfill: metaDescription was added after header was first seeded elsewhere
-    payload.logger.info('Backfilling header.metaDescription...')
-    await payload.updateGlobal({
-      slug: 'header',
-      data: {
-        metaDescription:
-          'Fast, reliable plumbing services for homes and businesses. Licensed, insured, and available for emergency callouts.',
       },
     })
   }
@@ -132,6 +126,8 @@ export const seed = async (payload: Payload): Promise<void> => {
     await payload.updateGlobal({
       slug: 'home-page',
       data: {
+        metaDescription:
+          'Fast, reliable plumbing services for homes and businesses. Licensed, insured, and available for emergency callouts.',
         hero: {
           headline: 'Fast, reliable plumbing when you need it most',
           subtext:
@@ -186,6 +182,8 @@ export const seed = async (payload: Payload): Promise<void> => {
     await payload.updateGlobal({
       slug: 'about-page',
       data: {
+        metaDescription:
+          "Meet the licensed, insured team behind ProjectXYZ Plumbing and learn how we've been keeping local homes and businesses running smoothly for years.",
         pageIntro: {
           eyebrow: 'About Us',
           headline: 'Local plumbers, doing things properly',
@@ -265,6 +263,8 @@ export const seed = async (payload: Payload): Promise<void> => {
     await payload.updateGlobal({
       slug: 'services-page',
       data: {
+        metaDescription:
+          'Browse our full range of plumbing services, from urgent repairs to full installations, backed by upfront pricing and a licensed, insured team.',
         pageIntro: {
           eyebrow: 'Services',
           headline: 'Plumbing services you can rely on',
@@ -321,6 +321,8 @@ export const seed = async (payload: Payload): Promise<void> => {
     await payload.updateGlobal({
       slug: 'contact-page',
       data: {
+        metaDescription:
+          "Get in touch for a fast, free quote. We're available for emergency callouts and typically reply within the hour.",
         emergencyCallout: {
           show: true,
           message: 'Got a plumbing emergency? Call us now, we are available 24/7.',
