@@ -76,6 +76,16 @@ export const HomePage: GlobalConfig = {
       defaultValue: 'Why Choose Us',
     },
     {
+      name: 'testimonialsHeading',
+      type: 'text',
+      label: 'Testimonials Heading',
+      admin: {
+        description:
+          'Heading above the reviews carousel. The reviews themselves are pulled live from Google using the Place ID set on Company Info.',
+      },
+      defaultValue: 'What Our Customers Say',
+    },
+    {
       name: 'serviceAreaHeading',
       type: 'text',
       label: 'Service Area Heading',

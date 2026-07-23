@@ -515,6 +515,10 @@ export interface HomePage {
    */
   trustStripHeading?: string | null;
   /**
+   * Heading above the reviews carousel. The reviews themselves are pulled live from Google using the Place ID set on Company Info.
+   */
+  testimonialsHeading?: string | null;
+  /**
    * Heading above the service-area map/suburb list. The suburbs, radius, and map come from Company Info.
    */
   serviceAreaHeading?: string | null;
@@ -791,6 +795,7 @@ export interface HomePageSelect<T extends boolean = true> {
         readMoreLabel?: T;
       };
   trustStripHeading?: T;
+  testimonialsHeading?: T;
   serviceAreaHeading?: T;
   finalCta?:
     | T

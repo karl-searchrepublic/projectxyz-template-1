@@ -4,9 +4,10 @@ import config from '@/payload.config'
 import { Hero } from '@/components/Hero'
 import { ServicesPreview } from '@/components/ServicesPreview'
 import { CredentialsStrip } from '@/components/CredentialsStrip'
+import { TestimonialsCarousel } from '@/components/TestimonialsCarousel'
 import { ServiceAreaSection } from '@/components/ServiceAreaSection'
 import { CTABanner } from '@/components/CTABanner'
-import { getGoogleRating } from '@/lib/googleRating'
+import { getGooglePlaceDetails } from '@/lib/googleRating'
 import type { Service } from '@/payload-types'
 import './styles.css'
 
@@ -31,8 +32,8 @@ export default async function Page() {
     (service): service is Service => typeof service === 'object',
   )
 
-  const googleRating = companyInfo.googlePlaceId
-    ? await getGoogleRating(companyInfo.googlePlaceId)
+  const googlePlaceDetails = companyInfo.googlePlaceId
+    ? await getGooglePlaceDetails(companyInfo.googlePlaceId)
     : null
 
   return (
@@ -48,9 +49,14 @@ export default async function Page() {
       />
 
       <CredentialsStrip
-        googleRating={googleRating}
+        googleRating={googlePlaceDetails}
         heading={homePage.trustStripHeading}
         items={companyStats.stats ?? []}
+      />
+
+      <TestimonialsCarousel
+        heading={homePage.testimonialsHeading}
+        reviews={googlePlaceDetails?.reviews ?? []}
       />
 
       <ServiceAreaSection

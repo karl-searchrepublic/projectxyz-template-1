@@ -19,6 +19,7 @@ import * as migration_20260723_012210_add_service_card_read_more_label from './2
 import * as migration_20260723_023701_add_company_info_service_area_suburbs from './20260723_023701_add_company_info_service_area_suburbs';
 import * as migration_20260723_023734_remove_contact_page_service_area_suburbs from './20260723_023734_remove_contact_page_service_area_suburbs';
 import * as migration_20260723_030652_add_google_place_id from './20260723_030652_add_google_place_id';
+import * as migration_20260723_031903_add_testimonials_heading from './20260723_031903_add_testimonials_heading';
 
 export const migrations = [
   {
@@ -124,6 +125,11 @@ export const migrations = [
   {
     up: migration_20260723_030652_add_google_place_id.up,
     down: migration_20260723_030652_add_google_place_id.down,
-    name: '20260723_030652_add_google_place_id'
+    name: '20260723_030652_add_google_place_id',
+  },
+  {
+    up: migration_20260723_031903_add_testimonials_heading.up,
+    down: migration_20260723_031903_add_testimonials_heading.down,
+    name: '20260723_031903_add_testimonials_heading'
   },
 ];

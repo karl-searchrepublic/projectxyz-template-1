@@ -1,6 +1,6 @@
 import { Star } from 'lucide-react'
 
-import type { GoogleRating } from '@/lib/googleRating'
+import type { GooglePlaceDetails } from '@/lib/googleRating'
 
 export function CredentialsStrip({
   heading,
@@ -9,7 +9,7 @@ export function CredentialsStrip({
 }: {
   heading?: string | null
   items: Array<{ id?: string | null; label: string; value: string }>
-  googleRating?: GoogleRating | null
+  googleRating?: GooglePlaceDetails | null
 }) {
   if (items.length === 0 && !googleRating) return null
 
