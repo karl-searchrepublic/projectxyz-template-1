@@ -225,6 +225,25 @@ export const seed = async (payload: Payload): Promise<void> => {
         ],
       },
     })
+  } else if (!companyInfo.serviceAreaSuburbs || companyInfo.serviceAreaSuburbs.length === 0) {
+    // Backfill: serviceAreaSuburbs moved here from contact-page (whose old table gets
+    // dropped in the same deploy), so a pre-existing company-info doc — one that already
+    // has phone set and therefore skips the block above — would otherwise lose its
+    // suburbs entirely instead of carrying them over to the new field location.
+    payload.logger.info('Backfilling company-info.serviceAreaSuburbs...')
+    await payload.updateGlobal({
+      slug: 'company-info',
+      data: {
+        serviceAreaSuburbs: [
+          { name: 'Downtown' },
+          { name: 'Riverside' },
+          { name: 'Northgate' },
+          { name: 'Eastwood' },
+          { name: 'Fairview' },
+          { name: 'Lakeside' },
+        ],
+      },
+    })
   }
 
   const servicesPage = await payload.findGlobal({ slug: 'services-page' })
