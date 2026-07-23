@@ -500,6 +500,9 @@ export interface HomePage {
   servicesPreview?: {
     heading?: string | null;
     subtext?: string | null;
+    /**
+     * Shown on the homepage services grid — max 3.
+     */
     featuredServices?: (number | Service)[] | null;
     viewAllLabel?: string | null;
     /**

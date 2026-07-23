@@ -49,6 +49,10 @@ export const HomePage: GlobalConfig = {
           type: 'relationship',
           relationTo: 'services',
           hasMany: true,
+          maxRows: 3,
+          admin: {
+            description: 'Shown on the homepage services grid — max 3.',
+          },
         },
         { name: 'viewAllLabel', type: 'text', defaultValue: 'View All Services' },
         {
