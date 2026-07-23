@@ -15,9 +15,12 @@ export function Header({ data, phone }: { data: HeaderGlobal; phone?: string | n
   const logo = data.logo && typeof data.logo === 'object' ? (data.logo as Media) : null
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-header-background/95 text-header-foreground backdrop-blur supports-[backdrop-filter]:bg-header-background/80">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-header-background text-header-foreground">
       <div className="mx-auto flex h-16 max-w-6xl items-center px-6">
-        <Link className="flex shrink-0 items-center text-lg font-semibold tracking-tight" href="/">
+        <Link
+          className="flex shrink-0 items-center text-lg font-semibold tracking-tight no-underline"
+          href="/"
+        >
           {logo?.url ? (
             <Image
               alt={logo.alt}

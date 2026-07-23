@@ -97,7 +97,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           <div className="mt-6 flex flex-wrap gap-3">
             {relatedServices.map((related) => (
               <Link
-                className="rounded-full border border-input px-4 py-2 text-sm font-medium transition-colors hover:bg-accent"
+                className="rounded-full border border-input px-4 py-2 text-sm font-medium no-underline transition-colors hover:bg-accent"
                 href={`/services/${related.slug}`}
                 key={related.id}
               >

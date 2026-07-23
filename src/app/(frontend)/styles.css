@@ -107,6 +107,8 @@
 
   a {
     color: currentColor;
+    text-decoration: underline;
+    text-underline-offset: 2px;
 
     &:focus {
       opacity: 0.8;

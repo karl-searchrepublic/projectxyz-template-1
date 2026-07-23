@@ -31,7 +31,7 @@ export default async function ContactPage() {
             <p className="font-medium">{contact.emergencyCallout.message}</p>
             {companyInfo.phone && (
               <a
-                className="flex items-center gap-1.5 font-semibold text-destructive hover:underline"
+                className="flex items-center gap-1.5 font-semibold text-destructive"
                 href={`tel:${companyInfo.phone.replace(/[^\d+]/g, '')}`}
               >
                 <Phone className="size-4" />
@@ -56,7 +56,7 @@ export default async function ContactPage() {
             <div>
               <h3 className="font-semibold">{contact.contactDetails?.phoneLabel}</h3>
               <a
-                className="text-muted-foreground hover:text-foreground hover:underline"
+                className="text-muted-foreground hover:text-foreground"
                 href={`tel:${companyInfo.phone.replace(/[^\d+]/g, '')}`}
               >
                 {companyInfo.phone}
@@ -67,7 +67,7 @@ export default async function ContactPage() {
             <div>
               <h3 className="font-semibold">{contact.contactDetails?.emailLabel}</h3>
               <a
-                className="text-muted-foreground hover:text-foreground hover:underline"
+                className="text-muted-foreground hover:text-foreground"
                 href={`mailto:${companyInfo.email}`}
               >
                 {companyInfo.email}
