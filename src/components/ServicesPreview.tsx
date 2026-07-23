@@ -9,11 +9,13 @@ export function ServicesPreview({
   subtext,
   services,
   viewAllLabel,
+  readMoreLabel,
 }: {
   heading?: string | null
   subtext?: string | null
   services: Service[]
   viewAllLabel?: string | null
+  readMoreLabel?: string | null
 }) {
   if (services.length === 0) return null
 
@@ -32,6 +34,7 @@ export function ServicesPreview({
               href={`/services/${service.slug}`}
               icon={service.icon}
               key={service.id}
+              readMoreLabel={readMoreLabel}
               title={service.title}
             />
           ))}

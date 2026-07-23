@@ -502,6 +502,10 @@ export interface HomePage {
     subtext?: string | null;
     featuredServices?: (number | Service)[] | null;
     viewAllLabel?: string | null;
+    /**
+     * Link label shown at the bottom of each service card
+     */
+    readMoreLabel?: string | null;
   };
   /**
    * Section heading above the stats. The stats themselves come from Company Stats.
@@ -770,6 +774,7 @@ export interface HomePageSelect<T extends boolean = true> {
         subtext?: T;
         featuredServices?: T;
         viewAllLabel?: T;
+        readMoreLabel?: T;
       };
   trustStripHeading?: T;
   finalCta?:

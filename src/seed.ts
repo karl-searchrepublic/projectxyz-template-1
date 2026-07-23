@@ -124,6 +124,7 @@ export const seed = async (payload: Payload): Promise<void> => {
           subtext: 'A few of the ways we help keep your home or business running smoothly.',
           featuredServices: allServices.map((service) => service.id),
           viewAllLabel: 'View All Services',
+          readMoreLabel: 'Read more',
         },
         trustStripHeading: 'Why Choose Us',
         finalCta: {

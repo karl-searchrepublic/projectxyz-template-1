@@ -35,6 +35,7 @@ export default async function Page() {
 
       <ServicesPreview
         heading={homePage.servicesPreview?.heading}
+        readMoreLabel={homePage.servicesPreview?.readMoreLabel}
         services={featuredServices}
         subtext={homePage.servicesPreview?.subtext}
         viewAllLabel={homePage.servicesPreview?.viewAllLabel}

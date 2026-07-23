@@ -51,6 +51,14 @@ export const HomePage: GlobalConfig = {
           hasMany: true,
         },
         { name: 'viewAllLabel', type: 'text', defaultValue: 'View All Services' },
+        {
+          name: 'readMoreLabel',
+          type: 'text',
+          defaultValue: 'Read more',
+          admin: {
+            description: 'Link label shown at the bottom of each service card',
+          },
+        },
       ],
     },
     {
@@ -58,7 +66,8 @@ export const HomePage: GlobalConfig = {
       type: 'text',
       label: 'Trust Strip Heading',
       admin: {
-        description: 'Section heading above the stats. The stats themselves come from Company Stats.',
+        description:
+          'Section heading above the stats. The stats themselves come from Company Stats.',
       },
       defaultValue: 'Why Choose Us',
     },

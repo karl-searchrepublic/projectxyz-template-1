@@ -15,6 +15,7 @@ import * as migration_20260722_222202_add_header_call_button_label from './20260
 import * as migration_20260722_225822_add_header_background_color from './20260722_225822_add_header_background_color';
 import * as migration_20260722_231842_add_primary_text_color from './20260722_231842_add_primary_text_color';
 import * as migration_20260723_002547_add_service_area_and_geocoding from './20260723_002547_add_service_area_and_geocoding';
+import * as migration_20260723_012210_add_service_card_read_more_label from './20260723_012210_add_service_card_read_more_label';
 
 export const migrations = [
   {
@@ -100,6 +101,11 @@ export const migrations = [
   {
     up: migration_20260723_002547_add_service_area_and_geocoding.up,
     down: migration_20260723_002547_add_service_area_and_geocoding.down,
-    name: '20260723_002547_add_service_area_and_geocoding'
+    name: '20260723_002547_add_service_area_and_geocoding',
+  },
+  {
+    up: migration_20260723_012210_add_service_card_read_more_label.up,
+    down: migration_20260723_012210_add_service_card_read_more_label.down,
+    name: '20260723_012210_add_service_card_read_more_label'
   },
 ];
