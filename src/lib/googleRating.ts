@@ -25,23 +25,30 @@ export async function getGooglePlaceDetails(placeId: string): Promise<GooglePlac
   if (!apiKey) return null
 
   try {
-    const response = await fetch(
-      `https://places.googleapis.com/v1/places/${placeId}?reviewsSort=NEWEST`,
-      {
-        headers: {
-          'X-Goog-Api-Key': apiKey,
-          'X-Goog-FieldMask': 'rating,userRatingCount,googleMapsUri,reviews',
-        },
-        next: { revalidate: 86400 },
+    const response = await fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
+      headers: {
+        'X-Goog-Api-Key': apiKey,
+        'X-Goog-FieldMask': 'rating,userRatingCount,googleMapsUri,reviews',
       },
-    )
+      next: { revalidate: 86400 },
+    })
 
-    if (!response.ok) return null
+    if (!response.ok) {
+      console.error(
+        `[getGooglePlaceDetails] Places API request failed (${response.status}): ${await response.text()}`,
+      )
+      return null
+    }
 
     const data = await response.json()
-    if (typeof data.rating !== 'number' || typeof data.userRatingCount !== 'number') return null
+    if (typeof data.rating !== 'number' || typeof data.userRatingCount !== 'number') {
+      console.error('[getGooglePlaceDetails] Unexpected response shape:', JSON.stringify(data))
+      return null
+    }
 
-    const reviews: GoogleReview[] = Array.isArray(data.reviews)
+    const reviewsWithPublishTime: Array<GoogleReview & { publishTime: string }> = Array.isArray(
+      data.reviews,
+    )
       ? data.reviews.map((review: Record<string, unknown>, index: number) => {
           const authorAttribution = review.authorAttribution as
             { displayName?: string; photoUri?: string } | undefined
@@ -54,9 +61,19 @@ export async function getGooglePlaceDetails(placeId: string): Promise<GooglePlac
             rating: (review.rating as number) ?? 0,
             text: text?.text ?? '',
             relativeTime: (review.relativePublishTimeDescription as string) ?? '',
+            publishTime: (review.publishTime as string) ?? '',
           }
         })
       : []
+
+    // Google doesn't offer a "sort by newest" request param on this endpoint —
+    // sort client-side by publish time instead so "recent reviews" is accurate.
+    const reviews: GoogleReview[] = reviewsWithPublishTime
+      .sort((a, b) => new Date(b.publishTime).getTime() - new Date(a.publishTime).getTime())
+      .map(({ publishTime, ...review }) => {
+        void publishTime
+        return review
+      })
 
     return {
       rating: data.rating,
@@ -64,7 +81,11 @@ export async function getGooglePlaceDetails(placeId: string): Promise<GooglePlac
       mapsUri: data.googleMapsUri,
       reviews,
     }
-  } catch {
+  } catch (err) {
+    console.error(
+      '[getGooglePlaceDetails] Request threw:',
+      err instanceof Error ? err.message : err,
+    )
     return null
   }
 }
