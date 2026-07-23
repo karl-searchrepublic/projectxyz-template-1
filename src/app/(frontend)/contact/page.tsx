@@ -122,13 +122,13 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      {contact.serviceAreaSuburbs && contact.serviceAreaSuburbs.length > 0 && (
+      {companyInfo.serviceAreaSuburbs && companyInfo.serviceAreaSuburbs.length > 0 && (
         <section className="mx-auto max-w-6xl px-6 pb-section-y-lg">
           <h2 className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
             {contact.serviceAreaHeading}
           </h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {contact.serviceAreaSuburbs.map((suburb) => (
+            {companyInfo.serviceAreaSuburbs.map((suburb) => (
               <Chip key={suburb.id ?? suburb.name} label={suburb.name} />
             ))}
           </div>

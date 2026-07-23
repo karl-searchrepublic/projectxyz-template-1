@@ -50,14 +50,5 @@ export const ContactPage: GlobalConfig = {
       ],
     },
     { name: 'serviceAreaHeading', type: 'text', defaultValue: 'Areas We Service' },
-    {
-      name: 'serviceAreaSuburbs',
-      type: 'array',
-      labels: {
-        singular: 'Suburb',
-        plural: 'Suburbs',
-      },
-      fields: [{ name: 'name', type: 'text', required: true }],
-    },
   ],
 }

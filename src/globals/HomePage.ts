@@ -76,6 +76,16 @@ export const HomePage: GlobalConfig = {
       defaultValue: 'Why Choose Us',
     },
     {
+      name: 'serviceAreaHeading',
+      type: 'text',
+      label: 'Service Area Heading',
+      admin: {
+        description:
+          'Heading above the service-area map/suburb list. The suburbs, radius, and map come from Company Info.',
+      },
+      defaultValue: 'Where We Service',
+    },
+    {
       name: 'finalCta',
       type: 'group',
       label: 'Final CTA Banner',

@@ -4,6 +4,7 @@ import config from '@/payload.config'
 import { Hero } from '@/components/Hero'
 import { ServicesPreview } from '@/components/ServicesPreview'
 import { CredentialsStrip } from '@/components/CredentialsStrip'
+import { ServiceAreaSection } from '@/components/ServiceAreaSection'
 import { CTABanner } from '@/components/CTABanner'
 import type { Service } from '@/payload-types'
 import './styles.css'
@@ -42,6 +43,15 @@ export default async function Page() {
       />
 
       <CredentialsStrip heading={homePage.trustStripHeading} items={companyStats.stats ?? []} />
+
+      <ServiceAreaSection
+        areaLabel={companyInfo.serviceAreaLabel}
+        heading={homePage.serviceAreaHeading}
+        latitude={companyInfo.latitude}
+        longitude={companyInfo.longitude}
+        radiusKm={companyInfo.serviceRadiusKm}
+        suburbs={companyInfo.serviceAreaSuburbs ?? []}
+      />
 
       <CTABanner
         buttonHref={homePage.finalCta?.buttonHref}

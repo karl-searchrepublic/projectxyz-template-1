@@ -127,6 +127,7 @@ export const seed = async (payload: Payload): Promise<void> => {
           readMoreLabel: 'Read more',
         },
         trustStripHeading: 'Why Choose Us',
+        serviceAreaHeading: 'Where We Service',
         finalCta: {
           heading: 'Ready to get started?',
           subtext: 'Get in touch for a fast, free quote on your next job.',
@@ -214,6 +215,14 @@ export const seed = async (payload: Payload): Promise<void> => {
         email: 'hello@projectxyz.example',
         address: '123 Example Street, Your Town',
         hours: 'Mon-Fri: 7am-5pm\nSat: 8am-1pm\nSun: Emergency callouts only',
+        serviceAreaSuburbs: [
+          { name: 'Downtown' },
+          { name: 'Riverside' },
+          { name: 'Northgate' },
+          { name: 'Eastwood' },
+          { name: 'Fairview' },
+          { name: 'Lakeside' },
+        ],
       },
     })
   }
@@ -299,14 +308,6 @@ export const seed = async (payload: Payload): Promise<void> => {
           placeholderLabel: 'Map coming soon',
         },
         serviceAreaHeading: 'Areas We Service',
-        serviceAreaSuburbs: [
-          { name: 'Downtown' },
-          { name: 'Riverside' },
-          { name: 'Northgate' },
-          { name: 'Eastwood' },
-          { name: 'Fairview' },
-          { name: 'Lakeside' },
-        ],
       },
     })
   }

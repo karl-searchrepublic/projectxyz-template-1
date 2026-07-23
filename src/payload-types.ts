@@ -514,6 +514,10 @@ export interface HomePage {
    * Section heading above the stats. The stats themselves come from Company Stats.
    */
   trustStripHeading?: string | null;
+  /**
+   * Heading above the service-area map/suburb list. The suburbs, radius, and map come from Company Info.
+   */
+  serviceAreaHeading?: string | null;
   finalCta?: {
     heading?: string | null;
     subtext?: string | null;
@@ -620,12 +624,6 @@ export interface ContactPage {
     placeholderLabel?: string | null;
   };
   serviceAreaHeading?: string | null;
-  serviceAreaSuburbs?:
-    | {
-        name: string;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -710,6 +708,15 @@ export interface CompanyInfo {
    * Auto-geocoded from Address — do not edit directly.
    */
   longitude?: number | null;
+  /**
+   * Suburb/area names shown on the Contact page and homepage service-area section — max 10.
+   */
+  serviceAreaSuburbs?:
+    | {
+        name: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -780,6 +787,7 @@ export interface HomePageSelect<T extends boolean = true> {
         readMoreLabel?: T;
       };
   trustStripHeading?: T;
+  serviceAreaHeading?: T;
   finalCta?:
     | T
     | {
@@ -906,12 +914,6 @@ export interface ContactPageSelect<T extends boolean = true> {
         placeholderLabel?: T;
       };
   serviceAreaHeading?: T;
-  serviceAreaSuburbs?:
-    | T
-    | {
-        name?: T;
-        id?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -960,6 +962,12 @@ export interface CompanyInfoSelect<T extends boolean = true> {
   serviceAreaLabel?: T;
   latitude?: T;
   longitude?: T;
+  serviceAreaSuburbs?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
