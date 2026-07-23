@@ -713,7 +713,7 @@ export interface CompanyInfo {
    */
   longitude?: number | null;
   /**
-   * Suburb/area names shown on the Contact page and homepage service-area section — max 10.
+   * Suburb/area names shown on the Contact page and homepage service-area section — max 20.
    */
   serviceAreaSuburbs?:
     | {

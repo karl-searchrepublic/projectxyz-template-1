@@ -59,14 +59,14 @@ export const CompanyInfo: GlobalConfig = {
     {
       name: 'serviceAreaSuburbs',
       type: 'array',
-      maxRows: 10,
+      maxRows: 20,
       labels: {
         singular: 'Suburb',
         plural: 'Suburbs',
       },
       admin: {
         description:
-          'Suburb/area names shown on the Contact page and homepage service-area section — max 10.',
+          'Suburb/area names shown on the Contact page and homepage service-area section — max 20.',
       },
       fields: [{ name: 'name', type: 'text', required: true }],
     },
