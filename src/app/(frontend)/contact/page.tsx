@@ -5,6 +5,7 @@ import config from '@/payload.config'
 import { PageIntro } from '@/components/PageIntro'
 import { ContactForm } from '@/components/ContactForm'
 import { Chip } from '@/components/Chip'
+import { ServiceAreaMap } from '@/components/ServiceAreaMap'
 
 export async function generateMetadata() {
   const payloadConfig = await config
@@ -77,18 +78,36 @@ export default async function ContactPage() {
           )}
         </div>
 
-        <div className="flex min-h-[200px] items-center justify-center rounded-xl border border-dashed border-border text-center text-muted-foreground">
-          {contact.mapPlaceholder?.embedUrl ? (
-            <iframe
-              className="h-full w-full rounded-xl"
-              height={320}
-              loading="lazy"
-              src={contact.mapPlaceholder.embedUrl}
-              title="Map"
-              width="100%"
-            />
+        <div className="flex flex-col gap-3">
+          {companyInfo.serviceRadiusKm && companyInfo.serviceAreaLabel && (
+            <p className="text-sm font-medium text-muted-foreground">
+              Servicing within {companyInfo.serviceRadiusKm}km of {companyInfo.serviceAreaLabel}
+            </p>
+          )}
+
+          {companyInfo.latitude && companyInfo.longitude ? (
+            <div className="min-h-[320px] overflow-hidden rounded-xl border border-border">
+              <ServiceAreaMap
+                latitude={companyInfo.latitude}
+                longitude={companyInfo.longitude}
+                radiusKm={companyInfo.serviceRadiusKm}
+              />
+            </div>
+          ) : contact.mapPlaceholder?.embedUrl ? (
+            <div className="min-h-[320px] overflow-hidden rounded-xl border border-border">
+              <iframe
+                className="h-full w-full"
+                height={320}
+                loading="lazy"
+                src={contact.mapPlaceholder.embedUrl}
+                title="Map"
+                width="100%"
+              />
+            </div>
           ) : (
-            <p>{contact.mapPlaceholder?.placeholderLabel ?? 'Map coming soon'}</p>
+            <div className="flex min-h-[200px] items-center justify-center rounded-xl border border-dashed border-border text-center text-muted-foreground">
+              <p>{contact.mapPlaceholder?.placeholderLabel ?? 'Map coming soon'}</p>
+            </div>
           )}
         </div>
       </section>
