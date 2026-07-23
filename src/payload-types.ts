@@ -722,9 +722,25 @@ export interface CompanyInfo {
       }[]
     | null;
   /**
-   * Google Place ID for this business, used to show the Google rating on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.
+   * Google Place ID for this business, used to fetch the live review carousel on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.
    */
   googlePlaceId?: string | null;
+  /**
+   * Aggregate Google star rating (e.g. 4.9), shown as a pill next to "What Our Customers Say". Entered manually — check your Google Business Profile for the current value.
+   */
+  googleRating?: number | null;
+  /**
+   * Total number of Google reviews, shown alongside the rating.
+   */
+  googleReviewCount?: number | null;
+  /**
+   * Link to the business's full Google reviews page, used by the "Read all our reviews" link.
+   */
+  googleReviewsUrl?: string | null;
+  /**
+   * Show the "Read all our reviews" link. Turn off if the review score/count shouldn't be publicly linked yet.
+   */
+  showReviewLink?: boolean | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -978,6 +994,10 @@ export interface CompanyInfoSelect<T extends boolean = true> {
         id?: T;
       };
   googlePlaceId?: T;
+  googleRating?: T;
+  googleReviewCount?: T;
+  googleReviewsUrl?: T;
+  showReviewLink?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

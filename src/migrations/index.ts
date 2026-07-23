@@ -20,6 +20,7 @@ import * as migration_20260723_023701_add_company_info_service_area_suburbs from
 import * as migration_20260723_023734_remove_contact_page_service_area_suburbs from './20260723_023734_remove_contact_page_service_area_suburbs';
 import * as migration_20260723_030652_add_google_place_id from './20260723_030652_add_google_place_id';
 import * as migration_20260723_031903_add_testimonials_heading from './20260723_031903_add_testimonials_heading';
+import * as migration_20260723_194447_add_google_review_fields from './20260723_194447_add_google_review_fields';
 
 export const migrations = [
   {
@@ -130,6 +131,11 @@ export const migrations = [
   {
     up: migration_20260723_031903_add_testimonials_heading.up,
     down: migration_20260723_031903_add_testimonials_heading.down,
-    name: '20260723_031903_add_testimonials_heading'
+    name: '20260723_031903_add_testimonials_heading',
+  },
+  {
+    up: migration_20260723_194447_add_google_review_fields.up,
+    down: migration_20260723_194447_add_google_review_fields.down,
+    name: '20260723_194447_add_google_review_fields'
   },
 ];

@@ -10,13 +10,24 @@ import type { GoogleReview } from '@/lib/googleRating'
 export function TestimonialsCarousel({
   heading,
   reviews,
+  googleRating,
+  googleReviewCount,
+  googleReviewsUrl,
+  showReviewLink,
 }: {
   heading?: string | null
   reviews: GoogleReview[]
+  googleRating?: number | null
+  googleReviewCount?: number | null
+  googleReviewsUrl?: string | null
+  showReviewLink?: boolean | null
 }) {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   if (reviews.length === 0) return null
+
+  const hasRatingPill = Boolean(googleRating && googleReviewCount)
+  const hasReviewLink = Boolean(showReviewLink && googleReviewsUrl)
 
   const scrollByCard = (direction: 1 | -1) => {
     const container = scrollRef.current
@@ -30,11 +41,33 @@ export function TestimonialsCarousel({
   return (
     <section className="border-t border-border bg-background">
       <div className="mx-auto max-w-6xl px-6 py-section-y">
-        <div className="mb-8 flex items-center justify-between gap-4">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-            {heading || 'What Our Customers Say'}
-          </h2>
-          <div className="hidden gap-2 sm:flex">
+        <div className="mb-8 flex items-start justify-between gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+              {heading || 'What Our Customers Say'}
+            </h2>
+            {(hasRatingPill || hasReviewLink) && (
+              <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-3">
+                {hasRatingPill && (
+                  <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium">
+                    <Star className="size-4 fill-current text-primary" />
+                    {googleRating!.toFixed(1)} · {googleReviewCount} Google Reviews
+                  </span>
+                )}
+                {hasReviewLink && (
+                  <a
+                    className="text-sm font-medium text-muted-foreground underline"
+                    href={googleReviewsUrl!}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Read all our reviews →
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+          <div className="hidden shrink-0 gap-2 sm:flex">
             <Button
               aria-label="Previous review"
               onClick={() => scrollByCard(-1)}

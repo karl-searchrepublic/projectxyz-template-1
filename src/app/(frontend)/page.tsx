@@ -48,15 +48,15 @@ export default async function Page() {
         viewAllLabel={homePage.servicesPreview?.viewAllLabel}
       />
 
-      <CredentialsStrip
-        googleRating={googlePlaceDetails}
-        heading={homePage.trustStripHeading}
-        items={companyStats.stats ?? []}
-      />
+      <CredentialsStrip heading={homePage.trustStripHeading} items={companyStats.stats ?? []} />
 
       <TestimonialsCarousel
+        googleRating={companyInfo.googleRating}
+        googleReviewCount={companyInfo.googleReviewCount}
+        googleReviewsUrl={companyInfo.googleReviewsUrl}
         heading={homePage.testimonialsHeading}
         reviews={googlePlaceDetails?.reviews ?? []}
+        showReviewLink={companyInfo.showReviewLink}
       />
 
       <ServiceAreaSection

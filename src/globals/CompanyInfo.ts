@@ -75,7 +75,39 @@ export const CompanyInfo: GlobalConfig = {
       type: 'text',
       admin: {
         description:
-          "Google Place ID for this business, used to show the Google rating on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.",
+          "Google Place ID for this business, used to fetch the live review carousel on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.",
+      },
+    },
+    {
+      name: 'googleRating',
+      type: 'number',
+      admin: {
+        description:
+          'Aggregate Google star rating (e.g. 4.9), shown as a pill next to "What Our Customers Say". Entered manually — check your Google Business Profile for the current value.',
+      },
+    },
+    {
+      name: 'googleReviewCount',
+      type: 'number',
+      admin: {
+        description: 'Total number of Google reviews, shown alongside the rating.',
+      },
+    },
+    {
+      name: 'googleReviewsUrl',
+      type: 'text',
+      admin: {
+        description:
+          'Link to the business\'s full Google reviews page, used by the "Read all our reviews" link.',
+      },
+    },
+    {
+      name: 'showReviewLink',
+      type: 'checkbox',
+      defaultValue: true,
+      admin: {
+        description:
+          'Show the "Read all our reviews" link. Turn off if the review score/count shouldn\'t be publicly linked yet.',
       },
     },
   ],
