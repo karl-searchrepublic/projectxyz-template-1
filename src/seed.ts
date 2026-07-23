@@ -141,7 +141,6 @@ export const seed = async (payload: Payload): Promise<void> => {
           viewAllLabel: 'View All Services',
           readMoreLabel: 'Read more',
         },
-        trustStripHeading: 'Why Choose Us',
         finalCta: {
           heading: 'Ready to get started?',
           subtext: 'Get in touch for a fast, free quote on your next job.',
@@ -151,7 +150,7 @@ export const seed = async (payload: Payload): Promise<void> => {
       },
     })
   } else if (!homePage.finalCta?.heading || !homePage.servicesPreview?.featuredServices?.length) {
-    // Backfill: unlike heading/viewAllLabel/trustStripHeading (which have a
+    // Backfill: unlike heading/viewAllLabel (which have a
     // defaultValue and get backfilled automatically when the migration adds
     // the column), featuredServices and finalCta have no default, so a
     // home-page doc that existed before these fields were added needs this.
@@ -205,12 +204,13 @@ export const seed = async (payload: Payload): Promise<void> => {
     })
   }
 
-  const companyStats = await payload.findGlobal({ slug: 'company-stats' })
-  if (!companyStats.stats || companyStats.stats.length === 0) {
-    payload.logger.info('Seeding company-stats global...')
+  const trustStrip = await payload.findGlobal({ slug: 'trust-strip' })
+  if (!trustStrip.stats || trustStrip.stats.length === 0) {
+    payload.logger.info('Seeding trust-strip global...')
     await payload.updateGlobal({
-      slug: 'company-stats',
+      slug: 'trust-strip',
       data: {
+        heading: 'Why Choose Us',
         stats: [
           { label: 'Years in business', value: '15+' },
           { label: 'Licensed & insured', value: '100%' },

@@ -100,7 +100,7 @@ export interface Config {
     'about-page': AboutPage;
     'services-page': ServicesPage;
     'contact-page': ContactPage;
-    'company-stats': CompanyStat;
+    'trust-strip': TrustStrip;
     testimonials: Testimonial;
     'service-area': ServiceArea;
   };
@@ -113,7 +113,7 @@ export interface Config {
     'about-page': AboutPageSelect<false> | AboutPageSelect<true>;
     'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
     'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
-    'company-stats': CompanyStatsSelect<false> | CompanyStatsSelect<true>;
+    'trust-strip': TrustStripSelect<false> | TrustStripSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'service-area': ServiceAreaSelect<false> | ServiceAreaSelect<true>;
   };
@@ -610,10 +610,6 @@ export interface HomePage {
      */
     readMoreLabel?: string | null;
   };
-  /**
-   * Section heading above the stats. The stats themselves come from Company Stats.
-   */
-  trustStripHeading?: string | null;
   finalCta?: {
     heading?: string | null;
     subtext?: string | null;
@@ -736,13 +732,17 @@ export interface ContactPage {
   createdAt?: string | null;
 }
 /**
- * Shared credential/stat numbers shown on both the About page and the homepage trust strip.
+ * Credential/stat numbers shown on both the homepage and the About page.
  *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "company-stats".
+ * via the `definition` "trust-strip".
  */
-export interface CompanyStat {
+export interface TrustStrip {
   id: number;
+  /**
+   * Shown above the stats on the homepage. Not shown on the About page.
+   */
+  heading?: string | null;
   stats?:
     | {
         label: string;
@@ -892,7 +892,6 @@ export interface HomePageSelect<T extends boolean = true> {
         viewAllLabel?: T;
         readMoreLabel?: T;
       };
-  trustStripHeading?: T;
   finalCta?:
     | T
     | {
@@ -1028,9 +1027,10 @@ export interface ContactPageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "company-stats_select".
+ * via the `definition` "trust-strip_select".
  */
-export interface CompanyStatsSelect<T extends boolean = true> {
+export interface TrustStripSelect<T extends boolean = true> {
+  heading?: T;
   stats?:
     | T
     | {

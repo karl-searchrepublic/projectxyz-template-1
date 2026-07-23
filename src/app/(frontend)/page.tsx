@@ -22,9 +22,9 @@ export async function generateMetadata() {
 export default async function Page() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const [homePage, companyStats, companyInfo, testimonials, serviceArea] = await Promise.all([
+  const [homePage, trustStrip, companyInfo, testimonials, serviceArea] = await Promise.all([
     payload.findGlobal({ slug: 'home-page' }),
-    payload.findGlobal({ slug: 'company-stats' }),
+    payload.findGlobal({ slug: 'trust-strip' }),
     payload.findGlobal({ slug: 'company-info' }),
     payload.findGlobal({ slug: 'testimonials' }),
     payload.findGlobal({ slug: 'service-area' }),
@@ -50,7 +50,7 @@ export default async function Page() {
         viewAllLabel={homePage.servicesPreview?.viewAllLabel}
       />
 
-      <CredentialsStrip heading={homePage.trustStripHeading} items={companyStats.stats ?? []} />
+      <CredentialsStrip heading={trustStrip.heading} items={trustStrip.stats ?? []} />
 
       <TestimonialsCarousel
         heading={testimonials.heading}

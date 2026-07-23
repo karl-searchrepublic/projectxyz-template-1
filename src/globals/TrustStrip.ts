@@ -2,9 +2,9 @@ import type { GlobalConfig } from 'payload'
 
 import { revalidateFrontend } from '../hooks/revalidateFrontend'
 
-export const CompanyStats: GlobalConfig = {
-  slug: 'company-stats',
-  label: 'Company Stats',
+export const TrustStrip: GlobalConfig = {
+  slug: 'trust-strip',
+  label: 'Trust Strip',
   access: {
     read: () => true,
   },
@@ -13,10 +13,17 @@ export const CompanyStats: GlobalConfig = {
   },
   admin: {
     group: 'Components',
-    description:
-      'Shared credential/stat numbers shown on both the About page and the homepage trust strip.',
+    description: 'Credential/stat numbers shown on both the homepage and the About page.',
   },
   fields: [
+    {
+      name: 'heading',
+      type: 'text',
+      defaultValue: 'Why Choose Us',
+      admin: {
+        description: 'Shown above the stats on the homepage. Not shown on the About page.',
+      },
+    },
     {
       name: 'stats',
       type: 'array',

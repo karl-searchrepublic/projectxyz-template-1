@@ -74,16 +74,6 @@ export const HomePage: GlobalConfig = {
       ],
     },
     {
-      name: 'trustStripHeading',
-      type: 'text',
-      label: 'Trust Strip Heading',
-      admin: {
-        description:
-          'Section heading above the stats. The stats themselves come from Company Stats.',
-      },
-      defaultValue: 'Why Choose Us',
-    },
-    {
       name: 'finalCta',
       type: 'group',
       label: 'Final CTA Banner',

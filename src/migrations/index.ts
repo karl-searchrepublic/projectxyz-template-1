@@ -35,6 +35,8 @@ import * as migration_20260723_212613_remove_company_info_service_area_label fro
 import * as migration_20260723_214933_add_company_info_business_name_and_logo from './20260723_214933_add_company_info_business_name_and_logo';
 import * as migration_20260723_215150_remove_header_site_name_and_logo from './20260723_215150_remove_header_site_name_and_logo';
 import * as migration_20260723_230102_split_meta_description_per_page from './20260723_230102_split_meta_description_per_page';
+import * as migration_20260723_231026_add_trust_strip from './20260723_231026_add_trust_strip';
+import * as migration_20260723_231129_remove_home_page_trust_strip_heading_and_company_stats from './20260723_231129_remove_home_page_trust_strip_heading_and_company_stats';
 
 export const migrations = [
   {
@@ -220,6 +222,16 @@ export const migrations = [
   {
     up: migration_20260723_230102_split_meta_description_per_page.up,
     down: migration_20260723_230102_split_meta_description_per_page.down,
-    name: '20260723_230102_split_meta_description_per_page'
+    name: '20260723_230102_split_meta_description_per_page',
+  },
+  {
+    up: migration_20260723_231026_add_trust_strip.up,
+    down: migration_20260723_231026_add_trust_strip.down,
+    name: '20260723_231026_add_trust_strip',
+  },
+  {
+    up: migration_20260723_231129_remove_home_page_trust_strip_heading_and_company_stats.up,
+    down: migration_20260723_231129_remove_home_page_trust_strip_heading_and_company_stats.down,
+    name: '20260723_231129_remove_home_page_trust_strip_heading_and_company_stats'
   },
 ];
