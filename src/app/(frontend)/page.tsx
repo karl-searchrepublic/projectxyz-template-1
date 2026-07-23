@@ -65,7 +65,7 @@ export default async function Page() {
         latitude={companyInfo.latitude}
         longitude={companyInfo.longitude}
         radiusKm={companyInfo.serviceRadiusKm}
-        suburbs={companyInfo.serviceAreaSuburbs ?? []}
+        suburbs={serviceArea.suburbs ?? []}
       />
 
       <CTABanner

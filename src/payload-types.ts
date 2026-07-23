@@ -709,15 +709,6 @@ export interface CompanyInfo {
    */
   longitude?: number | null;
   /**
-   * Suburb/area names shown on the Contact page and homepage service-area section — max 20.
-   */
-  serviceAreaSuburbs?:
-    | {
-        name: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
    * Google Place ID for this business, used to fetch the live review carousel on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.
    */
   googlePlaceId?: string | null;
@@ -741,7 +732,7 @@ export interface Testimonial {
   createdAt?: string | null;
 }
 /**
- * Homepage "Where We Service" section heading. The suburbs, radius, and map come from Company Info.
+ * Homepage "Where We Service" section, also used on the Contact page. Radius, coordinates, and map come from Company Info.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "service-area".
@@ -749,6 +740,15 @@ export interface Testimonial {
 export interface ServiceArea {
   id: number;
   heading?: string | null;
+  /**
+   * Suburb/area names shown on the Contact page and homepage service-area section — max 20.
+   */
+  suburbs?:
+    | {
+        name: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -993,12 +993,6 @@ export interface CompanyInfoSelect<T extends boolean = true> {
   serviceAreaLabel?: T;
   latitude?: T;
   longitude?: T;
-  serviceAreaSuburbs?:
-    | T
-    | {
-        name?: T;
-        id?: T;
-      };
   googlePlaceId?: T;
   showGoogleReviewsPill?: T;
   updatedAt?: T;
@@ -1021,6 +1015,12 @@ export interface TestimonialsSelect<T extends boolean = true> {
  */
 export interface ServiceAreaSelect<T extends boolean = true> {
   heading?: T;
+  suburbs?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

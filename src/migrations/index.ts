@@ -25,6 +25,8 @@ import * as migration_20260723_195859_add_show_google_reviews_pill from './20260
 import * as migration_20260723_195931_remove_manual_google_review_fields from './20260723_195931_remove_manual_google_review_fields';
 import * as migration_20260723_204048_add_testimonials_and_service_area_globals from './20260723_204048_add_testimonials_and_service_area_globals';
 import * as migration_20260723_204448_remove_testimonials_and_service_area_from_home_page from './20260723_204448_remove_testimonials_and_service_area_from_home_page';
+import * as migration_20260723_205308_add_service_area_suburbs from './20260723_205308_add_service_area_suburbs';
+import * as migration_20260723_205544_remove_company_info_service_area_suburbs from './20260723_205544_remove_company_info_service_area_suburbs';
 
 export const migrations = [
   {
@@ -160,6 +162,16 @@ export const migrations = [
   {
     up: migration_20260723_204448_remove_testimonials_and_service_area_from_home_page.up,
     down: migration_20260723_204448_remove_testimonials_and_service_area_from_home_page.down,
-    name: '20260723_204448_remove_testimonials_and_service_area_from_home_page'
+    name: '20260723_204448_remove_testimonials_and_service_area_from_home_page',
+  },
+  {
+    up: migration_20260723_205308_add_service_area_suburbs.up,
+    down: migration_20260723_205308_add_service_area_suburbs.down,
+    name: '20260723_205308_add_service_area_suburbs',
+  },
+  {
+    up: migration_20260723_205544_remove_company_info_service_area_suburbs.up,
+    down: migration_20260723_205544_remove_company_info_service_area_suburbs.down,
+    name: '20260723_205544_remove_company_info_service_area_suburbs'
   },
 ];

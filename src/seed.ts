@@ -214,26 +214,20 @@ export const seed = async (payload: Payload): Promise<void> => {
         email: 'hello@projectxyz.example',
         address: '123 Example Street, Your Town',
         hours: 'Mon-Fri: 7am-5pm\nSat: 8am-1pm\nSun: Emergency callouts only',
-        serviceAreaSuburbs: [
-          { name: 'Downtown' },
-          { name: 'Riverside' },
-          { name: 'Northgate' },
-          { name: 'Eastwood' },
-          { name: 'Fairview' },
-          { name: 'Lakeside' },
-        ],
       },
     })
-  } else if (!companyInfo.serviceAreaSuburbs || companyInfo.serviceAreaSuburbs.length === 0) {
-    // Backfill: serviceAreaSuburbs moved here from contact-page (whose old table gets
-    // dropped in the same deploy), so a pre-existing company-info doc — one that already
-    // has phone set and therefore skips the block above — would otherwise lose its
-    // suburbs entirely instead of carrying them over to the new field location.
-    payload.logger.info('Backfilling company-info.serviceAreaSuburbs...')
+  }
+
+  const serviceArea = await payload.findGlobal({ slug: 'service-area' })
+  if (!serviceArea.suburbs || serviceArea.suburbs.length === 0) {
+    // The migration that introduced this global already copies any existing
+    // suburbs across from Company Info, so this only fires on a genuinely
+    // fresh install (or as a safety net if that copy somehow found nothing).
+    payload.logger.info('Seeding service-area suburbs...')
     await payload.updateGlobal({
-      slug: 'company-info',
+      slug: 'service-area',
       data: {
-        serviceAreaSuburbs: [
+        suburbs: [
           { name: 'Downtown' },
           { name: 'Riverside' },
           { name: 'Northgate' },

@@ -18,9 +18,10 @@ export async function generateMetadata() {
 export default async function ContactPage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const [contact, companyInfo] = await Promise.all([
+  const [contact, companyInfo, serviceArea] = await Promise.all([
     payload.findGlobal({ slug: 'contact-page' }),
     payload.findGlobal({ slug: 'company-info' }),
+    payload.findGlobal({ slug: 'service-area' }),
   ])
 
   return (
@@ -122,13 +123,13 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      {companyInfo.serviceAreaSuburbs && companyInfo.serviceAreaSuburbs.length > 0 && (
+      {serviceArea.suburbs && serviceArea.suburbs.length > 0 && (
         <section className="mx-auto max-w-6xl px-6 pb-section-y-lg">
           <h2 className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
             {contact.serviceAreaHeading}
           </h2>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {companyInfo.serviceAreaSuburbs.map((suburb) => (
+            {serviceArea.suburbs.map((suburb) => (
               <Chip key={suburb.id ?? suburb.name} label={suburb.name} />
             ))}
           </div>
