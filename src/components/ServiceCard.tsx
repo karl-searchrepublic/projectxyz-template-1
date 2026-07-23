@@ -25,7 +25,7 @@ export function ServiceCard({
           {description && <CardDescription>{description}</CardDescription>}
         </CardHeader>
         <CardFooter className="mt-auto">
-          <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary underline underline-offset-4">
+          <span className="inline-flex items-center gap-1.5 text-sm font-medium underline underline-offset-4">
             {readMoreLabel || 'Read more'}
             <ArrowRight className="size-4" />
           </span>
