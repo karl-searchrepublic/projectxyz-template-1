@@ -202,9 +202,34 @@ export interface Service {
   slug: string;
   eyebrow?: string | null;
   /**
-   * Icon identifier or emoji shown on the services grid card
+   * Icon shown on the services grid card
    */
-  icon?: string | null;
+  icon?:
+    | (
+        | 'wrench'
+        | 'droplets'
+        | 'waves'
+        | 'flame'
+        | 'zap'
+        | 'thermometer'
+        | 'wind'
+        | 'hammer'
+        | 'home'
+        | 'shield'
+        | 'sparkles'
+        | 'paintRoller'
+        | 'leaf'
+        | 'bug'
+        | 'car'
+        | 'scissors'
+        | 'key'
+        | 'search'
+        | 'truck'
+        | 'settings'
+        | 'clock'
+        | 'checkCircle'
+      )
+    | null;
   heroImage?: (number | null) | Media;
   /**
    * Short description shown on the services grid card and page hero

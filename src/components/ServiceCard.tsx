@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card'
+import { ServiceIcon } from '@/components/ServiceIcon'
 
 export function ServiceCard({
   icon,
@@ -20,7 +21,7 @@ export function ServiceCard({
     <Link className="block h-full no-underline" href={href}>
       <Card className="h-full transition-colors hover:border-foreground/20 hover:bg-accent/50">
         <CardHeader>
-          {icon && <span className="mb-2 text-3xl">{icon}</span>}
+          <ServiceIcon className="mb-3" name={icon} />
           <CardTitle className="text-lg">{title}</CardTitle>
           {description && <CardDescription>{description}</CardDescription>}
         </CardHeader>

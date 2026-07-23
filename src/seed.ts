@@ -1,11 +1,14 @@
 import type { Payload } from 'payload'
 
+import { SERVICE_ICON_OPTIONS } from './lib/serviceIcons'
+import type { Service } from './payload-types'
+
 const services = [
   {
     title: 'Blocked Drains',
     slug: 'blocked-drains',
     eyebrow: 'Drainage',
-    icon: '🚰',
+    icon: 'waves' as const,
     subtext: 'Fast, reliable clearing for blocked and slow-running drains.',
     description:
       'Blocked drains can bring a household or business to a standstill. Our team uses CCTV drain cameras and high-pressure water jetting to find the cause of the blockage and clear it quickly, without unnecessary digging.',
@@ -20,7 +23,7 @@ const services = [
     title: 'Hot Water Systems',
     slug: 'hot-water-systems',
     eyebrow: 'Hot Water',
-    icon: '🔥',
+    icon: 'flame' as const,
     subtext: 'Installation, repair, and replacement for all hot water system types.',
     description:
       'From electric and gas storage tanks to continuous flow and heat pump systems, we install, service, and repair hot water systems of every type and brand, with same-day emergency callouts available.',
@@ -35,7 +38,7 @@ const services = [
     title: 'Leak Detection',
     slug: 'leak-detection',
     eyebrow: 'Leak Detection',
-    icon: '💧',
+    icon: 'droplets' as const,
     subtext: 'Non-invasive leak detection to find hidden leaks before they cause damage.',
     description:
       'Hidden leaks behind walls, under slabs, or underground can waste thousands of litres of water and cause serious damage. We use acoustic listening devices and thermal imaging to pinpoint leaks without unnecessary excavation.',
@@ -59,6 +62,23 @@ export const seed = async (payload: Payload): Promise<void> => {
   }
 
   const { docs: allServices } = await payload.find({ collection: 'services', limit: 100 })
+
+  // Backfill: icon switched from free-text emoji to a select field with a
+  // fixed set of values, so pre-existing docs with the old emoji strings
+  // would show up as unset in the admin dropdown until manually re-picked.
+  const validIconValues = new Set(SERVICE_ICON_OPTIONS.map((option) => option.value))
+  const iconBackfillBySlug: Record<string, Service['icon']> = {
+    'blocked-drains': 'waves',
+    'hot-water-systems': 'flame',
+    'leak-detection': 'droplets',
+  }
+  for (const service of allServices) {
+    const newIcon = iconBackfillBySlug[service.slug]
+    if (newIcon && !validIconValues.has(service.icon ?? '')) {
+      payload.logger.info(`Backfilling icon for service "${service.slug}"...`)
+      await payload.update({ collection: 'services', id: service.id, data: { icon: newIcon } })
+    }
+  }
 
   const header = await payload.findGlobal({ slug: 'header' })
   if (!header.siteName) {

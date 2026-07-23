@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { revalidateFrontend } from '../hooks/revalidateFrontend'
+import { SERVICE_ICON_OPTIONS } from '../lib/serviceIcons'
 
 export const Services: CollectionConfig = {
   slug: 'services',
@@ -37,9 +38,11 @@ export const Services: CollectionConfig = {
     },
     {
       name: 'icon',
-      type: 'text',
+      type: 'select',
+      options: SERVICE_ICON_OPTIONS,
+      defaultValue: 'wrench',
       admin: {
-        description: 'Icon identifier or emoji shown on the services grid card',
+        description: 'Icon shown on the services grid card',
       },
     },
     {

@@ -29,6 +29,7 @@ import * as migration_20260723_205308_add_service_area_suburbs from './20260723_
 import * as migration_20260723_205544_remove_company_info_service_area_suburbs from './20260723_205544_remove_company_info_service_area_suburbs';
 import * as migration_20260723_210549_add_testimonials_show_reviews_pill from './20260723_210549_add_testimonials_show_reviews_pill';
 import * as migration_20260723_210714_remove_company_info_show_google_reviews_pill from './20260723_210714_remove_company_info_show_google_reviews_pill';
+import * as migration_20260723_211519_change_service_icon_to_select from './20260723_211519_change_service_icon_to_select';
 
 export const migrations = [
   {
@@ -184,6 +185,11 @@ export const migrations = [
   {
     up: migration_20260723_210714_remove_company_info_show_google_reviews_pill.up,
     down: migration_20260723_210714_remove_company_info_show_google_reviews_pill.down,
-    name: '20260723_210714_remove_company_info_show_google_reviews_pill'
+    name: '20260723_210714_remove_company_info_show_google_reviews_pill',
+  },
+  {
+    up: migration_20260723_211519_change_service_icon_to_select.up,
+    down: migration_20260723_211519_change_service_icon_to_select.down,
+    name: '20260723_211519_change_service_icon_to_select'
   },
 ];
