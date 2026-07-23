@@ -23,6 +23,14 @@ export const ServiceArea: GlobalConfig = {
       defaultValue: 'Where We Service',
     },
     {
+      name: 'label',
+      type: 'text',
+      admin: {
+        description:
+          'Short area name for service-radius copy, e.g. "Auckland" — shown as "Servicing within {radius}km of {this}".',
+      },
+    },
+    {
       name: 'suburbs',
       type: 'array',
       maxRows: 20,

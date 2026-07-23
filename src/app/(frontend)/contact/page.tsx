@@ -90,9 +90,9 @@ export default async function ContactPage() {
         </div>
 
         <div className="flex flex-col gap-3">
-          {companyInfo.serviceRadiusKm && companyInfo.serviceAreaLabel && (
+          {companyInfo.serviceRadiusKm && serviceArea.label && (
             <p className="text-sm font-medium text-muted-foreground">
-              Servicing within {companyInfo.serviceRadiusKm}km of {companyInfo.serviceAreaLabel}
+              Servicing within {companyInfo.serviceRadiusKm}km of {serviceArea.label}
             </p>
           )}
 

@@ -60,7 +60,7 @@ export default async function Page() {
       />
 
       <ServiceAreaSection
-        areaLabel={companyInfo.serviceAreaLabel}
+        areaLabel={serviceArea.label}
         heading={serviceArea.heading}
         latitude={companyInfo.latitude}
         longitude={companyInfo.longitude}

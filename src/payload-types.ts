@@ -722,10 +722,6 @@ export interface CompanyInfo {
    */
   serviceRadiusKm?: number | null;
   /**
-   * Short area name for service-radius copy, e.g. "Auckland" — shown as "Servicing within {radius}km of {this}".
-   */
-  serviceAreaLabel?: string | null;
-  /**
    * Auto-geocoded from Address — do not edit directly.
    */
   latitude?: number | null;
@@ -765,6 +761,10 @@ export interface Testimonial {
 export interface ServiceArea {
   id: number;
   heading?: string | null;
+  /**
+   * Short area name for service-radius copy, e.g. "Auckland" — shown as "Servicing within {radius}km of {this}".
+   */
+  label?: string | null;
   /**
    * Suburb/area names shown on the Contact page and homepage service-area section — max 20.
    */
@@ -1015,7 +1015,6 @@ export interface CompanyInfoSelect<T extends boolean = true> {
   address?: T;
   hours?: T;
   serviceRadiusKm?: T;
-  serviceAreaLabel?: T;
   latitude?: T;
   longitude?: T;
   googlePlaceId?: T;
@@ -1040,6 +1039,7 @@ export interface TestimonialsSelect<T extends boolean = true> {
  */
 export interface ServiceAreaSelect<T extends boolean = true> {
   heading?: T;
+  label?: T;
   suburbs?:
     | T
     | {

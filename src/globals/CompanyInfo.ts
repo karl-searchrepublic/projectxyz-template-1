@@ -33,14 +33,6 @@ export const CompanyInfo: GlobalConfig = {
       },
     },
     {
-      name: 'serviceAreaLabel',
-      type: 'text',
-      admin: {
-        description:
-          'Short area name for service-radius copy, e.g. "Auckland" — shown as "Servicing within {radius}km of {this}".',
-      },
-    },
-    {
       name: 'latitude',
       type: 'number',
       admin: {
