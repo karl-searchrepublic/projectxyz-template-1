@@ -16,7 +16,7 @@ export function Header({ data, phone }: { data: HeaderGlobal; phone?: string | n
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-header-background text-header-foreground">
-      <div className="mx-auto flex h-16 max-w-6xl items-center px-6">
+      <div className="mx-auto flex h-20 max-w-6xl items-center px-6">
         <Link
           className="flex shrink-0 items-center text-lg font-semibold tracking-tight no-underline"
           href="/"
@@ -24,7 +24,7 @@ export function Header({ data, phone }: { data: HeaderGlobal; phone?: string | n
           {logo?.url ? (
             <Image
               alt={logo.alt}
-              className="h-12 w-auto max-w-[180px] object-contain md:h-14"
+              className="h-[58px] w-auto max-w-[216px] object-contain md:h-[67px]"
               height={logo.height ?? 32}
               priority
               src={logo.url}
