@@ -726,21 +726,9 @@ export interface CompanyInfo {
    */
   googlePlaceId?: string | null;
   /**
-   * Aggregate Google star rating (e.g. 4.9), shown as a pill next to "What Our Customers Say". Entered manually — check your Google Business Profile for the current value.
+   * When on, shows the live Google rating/review count next to "What Our Customers Say", with a link out to the full reviews. Pulled automatically from the Google Place ID above — nothing to enter manually.
    */
-  googleRating?: number | null;
-  /**
-   * Total number of Google reviews, shown alongside the rating.
-   */
-  googleReviewCount?: number | null;
-  /**
-   * Link to the business's full Google reviews page, used by the "Read all our reviews" link.
-   */
-  googleReviewsUrl?: string | null;
-  /**
-   * Show the "Read all our reviews" link. Turn off if the review score/count shouldn't be publicly linked yet.
-   */
-  showReviewLink?: boolean | null;
+  showGoogleReviewsPill?: boolean | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -994,10 +982,7 @@ export interface CompanyInfoSelect<T extends boolean = true> {
         id?: T;
       };
   googlePlaceId?: T;
-  googleRating?: T;
-  googleReviewCount?: T;
-  googleReviewsUrl?: T;
-  showReviewLink?: T;
+  showGoogleReviewsPill?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

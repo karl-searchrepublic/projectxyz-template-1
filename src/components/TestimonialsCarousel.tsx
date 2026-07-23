@@ -5,29 +5,27 @@ import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import type { GoogleReview } from '@/lib/googleRating'
+import type { GooglePlaceDetails } from '@/lib/googleRating'
 
 export function TestimonialsCarousel({
   heading,
   reviews,
-  googleRating,
-  googleReviewCount,
-  googleReviewsUrl,
-  showReviewLink,
+  placeDetails,
+  showReviewsPill,
 }: {
   heading?: string | null
-  reviews: GoogleReview[]
-  googleRating?: number | null
-  googleReviewCount?: number | null
-  googleReviewsUrl?: string | null
-  showReviewLink?: boolean | null
+  reviews: GooglePlaceDetails['reviews']
+  placeDetails?: GooglePlaceDetails | null
+  showReviewsPill?: boolean | null
 }) {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   if (reviews.length === 0) return null
 
-  const hasRatingPill = Boolean(googleRating && googleReviewCount)
-  const hasReviewLink = Boolean(showReviewLink && googleReviewsUrl)
+  const hasRatingPill = Boolean(
+    showReviewsPill && placeDetails?.rating && placeDetails?.reviewCount,
+  )
+  const hasReviewLink = Boolean(showReviewsPill && placeDetails?.mapsUri)
 
   const scrollByCard = (direction: 1 | -1) => {
     const container = scrollRef.current
@@ -51,13 +49,13 @@ export function TestimonialsCarousel({
                 {hasRatingPill && (
                   <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium">
                     <Star className="size-4 fill-current text-primary" />
-                    {googleRating!.toFixed(1)} · {googleReviewCount} Google Reviews
+                    {placeDetails!.rating.toFixed(1)} · {placeDetails!.reviewCount} Google Reviews
                   </span>
                 )}
                 {hasReviewLink && (
                   <a
                     className="text-sm font-medium text-muted-foreground underline"
-                    href={googleReviewsUrl!}
+                    href={placeDetails!.mapsUri}
                     rel="noopener noreferrer"
                     target="_blank"
                   >

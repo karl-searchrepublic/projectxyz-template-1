@@ -79,35 +79,13 @@ export const CompanyInfo: GlobalConfig = {
       },
     },
     {
-      name: 'googleRating',
-      type: 'number',
-      admin: {
-        description:
-          'Aggregate Google star rating (e.g. 4.9), shown as a pill next to "What Our Customers Say". Entered manually — check your Google Business Profile for the current value.',
-      },
-    },
-    {
-      name: 'googleReviewCount',
-      type: 'number',
-      admin: {
-        description: 'Total number of Google reviews, shown alongside the rating.',
-      },
-    },
-    {
-      name: 'googleReviewsUrl',
-      type: 'text',
-      admin: {
-        description:
-          'Link to the business\'s full Google reviews page, used by the "Read all our reviews" link.',
-      },
-    },
-    {
-      name: 'showReviewLink',
+      name: 'showGoogleReviewsPill',
       type: 'checkbox',
+      label: 'Show overall Google Reviews score and link to all reviews?',
       defaultValue: true,
       admin: {
         description:
-          'Show the "Read all our reviews" link. Turn off if the review score/count shouldn\'t be publicly linked yet.',
+          'When on, shows the live Google rating/review count next to "What Our Customers Say", with a link out to the full reviews. Pulled automatically from the Google Place ID above — nothing to enter manually.',
       },
     },
   ],

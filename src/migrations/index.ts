@@ -21,6 +21,8 @@ import * as migration_20260723_023734_remove_contact_page_service_area_suburbs f
 import * as migration_20260723_030652_add_google_place_id from './20260723_030652_add_google_place_id';
 import * as migration_20260723_031903_add_testimonials_heading from './20260723_031903_add_testimonials_heading';
 import * as migration_20260723_194447_add_google_review_fields from './20260723_194447_add_google_review_fields';
+import * as migration_20260723_195859_add_show_google_reviews_pill from './20260723_195859_add_show_google_reviews_pill';
+import * as migration_20260723_195931_remove_manual_google_review_fields from './20260723_195931_remove_manual_google_review_fields';
 
 export const migrations = [
   {
@@ -136,6 +138,16 @@ export const migrations = [
   {
     up: migration_20260723_194447_add_google_review_fields.up,
     down: migration_20260723_194447_add_google_review_fields.down,
-    name: '20260723_194447_add_google_review_fields'
+    name: '20260723_194447_add_google_review_fields',
+  },
+  {
+    up: migration_20260723_195859_add_show_google_reviews_pill.up,
+    down: migration_20260723_195859_add_show_google_reviews_pill.down,
+    name: '20260723_195859_add_show_google_reviews_pill',
+  },
+  {
+    up: migration_20260723_195931_remove_manual_google_review_fields.up,
+    down: migration_20260723_195931_remove_manual_google_review_fields.down,
+    name: '20260723_195931_remove_manual_google_review_fields'
   },
 ];
