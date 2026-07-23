@@ -51,7 +51,13 @@ export function ServiceAreaMap({
         })
 
         const bounds = circle.getBounds()
-        if (bounds) map.fitBounds(bounds)
+        if (bounds) {
+          map.fitBounds(bounds)
+          google.maps.event.addListenerOnce(map, 'bounds_changed', () => {
+            const zoom = map.getZoom()
+            if (zoom !== undefined) map.setZoom(zoom + 1)
+          })
+        }
       })
       .catch((err) => {
         console.warn('[ServiceAreaMap] failed to load Google Maps:', err)
