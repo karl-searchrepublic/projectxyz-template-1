@@ -56,7 +56,7 @@ export default async function Page() {
         heading={testimonials.heading}
         placeDetails={googlePlaceDetails}
         reviews={googlePlaceDetails?.reviews ?? []}
-        showReviewsPill={companyInfo.showGoogleReviewsPill}
+        showReviewsPill={testimonials.showGoogleReviewsPill}
       />
 
       <ServiceAreaSection

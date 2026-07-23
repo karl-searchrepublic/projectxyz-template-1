@@ -64,15 +64,5 @@ export const CompanyInfo: GlobalConfig = {
           "Google Place ID for this business, used to fetch the live review carousel on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.",
       },
     },
-    {
-      name: 'showGoogleReviewsPill',
-      type: 'checkbox',
-      label: 'Show overall Google Reviews score and link to all reviews?',
-      defaultValue: true,
-      admin: {
-        description:
-          'When on, shows the live Google rating/review count next to "What Our Customers Say", with a link out to the full reviews. Pulled automatically from the Google Place ID above — nothing to enter manually.',
-      },
-    },
   ],
 }

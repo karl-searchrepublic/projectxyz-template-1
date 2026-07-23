@@ -27,6 +27,8 @@ import * as migration_20260723_204048_add_testimonials_and_service_area_globals 
 import * as migration_20260723_204448_remove_testimonials_and_service_area_from_home_page from './20260723_204448_remove_testimonials_and_service_area_from_home_page';
 import * as migration_20260723_205308_add_service_area_suburbs from './20260723_205308_add_service_area_suburbs';
 import * as migration_20260723_205544_remove_company_info_service_area_suburbs from './20260723_205544_remove_company_info_service_area_suburbs';
+import * as migration_20260723_210549_add_testimonials_show_reviews_pill from './20260723_210549_add_testimonials_show_reviews_pill';
+import * as migration_20260723_210714_remove_company_info_show_google_reviews_pill from './20260723_210714_remove_company_info_show_google_reviews_pill';
 
 export const migrations = [
   {
@@ -172,6 +174,16 @@ export const migrations = [
   {
     up: migration_20260723_205544_remove_company_info_service_area_suburbs.up,
     down: migration_20260723_205544_remove_company_info_service_area_suburbs.down,
-    name: '20260723_205544_remove_company_info_service_area_suburbs'
+    name: '20260723_205544_remove_company_info_service_area_suburbs',
+  },
+  {
+    up: migration_20260723_210549_add_testimonials_show_reviews_pill.up,
+    down: migration_20260723_210549_add_testimonials_show_reviews_pill.down,
+    name: '20260723_210549_add_testimonials_show_reviews_pill',
+  },
+  {
+    up: migration_20260723_210714_remove_company_info_show_google_reviews_pill.up,
+    down: migration_20260723_210714_remove_company_info_show_google_reviews_pill.down,
+    name: '20260723_210714_remove_company_info_show_google_reviews_pill'
   },
 ];

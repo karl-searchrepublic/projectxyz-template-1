@@ -712,15 +712,11 @@ export interface CompanyInfo {
    * Google Place ID for this business, used to fetch the live review carousel on the homepage. Find it via Google's Place ID Finder (developers.google.com/maps/documentation/places/web-service/place-id) or your Google Business Profile.
    */
   googlePlaceId?: string | null;
-  /**
-   * When on, shows the live Google rating/review count next to "What Our Customers Say", with a link out to the full reviews. Pulled automatically from the Google Place ID above — nothing to enter manually.
-   */
-  showGoogleReviewsPill?: boolean | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
 /**
- * Homepage "What Our Customers Say" section heading. The reviews themselves are pulled live from Google using the Place ID and toggle on Company Info.
+ * Homepage "What Our Customers Say" section. The reviews themselves are pulled live from Google using the Place ID set on Company Info.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "testimonials".
@@ -728,6 +724,10 @@ export interface CompanyInfo {
 export interface Testimonial {
   id: number;
   heading?: string | null;
+  /**
+   * When on, shows the live Google rating/review count next to the heading, with a link out to the full reviews. Pulled automatically from the Google Place ID on Company Info — nothing to enter manually.
+   */
+  showGoogleReviewsPill?: boolean | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -994,7 +994,6 @@ export interface CompanyInfoSelect<T extends boolean = true> {
   latitude?: T;
   longitude?: T;
   googlePlaceId?: T;
-  showGoogleReviewsPill?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -1005,6 +1004,7 @@ export interface CompanyInfoSelect<T extends boolean = true> {
  */
 export interface TestimonialsSelect<T extends boolean = true> {
   heading?: T;
+  showGoogleReviewsPill?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
