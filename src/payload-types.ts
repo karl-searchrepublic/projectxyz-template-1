@@ -687,6 +687,22 @@ export interface CompanyInfo {
   email?: string | null;
   address?: string | null;
   hours?: string | null;
+  /**
+   * Radius (in km) drawn as a circle on the Contact page map, centered on the geocoded business address.
+   */
+  serviceRadiusKm?: number | null;
+  /**
+   * Short area name for service-radius copy, e.g. "Auckland" — shown as "Servicing within {radius}km of {this}".
+   */
+  serviceAreaLabel?: string | null;
+  /**
+   * Auto-geocoded from Address — do not edit directly.
+   */
+  latitude?: number | null;
+  /**
+   * Auto-geocoded from Address — do not edit directly.
+   */
+  longitude?: number | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -932,6 +948,10 @@ export interface CompanyInfoSelect<T extends boolean = true> {
   email?: T;
   address?: T;
   hours?: T;
+  serviceRadiusKm?: T;
+  serviceAreaLabel?: T;
+  latitude?: T;
+  longitude?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
