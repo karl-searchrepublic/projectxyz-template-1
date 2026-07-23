@@ -19,6 +19,19 @@ export const CompanyInfo: GlobalConfig = {
       'Shared business contact details, used across the Footer and Contact page (including the emergency callout phone number).',
   },
   fields: [
+    {
+      name: 'businessName',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'logo',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Shown in the header in place of the business name text, if uploaded',
+      },
+    },
     { name: 'phone', type: 'text' },
     { name: 'email', type: 'text' },
     { name: 'address', type: 'textarea' },

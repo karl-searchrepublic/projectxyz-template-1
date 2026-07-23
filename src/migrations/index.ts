@@ -32,6 +32,8 @@ import * as migration_20260723_210714_remove_company_info_show_google_reviews_pi
 import * as migration_20260723_211519_change_service_icon_to_select from './20260723_211519_change_service_icon_to_select';
 import * as migration_20260723_212549_add_service_area_label from './20260723_212549_add_service_area_label';
 import * as migration_20260723_212613_remove_company_info_service_area_label from './20260723_212613_remove_company_info_service_area_label';
+import * as migration_20260723_214933_add_company_info_business_name_and_logo from './20260723_214933_add_company_info_business_name_and_logo';
+import * as migration_20260723_215150_remove_header_site_name_and_logo from './20260723_215150_remove_header_site_name_and_logo';
 
 export const migrations = [
   {
@@ -202,6 +204,16 @@ export const migrations = [
   {
     up: migration_20260723_212613_remove_company_info_service_area_label.up,
     down: migration_20260723_212613_remove_company_info_service_area_label.down,
-    name: '20260723_212613_remove_company_info_service_area_label'
+    name: '20260723_212613_remove_company_info_service_area_label',
+  },
+  {
+    up: migration_20260723_214933_add_company_info_business_name_and_logo.up,
+    down: migration_20260723_214933_add_company_info_business_name_and_logo.down,
+    name: '20260723_214933_add_company_info_business_name_and_logo',
+  },
+  {
+    up: migration_20260723_215150_remove_header_site_name_and_logo.up,
+    down: migration_20260723_215150_remove_header_site_name_and_logo.down,
+    name: '20260723_215150_remove_header_site_name_and_logo'
   },
 ];

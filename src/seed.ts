@@ -81,12 +81,11 @@ export const seed = async (payload: Payload): Promise<void> => {
   }
 
   const header = await payload.findGlobal({ slug: 'header' })
-  if (!header.siteName) {
+  if (!header.navLinks || header.navLinks.length === 0) {
     payload.logger.info('Seeding header global...')
     await payload.updateGlobal({
       slug: 'header',
       data: {
-        siteName: 'ProjectXYZ Plumbing',
         metaDescription:
           'Fast, reliable plumbing services for homes and businesses. Licensed, insured, and available for emergency callouts.',
         navLinks: [
@@ -230,6 +229,7 @@ export const seed = async (payload: Payload): Promise<void> => {
     await payload.updateGlobal({
       slug: 'company-info',
       data: {
+        businessName: 'ProjectXYZ Plumbing',
         phone: '(555) 123-4567',
         email: 'hello@projectxyz.example',
         address: '123 Example Street, Your Town',

@@ -466,11 +466,6 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: number;
-  siteName: string;
-  /**
-   * Shown in the header in place of the site name text, if uploaded
-   */
-  logo?: (number | null) | Media;
   /**
    * Default SEO description used in the browser tab / search results
    */
@@ -713,6 +708,11 @@ export interface CompanyStat {
  */
 export interface CompanyInfo {
   id: number;
+  businessName: string;
+  /**
+   * Shown in the header in place of the business name text, if uploaded
+   */
+  logo?: (number | null) | Media;
   phone?: string | null;
   email?: string | null;
   address?: string | null;
@@ -782,8 +782,6 @@ export interface ServiceArea {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
-  siteName?: T;
-  logo?: T;
   metaDescription?: T;
   navLinks?:
     | T
@@ -1010,6 +1008,8 @@ export interface CompanyStatsSelect<T extends boolean = true> {
  * via the `definition` "company-info_select".
  */
 export interface CompanyInfoSelect<T extends boolean = true> {
+  businessName?: T;
+  logo?: T;
   phone?: T;
   email?: T;
   address?: T;

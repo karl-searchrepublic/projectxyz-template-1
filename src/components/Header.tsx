@@ -7,12 +7,14 @@ import { ArrowRight, Menu, Phone, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import type { Header as HeaderGlobal, Media } from '@/payload-types'
+import type { CompanyInfo, Header as HeaderGlobal, Media } from '@/payload-types'
 
-export function Header({ data, phone }: { data: HeaderGlobal; phone?: string | null }) {
+export function Header({ data, companyInfo }: { data: HeaderGlobal; companyInfo: CompanyInfo }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const logo = data.logo && typeof data.logo === 'object' ? (data.logo as Media) : null
+  const logo =
+    companyInfo.logo && typeof companyInfo.logo === 'object' ? (companyInfo.logo as Media) : null
+  const phone = companyInfo.phone
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-header-background text-header-foreground">
@@ -31,7 +33,7 @@ export function Header({ data, phone }: { data: HeaderGlobal; phone?: string | n
               width={logo.width ?? 120}
             />
           ) : (
-            data.siteName
+            companyInfo.businessName
           )}
         </Link>
 

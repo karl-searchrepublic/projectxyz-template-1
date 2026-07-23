@@ -11,11 +11,14 @@ import './styles.css'
 export async function generateMetadata() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const header = await payload.findGlobal({ slug: 'header' })
+  const [header, companyInfo] = await Promise.all([
+    payload.findGlobal({ slug: 'header' }),
+    payload.findGlobal({ slug: 'company-info' }),
+  ])
 
   return {
     description: header.metaDescription,
-    title: header.siteName,
+    title: companyInfo.businessName,
   }
 }
 
@@ -45,7 +48,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" style={themeStyle}>
       <body className="pb-20 md:pb-0">
-        <Header data={header} phone={companyInfo.phone} />
+        <Header companyInfo={companyInfo} data={header} />
         <main>{children}</main>
         <Footer companyInfo={companyInfo} data={footer} />
         <MobileCtaBar
