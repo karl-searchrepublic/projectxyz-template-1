@@ -22,10 +22,12 @@ export async function generateMetadata() {
 export default async function Page() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const [homePage, companyStats, companyInfo] = await Promise.all([
+  const [homePage, companyStats, companyInfo, testimonials, serviceArea] = await Promise.all([
     payload.findGlobal({ slug: 'home-page' }),
     payload.findGlobal({ slug: 'company-stats' }),
     payload.findGlobal({ slug: 'company-info' }),
+    payload.findGlobal({ slug: 'testimonials' }),
+    payload.findGlobal({ slug: 'service-area' }),
   ])
 
   const featuredServices = (homePage.servicesPreview?.featuredServices ?? []).filter(
@@ -51,7 +53,7 @@ export default async function Page() {
       <CredentialsStrip heading={homePage.trustStripHeading} items={companyStats.stats ?? []} />
 
       <TestimonialsCarousel
-        heading={homePage.testimonialsHeading}
+        heading={testimonials.heading}
         placeDetails={googlePlaceDetails}
         reviews={googlePlaceDetails?.reviews ?? []}
         showReviewsPill={companyInfo.showGoogleReviewsPill}
@@ -59,7 +61,7 @@ export default async function Page() {
 
       <ServiceAreaSection
         areaLabel={companyInfo.serviceAreaLabel}
-        heading={homePage.serviceAreaHeading}
+        heading={serviceArea.heading}
         latitude={companyInfo.latitude}
         longitude={companyInfo.longitude}
         radiusKm={companyInfo.serviceRadiusKm}

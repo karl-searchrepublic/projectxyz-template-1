@@ -127,8 +127,6 @@ export const seed = async (payload: Payload): Promise<void> => {
           readMoreLabel: 'Read more',
         },
         trustStripHeading: 'Why Choose Us',
-        testimonialsHeading: 'What Our Customers Say',
-        serviceAreaHeading: 'Where We Service',
         finalCta: {
           heading: 'Ready to get started?',
           subtext: 'Get in touch for a fast, free quote on your next job.',

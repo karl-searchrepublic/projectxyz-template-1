@@ -101,6 +101,8 @@ export interface Config {
     theme: Theme;
     'company-stats': CompanyStat;
     'company-info': CompanyInfo;
+    testimonials: Testimonial;
+    'service-area': ServiceArea;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -112,6 +114,8 @@ export interface Config {
     theme: ThemeSelect<false> | ThemeSelect<true>;
     'company-stats': CompanyStatsSelect<false> | CompanyStatsSelect<true>;
     'company-info': CompanyInfoSelect<false> | CompanyInfoSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    'service-area': ServiceAreaSelect<false> | ServiceAreaSelect<true>;
   };
   locale: null;
   widgets: {
@@ -514,14 +518,6 @@ export interface HomePage {
    * Section heading above the stats. The stats themselves come from Company Stats.
    */
   trustStripHeading?: string | null;
-  /**
-   * Heading above the reviews carousel. The reviews themselves are pulled live from Google using the Place ID set on Company Info.
-   */
-  testimonialsHeading?: string | null;
-  /**
-   * Heading above the service-area map/suburb list. The suburbs, radius, and map come from Company Info.
-   */
-  serviceAreaHeading?: string | null;
   finalCta?: {
     heading?: string | null;
     subtext?: string | null;
@@ -733,6 +729,30 @@ export interface CompanyInfo {
   createdAt?: string | null;
 }
 /**
+ * Homepage "What Our Customers Say" section heading. The reviews themselves are pulled live from Google using the Place ID and toggle on Company Info.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  heading?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Homepage "Where We Service" section heading. The suburbs, radius, and map come from Company Info.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "service-area".
+ */
+export interface ServiceArea {
+  id: number;
+  heading?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
@@ -799,8 +819,6 @@ export interface HomePageSelect<T extends boolean = true> {
         readMoreLabel?: T;
       };
   trustStripHeading?: T;
-  testimonialsHeading?: T;
-  serviceAreaHeading?: T;
   finalCta?:
     | T
     | {
@@ -983,6 +1001,26 @@ export interface CompanyInfoSelect<T extends boolean = true> {
       };
   googlePlaceId?: T;
   showGoogleReviewsPill?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  heading?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "service-area_select".
+ */
+export interface ServiceAreaSelect<T extends boolean = true> {
+  heading?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

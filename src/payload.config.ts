@@ -19,6 +19,8 @@ import { ContactPage } from './globals/ContactPage'
 import { Theme } from './globals/Theme'
 import { CompanyStats } from './globals/CompanyStats'
 import { CompanyInfo } from './globals/CompanyInfo'
+import { Testimonials } from './globals/Testimonials'
+import { ServiceArea } from './globals/ServiceArea'
 import { seed } from './seed'
 
 const filename = fileURLToPath(import.meta.url)
@@ -42,6 +44,8 @@ export default buildConfig({
     Theme,
     CompanyStats,
     CompanyInfo,
+    Testimonials,
+    ServiceArea,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
