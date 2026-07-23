@@ -55,13 +55,23 @@ export default async function ContactPage() {
           {companyInfo.phone && (
             <div>
               <h3 className="font-semibold">{contact.contactDetails?.phoneLabel}</h3>
-              <p className="text-muted-foreground">{companyInfo.phone}</p>
+              <a
+                className="text-muted-foreground hover:text-foreground hover:underline"
+                href={`tel:${companyInfo.phone.replace(/[^\d+]/g, '')}`}
+              >
+                {companyInfo.phone}
+              </a>
             </div>
           )}
           {companyInfo.email && (
             <div>
               <h3 className="font-semibold">{contact.contactDetails?.emailLabel}</h3>
-              <p className="text-muted-foreground">{companyInfo.email}</p>
+              <a
+                className="text-muted-foreground hover:text-foreground hover:underline"
+                href={`mailto:${companyInfo.email}`}
+              >
+                {companyInfo.email}
+              </a>
             </div>
           )}
           {companyInfo.address && (
