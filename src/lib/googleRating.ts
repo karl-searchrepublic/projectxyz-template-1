@@ -68,7 +68,10 @@ export async function getGooglePlaceDetails(placeId: string): Promise<GooglePlac
 
     // Google doesn't offer a "sort by newest" request param on this endpoint —
     // sort client-side by publish time instead so "recent reviews" is accurate.
+    // Also drop 1-3 star reviews — the API only ever returns up to 5 reviews
+    // total (no pagination), so this can reduce that further, not backfill it.
     const reviews: GoogleReview[] = reviewsWithPublishTime
+      .filter((review) => review.rating >= 4)
       .sort((a, b) => new Date(b.publishTime).getTime() - new Date(a.publishTime).getTime())
       .map(({ publishTime, ...review }) => {
         void publishTime
