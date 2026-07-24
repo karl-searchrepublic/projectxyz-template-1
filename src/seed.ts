@@ -178,17 +178,18 @@ export const seed = async (payload: Payload): Promise<void> => {
   }
 
   const aboutPage = await payload.findGlobal({ slug: 'about-page' })
-  if (!aboutPage.pageIntro?.headline) {
+  if (!aboutPage.hero?.headline) {
     payload.logger.info('Seeding about-page global...')
     await payload.updateGlobal({
       slug: 'about-page',
       data: {
         metaDescription:
           "Meet the licensed, insured team behind ProjectXYZ Plumbing and learn how we've been keeping local homes and businesses running smoothly for years.",
-        pageIntro: {
+        hero: {
           headline: 'Local plumbers, doing things properly',
           subtext:
             "We've been keeping local homes and businesses running smoothly for years, one job at a time.",
+          primaryCta: { label: 'Get a Quote', href: '/contact' },
         },
         ourStory: {
           heading: 'Our Story',
@@ -259,16 +260,17 @@ export const seed = async (payload: Payload): Promise<void> => {
   }
 
   const servicesPage = await payload.findGlobal({ slug: 'services-page' })
-  if (!servicesPage.pageIntro?.headline) {
+  if (!servicesPage.hero?.headline) {
     payload.logger.info('Seeding services-page global...')
     await payload.updateGlobal({
       slug: 'services-page',
       data: {
         metaDescription:
           'Browse our full range of plumbing services, from urgent repairs to full installations, backed by upfront pricing and a licensed, insured team.',
-        pageIntro: {
+        hero: {
           headline: 'Plumbing services you can rely on',
           subtext: 'From urgent repairs to full installations, we cover it all.',
+          primaryCta: { label: 'Get a Quote', href: '/contact' },
         },
         howItWorksHeading: 'How It Works',
         howItWorks: [

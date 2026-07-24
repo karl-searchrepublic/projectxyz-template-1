@@ -1,12 +1,11 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPayload } from 'payload'
 import { CheckCircle2 } from 'lucide-react'
 
 import config from '@/payload.config'
-import { PageIntro } from '@/components/PageIntro'
-import type { Media, Service } from '@/payload-types'
+import { Hero } from '@/components/Hero'
+import type { Service } from '@/payload-types'
 
 async function getService(slug: string) {
   const payloadConfig = await config
@@ -40,17 +39,15 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   const { slug } = await params
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const [service, servicesPage] = await Promise.all([
+  const [service, servicesPage, companyInfo] = await Promise.all([
     getService(slug),
     payload.findGlobal({ slug: 'services-page' }),
+    payload.findGlobal({ slug: 'company-info' }),
   ])
 
   if (!service) {
     notFound()
   }
-
-  const heroImage =
-    service.heroImage && typeof service.heroImage === 'object' ? (service.heroImage as Media) : null
 
   const relatedServices = (service.relatedServices ?? []).filter(
     (related): related is Service => typeof related === 'object',
@@ -58,18 +55,15 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
   return (
     <>
-      <PageIntro headline={service.title} subtext={service.subtext} />
-
-      {heroImage?.url && (
-        <div className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-border px-6">
-          <Image
-            alt={heroImage.alt}
-            height={heroImage.height ?? 480}
-            src={heroImage.url}
-            width={heroImage.width ?? 960}
-          />
-        </div>
-      )}
+      <Hero
+        data={{
+          headline: service.title,
+          subtext: service.subtext,
+          image: service.heroImage,
+          primaryCta: service.primaryCta,
+        }}
+        phone={companyInfo.phone}
+      />
 
       <section className="mx-auto max-w-3xl px-6 py-section-y">
         <p className="text-lg text-muted-foreground">{service.description}</p>

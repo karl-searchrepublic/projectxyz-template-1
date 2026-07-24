@@ -44,6 +44,8 @@ import * as migration_20260724_001911_remove_header_and_footer_nav_links from '.
 import * as migration_20260724_003729_add_site_nav_page_and_custom_url from './20260724_003729_add_site_nav_page_and_custom_url';
 import * as migration_20260724_003813_remove_site_nav_href from './20260724_003813_remove_site_nav_href';
 import * as migration_20260724_005305_remove_eyebrow_fields from './20260724_005305_remove_eyebrow_fields';
+import * as migration_20260724_010214_add_page_heroes from './20260724_010214_add_page_heroes';
+import * as migration_20260724_010303_remove_page_intro_fields from './20260724_010303_remove_page_intro_fields';
 
 export const migrations = [
   {
@@ -274,6 +276,16 @@ export const migrations = [
   {
     up: migration_20260724_005305_remove_eyebrow_fields.up,
     down: migration_20260724_005305_remove_eyebrow_fields.down,
-    name: '20260724_005305_remove_eyebrow_fields'
+    name: '20260724_005305_remove_eyebrow_fields',
+  },
+  {
+    up: migration_20260724_010214_add_page_heroes.up,
+    down: migration_20260724_010214_add_page_heroes.down,
+    name: '20260724_010214_add_page_heroes',
+  },
+  {
+    up: migration_20260724_010303_remove_page_intro_fields.up,
+    down: migration_20260724_010303_remove_page_intro_fields.down,
+    name: '20260724_010303_remove_page_intro_fields'
   },
 ];

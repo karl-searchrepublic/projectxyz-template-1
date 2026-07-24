@@ -1,7 +1,7 @@
 import { getPayload } from 'payload'
 
 import config from '@/payload.config'
-import { PageIntro } from '@/components/PageIntro'
+import { Hero } from '@/components/Hero'
 import { CTABanner } from '@/components/CTABanner'
 import { ServiceCard } from '@/components/ServiceCard'
 
@@ -12,24 +12,22 @@ export async function generateMetadata() {
 
   return {
     description: servicesPage.metaDescription,
-    title: servicesPage.pageIntro?.headline ?? 'Services',
+    title: servicesPage.hero?.headline ?? 'Services',
   }
 }
 
 export default async function ServicesPage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const [servicesPage, services] = await Promise.all([
+  const [servicesPage, services, companyInfo] = await Promise.all([
     payload.findGlobal({ slug: 'services-page' }),
     payload.find({ collection: 'services', limit: 100, sort: 'title' }),
+    payload.findGlobal({ slug: 'company-info' }),
   ])
 
   return (
     <>
-      <PageIntro
-        headline={servicesPage.pageIntro?.headline ?? 'Services'}
-        subtext={servicesPage.pageIntro?.subtext}
-      />
+      <Hero data={servicesPage.hero} phone={companyInfo.phone} />
 
       <section className="mx-auto grid max-w-6xl gap-6 px-6 py-section-y-lg sm:grid-cols-2 lg:grid-cols-3">
         {services.docs.map((service) => (

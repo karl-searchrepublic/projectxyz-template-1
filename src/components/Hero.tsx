@@ -3,9 +3,19 @@ import Link from 'next/link'
 import { ArrowRight, Phone } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import type { HomePage, Media } from '@/payload-types'
+import type { Media } from '@/payload-types'
 
-export function Hero({ data, phone }: { data: HomePage['hero']; phone?: string | null }) {
+export type HeroData = {
+  headline?: string | null
+  subtext?: string | null
+  image?: number | Media | null
+  primaryCta?: {
+    label?: string | null
+    href?: string | null
+  } | null
+}
+
+export function Hero({ data, phone }: { data: HeroData; phone?: string | null }) {
   const image = data.image && typeof data.image === 'object' ? (data.image as Media) : null
 
   return (

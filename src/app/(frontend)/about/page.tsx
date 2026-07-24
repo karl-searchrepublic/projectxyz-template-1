@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { getPayload } from 'payload'
 
 import config from '@/payload.config'
-import { PageIntro } from '@/components/PageIntro'
+import { Hero } from '@/components/Hero'
 import { CTABanner } from '@/components/CTABanner'
 import { CredentialsStrip } from '@/components/CredentialsStrip'
 import type { Media } from '@/payload-types'
@@ -12,15 +12,16 @@ export async function generateMetadata() {
   const payload = await getPayload({ config: payloadConfig })
   const about = await payload.findGlobal({ slug: 'about-page' })
 
-  return { description: about.metaDescription, title: about.pageIntro?.headline ?? 'About' }
+  return { description: about.metaDescription, title: about.hero?.headline ?? 'About' }
 }
 
 export default async function AboutPage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const [about, trustStrip] = await Promise.all([
+  const [about, trustStrip, companyInfo] = await Promise.all([
     payload.findGlobal({ slug: 'about-page' }),
     payload.findGlobal({ slug: 'trust-strip' }),
+    payload.findGlobal({ slug: 'company-info' }),
   ])
 
   const storyImage =
@@ -30,10 +31,7 @@ export default async function AboutPage() {
 
   return (
     <>
-      <PageIntro
-        headline={about.pageIntro?.headline ?? 'About Us'}
-        subtext={about.pageIntro?.subtext}
-      />
+      <Hero data={about.hero} phone={companyInfo.phone} />
 
       <section className="mx-auto max-w-6xl px-6 py-section-y-lg">
         <div className="flex flex-col items-center gap-10 lg:flex-row">

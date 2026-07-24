@@ -23,11 +23,27 @@ export const AboutPage: GlobalConfig = {
       },
     },
     {
-      name: 'pageIntro',
+      name: 'hero',
       type: 'group',
       fields: [
         { name: 'headline', type: 'text', required: true },
         { name: 'subtext', type: 'textarea' },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          admin: {
+            description: 'Shown alongside the headline on larger screens',
+          },
+        },
+        {
+          name: 'primaryCta',
+          type: 'group',
+          fields: [
+            { name: 'label', type: 'text', defaultValue: 'Get a Quote' },
+            { name: 'href', type: 'text', defaultValue: '/contact' },
+          ],
+        },
       ],
     },
     {

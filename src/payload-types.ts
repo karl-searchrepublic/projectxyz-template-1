@@ -240,6 +240,10 @@ export interface Service {
    * Short description shown on the services grid card and page hero
    */
   subtext?: string | null;
+  primaryCta?: {
+    label?: string | null;
+    href?: string | null;
+  };
   /**
    * Long-form body copy for the individual service page
    */
@@ -402,6 +406,12 @@ export interface ServicesSelect<T extends boolean = true> {
   icon?: T;
   heroImage?: T;
   subtext?: T;
+  primaryCta?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+      };
   description?: T;
   whatsIncluded?:
     | T
@@ -669,9 +679,17 @@ export interface AboutPage {
    * SEO description shown in search results and social share previews
    */
   metaDescription?: string | null;
-  pageIntro: {
+  hero: {
     headline: string;
     subtext?: string | null;
+    /**
+     * Shown alongside the headline on larger screens
+     */
+    image?: (number | null) | Media;
+    primaryCta?: {
+      label?: string | null;
+      href?: string | null;
+    };
   };
   ourStory?: {
     heading?: string | null;
@@ -705,9 +723,17 @@ export interface ServicesPage {
    * SEO description shown in search results and social share previews
    */
   metaDescription?: string | null;
-  pageIntro: {
+  hero: {
     headline: string;
     subtext?: string | null;
+    /**
+     * Shown alongside the headline on larger screens
+     */
+    image?: (number | null) | Media;
+    primaryCta?: {
+      label?: string | null;
+      href?: string | null;
+    };
   };
   howItWorksHeading?: string | null;
   howItWorks?:
@@ -965,11 +991,18 @@ export interface HomePageSelect<T extends boolean = true> {
  */
 export interface AboutPageSelect<T extends boolean = true> {
   metaDescription?: T;
-  pageIntro?:
+  hero?:
     | T
     | {
         headline?: T;
         subtext?: T;
+        image?: T;
+        primaryCta?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+            };
       };
   ourStory?:
     | T
@@ -1004,11 +1037,18 @@ export interface AboutPageSelect<T extends boolean = true> {
  */
 export interface ServicesPageSelect<T extends boolean = true> {
   metaDescription?: T;
-  pageIntro?:
+  hero?:
     | T
     | {
         headline?: T;
         subtext?: T;
+        image?: T;
+        primaryCta?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+            };
       };
   howItWorksHeading?: T;
   howItWorks?:

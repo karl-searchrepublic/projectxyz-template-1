@@ -62,6 +62,15 @@ export const Services: CollectionConfig = {
       },
     },
     {
+      name: 'primaryCta',
+      type: 'group',
+      label: 'Hero Button',
+      fields: [
+        { name: 'label', type: 'text', defaultValue: 'Get a Quote' },
+        { name: 'href', type: 'text', defaultValue: '/contact' },
+      ],
+    },
+    {
       name: 'description',
       type: 'textarea',
       required: true,
