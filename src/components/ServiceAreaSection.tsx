@@ -1,5 +1,6 @@
 import { Chip } from '@/components/Chip'
 import { ServiceAreaMap } from '@/components/ServiceAreaMap'
+import { cn } from '@/lib/utils'
 
 export function ServiceAreaSection({
   heading,
@@ -8,6 +9,7 @@ export function ServiceAreaSection({
   suburbs,
   latitude,
   longitude,
+  background = 'background',
 }: {
   heading?: string | null
   radiusKm?: number | null
@@ -15,6 +17,7 @@ export function ServiceAreaSection({
   suburbs: Array<{ id?: string | null; name: string }>
   latitude?: number | null
   longitude?: number | null
+  background?: 'background' | 'accent'
 }) {
   const hasSuburbs = suburbs.length > 0
   const hasMap = Boolean(latitude && longitude)
@@ -22,7 +25,12 @@ export function ServiceAreaSection({
   if (!hasSuburbs && !hasMap) return null
 
   return (
-    <section className="border-t border-border bg-background">
+    <section
+      className={cn(
+        'border-t border-border',
+        background === 'accent' ? 'bg-accent' : 'bg-background',
+      )}
+    >
       <div className="mx-auto max-w-6xl px-6 py-section-y">
         <div className="grid gap-10 lg:grid-cols-5 lg:gap-12">
           {hasSuburbs && (

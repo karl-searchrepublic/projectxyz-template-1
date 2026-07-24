@@ -90,6 +90,7 @@ export default async function ContactPage() {
 
       <ServiceAreaSection
         areaLabel={serviceArea.label}
+        background="accent"
         heading={serviceArea.heading}
         latitude={companyInfo.latitude}
         longitude={companyInfo.longitude}
