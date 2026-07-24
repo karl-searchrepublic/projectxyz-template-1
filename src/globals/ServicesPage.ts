@@ -46,34 +46,6 @@ export const ServicesPage: GlobalConfig = {
         },
       ],
     },
-    { name: 'howItWorksHeading', type: 'text', defaultValue: 'How It Works' },
-    {
-      name: 'howItWorks',
-      type: 'array',
-      label: 'How It Works Steps',
-      labels: {
-        singular: 'Step',
-        plural: 'Steps',
-      },
-      fields: [
-        { name: 'title', type: 'text', required: true },
-        { name: 'description', type: 'textarea' },
-      ],
-    },
-    { name: 'faqHeading', type: 'text', defaultValue: 'Frequently Asked Questions' },
-    {
-      name: 'faq',
-      type: 'array',
-      label: 'FAQ',
-      labels: {
-        singular: 'Question',
-        plural: 'Questions',
-      },
-      fields: [
-        { name: 'question', type: 'text', required: true },
-        { name: 'answer', type: 'textarea', required: true },
-      ],
-    },
     {
       name: 'whatsIncludedHeading',
       type: 'text',

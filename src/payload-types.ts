@@ -742,22 +742,6 @@ export interface ServicesPage {
       href?: string | null;
     };
   };
-  howItWorksHeading?: string | null;
-  howItWorks?:
-    | {
-        title: string;
-        description?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  faqHeading?: string | null;
-  faq?:
-    | {
-        question: string;
-        answer: string;
-        id?: string | null;
-      }[]
-    | null;
   whatsIncludedHeading?: string | null;
   relatedServicesHeading?: string | null;
   finalCta?: {
@@ -1052,22 +1036,6 @@ export interface ServicesPageSelect<T extends boolean = true> {
               label?: T;
               href?: T;
             };
-      };
-  howItWorksHeading?: T;
-  howItWorks?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        id?: T;
-      };
-  faqHeading?: T;
-  faq?:
-    | T
-    | {
-        question?: T;
-        answer?: T;
-        id?: T;
       };
   whatsIncludedHeading?: T;
   relatedServicesHeading?: T;

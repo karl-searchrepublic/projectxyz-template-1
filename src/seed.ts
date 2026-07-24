@@ -272,36 +272,6 @@ export const seed = async (payload: Payload): Promise<void> => {
           subtext: 'From urgent repairs to full installations, we cover it all.',
           primaryCta: { label: 'Get a Quote', href: '/contact' },
         },
-        howItWorksHeading: 'How It Works',
-        howItWorks: [
-          {
-            title: '1. Get in touch',
-            description: 'Call, email, or fill out our contact form to describe the job.',
-          },
-          {
-            title: '2. We assess the job',
-            description: 'We confirm scope and provide an upfront, no-obligation quote.',
-          },
-          {
-            title: '3. We get it done',
-            description: 'Our licensed team completes the work and cleans up after themselves.',
-          },
-        ],
-        faqHeading: 'Frequently Asked Questions',
-        faq: [
-          {
-            question: 'Do you offer emergency callouts?',
-            answer: 'Yes, we offer same-day emergency service for urgent plumbing issues.',
-          },
-          {
-            question: 'Are your plumbers licensed?',
-            answer: 'All of our plumbers are fully licensed and insured.',
-          },
-          {
-            question: 'Do you provide upfront pricing?',
-            answer: 'Yes, we always confirm pricing with you before starting any work.',
-          },
-        ],
         whatsIncludedHeading: "What's Included",
         relatedServicesHeading: 'Related Services',
         finalCta: {
@@ -313,9 +283,9 @@ export const seed = async (payload: Payload): Promise<void> => {
       },
     })
   }
-  // No backfill needed for howItWorksHeading/faqHeading/whatsIncludedHeading/
-  // relatedServicesHeading: each has a defaultValue, so Postgres backfills
-  // the column itself when the migration adds it — even on a pre-existing doc.
+  // No backfill needed for whatsIncludedHeading/relatedServicesHeading: each
+  // has a defaultValue, so Postgres backfills the column itself when the
+  // migration adds it — even on a pre-existing doc.
 
   const contactPage = await payload.findGlobal({ slug: 'contact-page' })
   if (!contactPage.pageIntro?.headline) {
