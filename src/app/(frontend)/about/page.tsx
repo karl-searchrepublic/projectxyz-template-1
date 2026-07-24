@@ -82,7 +82,7 @@ export default async function AboutPage() {
                     />
                   )}
                   <div>
-                    <h3 className="font-semibold">{member.name}</h3>
+                    <h3 className="text-lg font-semibold">{member.name}</h3>
                     {member.role && <p className="text-sm text-muted-foreground">{member.role}</p>}
                   </div>
                 </div>

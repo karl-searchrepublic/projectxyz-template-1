@@ -51,7 +51,7 @@ export default async function ContactPage() {
         <div className="flex flex-col gap-6">
           {companyInfo.phone && (
             <div>
-              <h3 className="font-semibold">{contact.contactDetails?.phoneLabel}</h3>
+              <h3 className="text-sm font-semibold">{contact.contactDetails?.phoneLabel}</h3>
               <a
                 className="text-muted-foreground hover:text-foreground"
                 href={`tel:${companyInfo.phone.replace(/[^\d+]/g, '')}`}
@@ -62,7 +62,7 @@ export default async function ContactPage() {
           )}
           {companyInfo.email && (
             <div>
-              <h3 className="font-semibold">{contact.contactDetails?.emailLabel}</h3>
+              <h3 className="text-sm font-semibold">{contact.contactDetails?.emailLabel}</h3>
               <a
                 className="text-muted-foreground hover:text-foreground"
                 href={`mailto:${companyInfo.email}`}
@@ -73,13 +73,13 @@ export default async function ContactPage() {
           )}
           {companyInfo.showAddress && companyInfo.address && (
             <div>
-              <h3 className="font-semibold">{contact.contactDetails?.addressLabel}</h3>
+              <h3 className="text-sm font-semibold">{contact.contactDetails?.addressLabel}</h3>
               <p className="text-muted-foreground">{companyInfo.address}</p>
             </div>
           )}
           {companyInfo.hours && (
             <div>
-              <h3 className="font-semibold">{contact.contactDetails?.hoursLabel}</h3>
+              <h3 className="text-sm font-semibold">{contact.contactDetails?.hoursLabel}</h3>
               <p className="whitespace-pre-line text-muted-foreground">{companyInfo.hours}</p>
             </div>
           )}

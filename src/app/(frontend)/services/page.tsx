@@ -38,7 +38,7 @@ export default async function ServicesPage() {
               </h2>
             )}
             {servicesPage.introText && (
-              <p className="text-muted-foreground">{servicesPage.introText}</p>
+              <p className="text-lg text-muted-foreground">{servicesPage.introText}</p>
             )}
           </div>
         )}

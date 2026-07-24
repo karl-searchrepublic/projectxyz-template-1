@@ -39,7 +39,7 @@ export function ServiceAreaSection({
                 {heading || 'Where We Service'}
               </h2>
               {radiusKm && areaLabel && (
-                <p className="mb-6 text-muted-foreground">
+                <p className="mb-6 text-lg text-muted-foreground">
                   Servicing within {radiusKm}km of {areaLabel}
                 </p>
               )}

@@ -55,7 +55,7 @@ export function Footer({
 
           <div className="flex flex-col gap-3">
             <h3 className="text-sm font-semibold">Quick Links</h3>
-            <nav className="flex flex-col gap-2 text-sm text-header-foreground/70">
+            <nav className="flex flex-col gap-2 text-sm font-medium text-header-foreground/70">
               {navLinks?.map((link) => (
                 <Link
                   className="transition-colors hover:text-header-foreground"

@@ -68,14 +68,18 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
       <section className="mx-auto max-w-3xl px-6 py-section-y">
         {service.descriptionHeading && (
-          <h2 className="text-2xl font-bold tracking-tight">{service.descriptionHeading}</h2>
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            {service.descriptionHeading}
+          </h2>
         )}
         <p className="mt-4 text-lg text-muted-foreground">{service.description}</p>
       </section>
 
       {service.whatsIncluded && service.whatsIncluded.length > 0 && (
         <section className="mx-auto max-w-3xl px-6 pb-section-y">
-          <h2 className="text-2xl font-bold tracking-tight">{servicesPage.whatsIncludedHeading}</h2>
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            {servicesPage.whatsIncludedHeading}
+          </h2>
           <ul className="mt-6 flex flex-col gap-3">
             {service.whatsIncluded.map((entry) => (
               <li className="flex items-center gap-3" key={entry.id ?? entry.item}>
@@ -89,7 +93,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
       {relatedServices.length > 0 && (
         <section className="mx-auto max-w-3xl px-6 pb-section-y-lg">
-          <h2 className="text-2xl font-bold tracking-tight">
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
             {servicesPage.relatedServicesHeading}
           </h2>
           <div className="mt-6 flex flex-wrap gap-3">
