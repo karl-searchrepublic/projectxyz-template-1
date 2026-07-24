@@ -4,6 +4,7 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 
 import type { CompanyInfo, Footer as FooterGlobal, Media, SiteNav } from '@/payload-types'
 import { FacebookIcon, InstagramIcon, LinkedinIcon, XIcon } from '@/components/icons/SocialIcons'
+import { resolveSiteNavHref } from '@/lib/siteNavPages'
 
 export function Footer({
   data,
@@ -58,8 +59,8 @@ export function Footer({
               {navLinks?.map((link) => (
                 <Link
                   className="transition-colors hover:text-foreground"
-                  href={link.href}
-                  key={link.id ?? link.href}
+                  href={resolveSiteNavHref(link)}
+                  key={link.id ?? link.label}
                 >
                   {link.label}
                 </Link>

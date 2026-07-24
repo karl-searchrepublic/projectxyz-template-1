@@ -117,9 +117,9 @@ export const seed = async (payload: Payload): Promise<void> => {
       slug: 'site-nav',
       data: {
         navLinks: [
-          { label: 'About', href: '/about' },
-          { label: 'Services', href: '/services' },
-          { label: 'Contact', href: '/contact' },
+          { label: 'About', page: '/about' },
+          { label: 'Services', page: '/services' },
+          { label: 'Contact', page: '/contact' },
         ],
       },
     })

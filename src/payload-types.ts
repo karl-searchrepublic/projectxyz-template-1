@@ -94,6 +94,7 @@ export interface Config {
   globals: {
     'company-info': CompanyInfo;
     theme: Theme;
+    'site-nav': SiteNav;
     header: Header;
     footer: Footer;
     'home-page': HomePage;
@@ -101,13 +102,13 @@ export interface Config {
     'services-page': ServicesPage;
     'contact-page': ContactPage;
     'trust-strip': TrustStrip;
-    'site-nav': SiteNav;
     testimonials: Testimonial;
     'service-area': ServiceArea;
   };
   globalsSelect: {
     'company-info': CompanyInfoSelect<false> | CompanyInfoSelect<true>;
     theme: ThemeSelect<false> | ThemeSelect<true>;
+    'site-nav': SiteNavSelect<false> | SiteNavSelect<true>;
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
@@ -115,7 +116,6 @@ export interface Config {
     'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
     'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
     'trust-strip': TrustStripSelect<false> | TrustStripSelect<true>;
-    'site-nav': SiteNavSelect<false> | SiteNavSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'service-area': ServiceAreaSelect<false> | ServiceAreaSelect<true>;
   };
@@ -571,6 +571,28 @@ export interface Theme {
   createdAt?: string | null;
 }
 /**
+ * Nav links shared by both the Header and the Footer.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-nav".
+ */
+export interface SiteNav {
+  id: number;
+  navLinks?:
+    | {
+        label: string;
+        page: '/' | '/about' | '/services' | '/contact' | 'custom';
+        /**
+         * Full URL, shown only when "Custom URL" is selected above
+         */
+        customUrl?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header".
  */
@@ -774,24 +796,6 @@ export interface TrustStrip {
   createdAt?: string | null;
 }
 /**
- * Nav links shared by both the Header and the Footer.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "site-nav".
- */
-export interface SiteNav {
-  id: number;
-  navLinks?:
-    | {
-        label: string;
-        href: string;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
  * Homepage "What Our Customers Say" section. The reviews themselves are pulled live from Google using the Place ID set on Company Info.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -877,6 +881,23 @@ export interface ThemeSelect<T extends boolean = true> {
   foregroundColor?: T;
   primaryTextColor?: T;
   accentColor?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-nav_select".
+ */
+export interface SiteNavSelect<T extends boolean = true> {
+  navLinks?:
+    | T
+    | {
+        label?: T;
+        page?: T;
+        customUrl?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -1075,22 +1096,6 @@ export interface TrustStripSelect<T extends boolean = true> {
     | {
         label?: T;
         value?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "site-nav_select".
- */
-export interface SiteNavSelect<T extends boolean = true> {
-  navLinks?:
-    | T
-    | {
-        label?: T;
-        href?: T;
         id?: T;
       };
   updatedAt?: T;

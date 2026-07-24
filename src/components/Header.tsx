@@ -7,6 +7,7 @@ import { ArrowRight, Menu, Phone, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { resolveSiteNavHref } from '@/lib/siteNavPages'
 import type { CompanyInfo, Header as HeaderGlobal, Media, SiteNav } from '@/payload-types'
 
 export function Header({
@@ -50,8 +51,8 @@ export function Header({
             {navLinks?.map((link) => (
               <Link
                 className="text-header-foreground/70 transition-colors hover:text-header-foreground"
-                href={link.href}
-                key={link.id ?? link.href}
+                href={resolveSiteNavHref(link)}
+                key={link.id ?? link.label}
               >
                 {link.label}
               </Link>
@@ -99,8 +100,8 @@ export function Header({
         {navLinks?.map((link) => (
           <Link
             className="rounded-md px-3 py-2 text-sm font-medium text-header-foreground/70 transition-colors hover:bg-accent hover:text-header-foreground"
-            href={link.href}
-            key={link.id ?? link.href}
+            href={resolveSiteNavHref(link)}
+            key={link.id ?? link.label}
             onClick={() => setIsMenuOpen(false)}
           >
             {link.label}

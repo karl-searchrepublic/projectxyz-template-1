@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 
 import { revalidateFrontend } from '../hooks/revalidateFrontend'
+import { SITE_NAV_CUSTOM_PAGE_VALUE, SITE_NAV_PAGE_OPTIONS } from '../lib/siteNavPages'
 
 export const SiteNav: GlobalConfig = {
   slug: 'site-nav',
@@ -30,9 +31,20 @@ export const SiteNav: GlobalConfig = {
           required: true,
         },
         {
-          name: 'href',
-          type: 'text',
+          name: 'page',
+          type: 'select',
+          options: SITE_NAV_PAGE_OPTIONS,
           required: true,
+          defaultValue: '/',
+        },
+        {
+          name: 'customUrl',
+          type: 'text',
+          label: 'Custom URL',
+          admin: {
+            condition: (_, siblingData) => siblingData?.page === SITE_NAV_CUSTOM_PAGE_VALUE,
+            description: 'Full URL, shown only when "Custom URL" is selected above',
+          },
         },
       ],
     },
