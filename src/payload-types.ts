@@ -101,6 +101,7 @@ export interface Config {
     'services-page': ServicesPage;
     'contact-page': ContactPage;
     'trust-strip': TrustStrip;
+    'site-nav': SiteNav;
     testimonials: Testimonial;
     'service-area': ServiceArea;
   };
@@ -114,6 +115,7 @@ export interface Config {
     'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
     'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
     'trust-strip': TrustStripSelect<false> | TrustStripSelect<true>;
+    'site-nav': SiteNavSelect<false> | SiteNavSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'service-area': ServiceAreaSelect<false> | ServiceAreaSelect<true>;
   };
@@ -574,13 +576,6 @@ export interface Theme {
  */
 export interface Header {
   id: number;
-  navLinks?:
-    | {
-        label: string;
-        href: string;
-        id?: string | null;
-      }[]
-    | null;
   ctaLabel?: string | null;
   ctaHref?: string | null;
   /**
@@ -597,13 +592,6 @@ export interface Header {
 export interface Footer {
   id: number;
   copyrightText?: string | null;
-  navLinks?:
-    | {
-        label: string;
-        href: string;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -786,6 +774,24 @@ export interface TrustStrip {
   createdAt?: string | null;
 }
 /**
+ * Nav links shared by both the Header and the Footer.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-nav".
+ */
+export interface SiteNav {
+  id: number;
+  navLinks?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * Homepage "What Our Customers Say" section. The reviews themselves are pulled live from Google using the Place ID set on Company Info.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -880,13 +886,6 @@ export interface ThemeSelect<T extends boolean = true> {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
-  navLinks?:
-    | T
-    | {
-        label?: T;
-        href?: T;
-        id?: T;
-      };
   ctaLabel?: T;
   ctaHref?: T;
   callButtonLabel?: T;
@@ -900,13 +899,6 @@ export interface HeaderSelect<T extends boolean = true> {
  */
 export interface FooterSelect<T extends boolean = true> {
   copyrightText?: T;
-  navLinks?:
-    | T
-    | {
-        label?: T;
-        href?: T;
-        id?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -1083,6 +1075,22 @@ export interface TrustStripSelect<T extends boolean = true> {
     | {
         label?: T;
         value?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-nav_select".
+ */
+export interface SiteNavSelect<T extends boolean = true> {
+  navLinks?:
+    | T
+    | {
+        label?: T;
+        href?: T;
         id?: T;
       };
   updatedAt?: T;

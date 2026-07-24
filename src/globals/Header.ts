@@ -15,22 +15,6 @@ export const Header: GlobalConfig = {
   },
   fields: [
     {
-      name: 'navLinks',
-      type: 'array',
-      fields: [
-        {
-          name: 'label',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'href',
-          type: 'text',
-          required: true,
-        },
-      ],
-    },
-    {
       name: 'ctaLabel',
       type: 'text',
     },

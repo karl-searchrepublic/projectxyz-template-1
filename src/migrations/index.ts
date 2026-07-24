@@ -39,6 +39,8 @@ import * as migration_20260723_231026_add_trust_strip from './20260723_231026_ad
 import * as migration_20260723_231129_remove_home_page_trust_strip_heading_and_company_stats from './20260723_231129_remove_home_page_trust_strip_heading_and_company_stats';
 import * as migration_20260723_232547_add_company_info_social_links from './20260723_232547_add_company_info_social_links';
 import * as migration_20260724_000714_add_company_info_footer_tagline_and_legal_links from './20260724_000714_add_company_info_footer_tagline_and_legal_links';
+import * as migration_20260724_001828_add_site_nav from './20260724_001828_add_site_nav';
+import * as migration_20260724_001911_remove_header_and_footer_nav_links from './20260724_001911_remove_header_and_footer_nav_links';
 
 export const migrations = [
   {
@@ -244,6 +246,16 @@ export const migrations = [
   {
     up: migration_20260724_000714_add_company_info_footer_tagline_and_legal_links.up,
     down: migration_20260724_000714_add_company_info_footer_tagline_and_legal_links.down,
-    name: '20260724_000714_add_company_info_footer_tagline_and_legal_links'
+    name: '20260724_000714_add_company_info_footer_tagline_and_legal_links',
+  },
+  {
+    up: migration_20260724_001828_add_site_nav.up,
+    down: migration_20260724_001828_add_site_nav.down,
+    name: '20260724_001828_add_site_nav',
+  },
+  {
+    up: migration_20260724_001911_remove_header_and_footer_nav_links.up,
+    down: migration_20260724_001911_remove_header_and_footer_nav_links.down,
+    name: '20260724_001911_remove_header_and_footer_nav_links'
   },
 ];

@@ -23,11 +23,12 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const [header, footer, theme, companyInfo] = await Promise.all([
+  const [header, footer, theme, companyInfo, siteNav] = await Promise.all([
     payload.findGlobal({ slug: 'header' }),
     payload.findGlobal({ slug: 'footer' }),
     payload.findGlobal({ slug: 'theme' }),
     payload.findGlobal({ slug: 'company-info' }),
+    payload.findGlobal({ slug: 'site-nav' }),
   ])
 
   const themeStyle = {
@@ -44,9 +45,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" style={themeStyle}>
       <body className="pb-20 md:pb-0">
-        <Header companyInfo={companyInfo} data={header} />
+        <Header companyInfo={companyInfo} data={header} navLinks={siteNav.navLinks} />
         <main>{children}</main>
-        <Footer companyInfo={companyInfo} data={footer} />
+        <Footer companyInfo={companyInfo} data={footer} navLinks={siteNav.navLinks} />
         <MobileCtaBar
           callLabel={header.callButtonLabel}
           phone={companyInfo.phone}

@@ -21,6 +21,7 @@ import { CompanyInfo } from './globals/CompanyInfo'
 import { Testimonials } from './globals/Testimonials'
 import { ServiceArea } from './globals/ServiceArea'
 import { TrustStrip } from './globals/TrustStrip'
+import { SiteNav } from './globals/SiteNav'
 import { seed } from './seed'
 
 const filename = fileURLToPath(import.meta.url)
@@ -44,6 +45,7 @@ export default buildConfig({
     ServicesPage,
     ContactPage,
     TrustStrip,
+    SiteNav,
     Testimonials,
     ServiceArea,
   ],

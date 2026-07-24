@@ -87,16 +87,11 @@ export const seed = async (payload: Payload): Promise<void> => {
   }
 
   const header = await payload.findGlobal({ slug: 'header' })
-  if (!header.navLinks || header.navLinks.length === 0) {
+  if (!header.ctaLabel) {
     payload.logger.info('Seeding header global...')
     await payload.updateGlobal({
       slug: 'header',
       data: {
-        navLinks: [
-          { label: 'About', href: '/about' },
-          { label: 'Services', href: '/services' },
-          { label: 'Contact', href: '/contact' },
-        ],
         ctaLabel: 'Get a Quote',
         ctaHref: '/contact',
         callButtonLabel: 'Call Now',
@@ -111,6 +106,16 @@ export const seed = async (payload: Payload): Promise<void> => {
       slug: 'footer',
       data: {
         copyrightText: `© ${new Date().getFullYear()} ProjectXYZ Plumbing. All rights reserved.`,
+      },
+    })
+  }
+
+  const siteNav = await payload.findGlobal({ slug: 'site-nav' })
+  if (!siteNav.navLinks || siteNav.navLinks.length === 0) {
+    payload.logger.info('Seeding site-nav global...')
+    await payload.updateGlobal({
+      slug: 'site-nav',
+      data: {
         navLinks: [
           { label: 'About', href: '/about' },
           { label: 'Services', href: '/services' },

@@ -2,10 +2,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Mail, MapPin, Phone } from 'lucide-react'
 
-import type { CompanyInfo, Footer as FooterGlobal, Media } from '@/payload-types'
+import type { CompanyInfo, Footer as FooterGlobal, Media, SiteNav } from '@/payload-types'
 import { FacebookIcon, InstagramIcon, LinkedinIcon, XIcon } from '@/components/icons/SocialIcons'
 
-export function Footer({ data, companyInfo }: { data: FooterGlobal; companyInfo: CompanyInfo }) {
+export function Footer({
+  data,
+  companyInfo,
+  navLinks,
+}: {
+  data: FooterGlobal
+  companyInfo: CompanyInfo
+  navLinks?: SiteNav['navLinks']
+}) {
   const logo =
     companyInfo.logo && typeof companyInfo.logo === 'object' ? (companyInfo.logo as Media) : null
 
@@ -47,7 +55,7 @@ export function Footer({ data, companyInfo }: { data: FooterGlobal; companyInfo:
           <div className="flex flex-col gap-3">
             <h3 className="text-sm font-semibold">Quick Links</h3>
             <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
-              {data.navLinks?.map((link) => (
+              {navLinks?.map((link) => (
                 <Link
                   className="transition-colors hover:text-foreground"
                   href={link.href}
