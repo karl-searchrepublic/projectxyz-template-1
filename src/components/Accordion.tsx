@@ -9,7 +9,7 @@ export function Accordion({
     <div className="divide-y divide-border rounded-xl border border-border">
       {items.map((item) => (
         <details className="group px-5 py-4" key={item.id ?? item.question}>
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold marker:content-none [&::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 marker:content-none [&::-webkit-details-marker]:hidden">
             {item.question}
             <ChevronDown className="size-5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
           </summary>
