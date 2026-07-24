@@ -339,9 +339,6 @@ export const seed = async (payload: Payload): Promise<void> => {
           addressLabel: 'Address',
           hoursLabel: 'Hours',
         },
-        mapPlaceholder: {
-          placeholderLabel: 'Map coming soon',
-        },
         serviceAreaHeading: 'Areas We Service',
       },
     })

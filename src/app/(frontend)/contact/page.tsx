@@ -95,28 +95,13 @@ export default async function ContactPage() {
             </p>
           )}
 
-          {companyInfo.latitude && companyInfo.longitude ? (
+          {companyInfo.latitude && companyInfo.longitude && (
             <div className="min-h-[320px] overflow-hidden rounded-xl border border-border">
               <ServiceAreaMap
                 latitude={companyInfo.latitude}
                 longitude={companyInfo.longitude}
                 radiusKm={companyInfo.serviceRadiusKm}
               />
-            </div>
-          ) : contact.mapPlaceholder?.embedUrl ? (
-            <div className="min-h-[320px] overflow-hidden rounded-xl border border-border">
-              <iframe
-                className="h-full w-full"
-                height={320}
-                loading="lazy"
-                src={contact.mapPlaceholder.embedUrl}
-                title="Map"
-                width="100%"
-              />
-            </div>
-          ) : (
-            <div className="flex min-h-[200px] items-center justify-center rounded-xl border border-dashed border-border text-center text-muted-foreground">
-              <p>{contact.mapPlaceholder?.placeholderLabel ?? 'Map coming soon'}</p>
             </div>
           )}
         </div>

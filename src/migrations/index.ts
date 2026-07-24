@@ -47,6 +47,7 @@ import * as migration_20260724_005305_remove_eyebrow_fields from './20260724_005
 import * as migration_20260724_010214_add_page_heroes from './20260724_010214_add_page_heroes';
 import * as migration_20260724_010303_remove_page_intro_fields from './20260724_010303_remove_page_intro_fields';
 import * as migration_20260724_010836_add_company_info_show_address from './20260724_010836_add_company_info_show_address';
+import * as migration_20260724_012331_remove_contact_page_map_placeholder from './20260724_012331_remove_contact_page_map_placeholder';
 
 export const migrations = [
   {
@@ -292,6 +293,11 @@ export const migrations = [
   {
     up: migration_20260724_010836_add_company_info_show_address.up,
     down: migration_20260724_010836_add_company_info_show_address.down,
-    name: '20260724_010836_add_company_info_show_address'
+    name: '20260724_010836_add_company_info_show_address',
+  },
+  {
+    up: migration_20260724_012331_remove_contact_page_map_placeholder.up,
+    down: migration_20260724_012331_remove_contact_page_map_placeholder.down,
+    name: '20260724_012331_remove_contact_page_map_placeholder'
   },
 ];

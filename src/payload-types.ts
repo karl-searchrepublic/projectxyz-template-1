@@ -793,10 +793,6 @@ export interface ContactPage {
     addressLabel?: string | null;
     hoursLabel?: string | null;
   };
-  mapPlaceholder?: {
-    embedUrl?: string | null;
-    placeholderLabel?: string | null;
-  };
   serviceAreaHeading?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1113,12 +1109,6 @@ export interface ContactPageSelect<T extends boolean = true> {
         emailLabel?: T;
         addressLabel?: T;
         hoursLabel?: T;
-      };
-  mapPlaceholder?:
-    | T
-    | {
-        embedUrl?: T;
-        placeholderLabel?: T;
       };
   serviceAreaHeading?: T;
   updatedAt?: T;

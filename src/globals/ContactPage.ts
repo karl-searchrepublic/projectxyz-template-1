@@ -48,14 +48,6 @@ export const ContactPage: GlobalConfig = {
         { name: 'hoursLabel', type: 'text', defaultValue: 'Hours' },
       ],
     },
-    {
-      name: 'mapPlaceholder',
-      type: 'group',
-      fields: [
-        { name: 'embedUrl', type: 'text' },
-        { name: 'placeholderLabel', type: 'text', defaultValue: 'Map coming soon' },
-      ],
-    },
     { name: 'serviceAreaHeading', type: 'text', defaultValue: 'Areas We Service' },
   ],
 }
