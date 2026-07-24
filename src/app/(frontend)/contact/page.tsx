@@ -44,7 +44,6 @@ export default async function ContactPage() {
       )}
 
       <PageIntro
-        eyebrow={contact.pageIntro?.eyebrow}
         headline={contact.pageIntro?.headline ?? 'Contact Us'}
         subtext={contact.pageIntro?.subtext}
       />

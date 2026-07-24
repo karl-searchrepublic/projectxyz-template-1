@@ -27,7 +27,6 @@ export default async function ServicesPage() {
   return (
     <>
       <PageIntro
-        eyebrow={servicesPage.pageIntro?.eyebrow}
         headline={servicesPage.pageIntro?.headline ?? 'Services'}
         subtext={servicesPage.pageIntro?.subtext}
       />

@@ -7,7 +7,6 @@ const services = [
   {
     title: 'Blocked Drains',
     slug: 'blocked-drains',
-    eyebrow: 'Drainage',
     icon: 'waves' as const,
     subtext: 'Fast, reliable clearing for blocked and slow-running drains.',
     metaDescription:
@@ -24,7 +23,6 @@ const services = [
   {
     title: 'Hot Water Systems',
     slug: 'hot-water-systems',
-    eyebrow: 'Hot Water',
     icon: 'flame' as const,
     subtext: 'Installation, repair, and replacement for all hot water system types.',
     metaDescription:
@@ -41,7 +39,6 @@ const services = [
   {
     title: 'Leak Detection',
     slug: 'leak-detection',
-    eyebrow: 'Leak Detection',
     icon: 'droplets' as const,
     subtext: 'Non-invasive leak detection to find hidden leaks before they cause damage.',
     metaDescription:
@@ -189,7 +186,6 @@ export const seed = async (payload: Payload): Promise<void> => {
         metaDescription:
           "Meet the licensed, insured team behind ProjectXYZ Plumbing and learn how we've been keeping local homes and businesses running smoothly for years.",
         pageIntro: {
-          eyebrow: 'About Us',
           headline: 'Local plumbers, doing things properly',
           subtext:
             "We've been keeping local homes and businesses running smoothly for years, one job at a time.",
@@ -271,7 +267,6 @@ export const seed = async (payload: Payload): Promise<void> => {
         metaDescription:
           'Browse our full range of plumbing services, from urgent repairs to full installations, backed by upfront pricing and a licensed, insured team.',
         pageIntro: {
-          eyebrow: 'Services',
           headline: 'Plumbing services you can rely on',
           subtext: 'From urgent repairs to full installations, we cover it all.',
         },
@@ -333,7 +328,6 @@ export const seed = async (payload: Payload): Promise<void> => {
           message: 'Got a plumbing emergency? Call us now, we are available 24/7.',
         },
         pageIntro: {
-          eyebrow: 'Contact',
           headline: "Let's talk about your job",
           subtext: 'Send us a message or reach out directly, we typically reply within the hour.',
         },

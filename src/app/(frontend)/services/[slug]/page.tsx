@@ -58,7 +58,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
   return (
     <>
-      <PageIntro eyebrow={service.eyebrow} headline={service.title} subtext={service.subtext} />
+      <PageIntro headline={service.title} subtext={service.subtext} />
 
       {heroImage?.url && (
         <div className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-border px-6">

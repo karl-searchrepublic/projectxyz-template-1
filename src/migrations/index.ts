@@ -43,6 +43,7 @@ import * as migration_20260724_001828_add_site_nav from './20260724_001828_add_s
 import * as migration_20260724_001911_remove_header_and_footer_nav_links from './20260724_001911_remove_header_and_footer_nav_links';
 import * as migration_20260724_003729_add_site_nav_page_and_custom_url from './20260724_003729_add_site_nav_page_and_custom_url';
 import * as migration_20260724_003813_remove_site_nav_href from './20260724_003813_remove_site_nav_href';
+import * as migration_20260724_005305_remove_eyebrow_fields from './20260724_005305_remove_eyebrow_fields';
 
 export const migrations = [
   {
@@ -268,6 +269,11 @@ export const migrations = [
   {
     up: migration_20260724_003813_remove_site_nav_href.up,
     down: migration_20260724_003813_remove_site_nav_href.down,
-    name: '20260724_003813_remove_site_nav_href'
+    name: '20260724_003813_remove_site_nav_href',
+  },
+  {
+    up: migration_20260724_005305_remove_eyebrow_fields.up,
+    down: migration_20260724_005305_remove_eyebrow_fields.down,
+    name: '20260724_005305_remove_eyebrow_fields'
   },
 ];

@@ -41,10 +41,6 @@ export const Services: CollectionConfig = {
       },
     },
     {
-      name: 'eyebrow',
-      type: 'text',
-    },
-    {
       name: 'icon',
       type: 'select',
       options: SERVICE_ICON_OPTIONS,

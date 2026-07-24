@@ -34,7 +34,6 @@ export const ContactPage: GlobalConfig = {
       name: 'pageIntro',
       type: 'group',
       fields: [
-        { name: 'eyebrow', type: 'text' },
         { name: 'headline', type: 'text', required: true },
         { name: 'subtext', type: 'textarea' },
       ],

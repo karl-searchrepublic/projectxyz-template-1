@@ -31,7 +31,6 @@ export default async function AboutPage() {
   return (
     <>
       <PageIntro
-        eyebrow={about.pageIntro?.eyebrow}
         headline={about.pageIntro?.headline ?? 'About Us'}
         subtext={about.pageIntro?.subtext}
       />

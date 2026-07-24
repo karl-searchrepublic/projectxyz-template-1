@@ -206,7 +206,6 @@ export interface Service {
    * SEO description shown in search results and social share previews
    */
   metaDescription?: string | null;
-  eyebrow?: string | null;
   /**
    * Icon shown on the services grid card
    */
@@ -400,7 +399,6 @@ export interface ServicesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   metaDescription?: T;
-  eyebrow?: T;
   icon?: T;
   heroImage?: T;
   subtext?: T;
@@ -552,7 +550,7 @@ export interface Theme {
    */
   backgroundColor: string;
   /**
-   * Header/nav bar background color (desktop bar and mobile dropdown menu). Set this per client to match the background baked into their logo file, so the logo sits cleanly on the header — independent of the general page background. Nav text color is calculated automatically for contrast against it.
+   * Header and footer background color (including the mobile dropdown menu). Set this per client to match the background baked into their logo file, so the logo sits cleanly on both — independent of the general page background. Text color on both is calculated automatically for contrast.
    */
   headerBackgroundColor: string;
   /**
@@ -672,7 +670,6 @@ export interface AboutPage {
    */
   metaDescription?: string | null;
   pageIntro: {
-    eyebrow?: string | null;
     headline: string;
     subtext?: string | null;
   };
@@ -709,7 +706,6 @@ export interface ServicesPage {
    */
   metaDescription?: string | null;
   pageIntro: {
-    eyebrow?: string | null;
     headline: string;
     subtext?: string | null;
   };
@@ -755,7 +751,6 @@ export interface ContactPage {
     message?: string | null;
   };
   pageIntro: {
-    eyebrow?: string | null;
     headline: string;
     subtext?: string | null;
   };
@@ -973,7 +968,6 @@ export interface AboutPageSelect<T extends boolean = true> {
   pageIntro?:
     | T
     | {
-        eyebrow?: T;
         headline?: T;
         subtext?: T;
       };
@@ -1013,7 +1007,6 @@ export interface ServicesPageSelect<T extends boolean = true> {
   pageIntro?:
     | T
     | {
-        eyebrow?: T;
         headline?: T;
         subtext?: T;
       };
@@ -1062,7 +1055,6 @@ export interface ContactPageSelect<T extends boolean = true> {
   pageIntro?:
     | T
     | {
-        eyebrow?: T;
         headline?: T;
         subtext?: T;
       };
