@@ -39,7 +39,7 @@ export function Footer({
               {logo?.url ? (
                 <Image
                   alt={logo.alt}
-                  className="h-10 w-auto object-contain"
+                  className="h-[52px] w-auto object-contain"
                   height={logo.height ?? 32}
                   src={logo.url}
                   width={logo.width ?? 120}
