@@ -41,7 +41,24 @@ export const CompanyInfo: GlobalConfig = {
     },
     { name: 'phone', type: 'text' },
     { name: 'email', type: 'text' },
-    { name: 'address', type: 'textarea' },
+    {
+      name: 'address',
+      type: 'textarea',
+      admin: {
+        description:
+          'Always used to geocode the map/service-radius location, regardless of the "Show Address" setting below.',
+      },
+    },
+    {
+      name: 'showAddress',
+      type: 'checkbox',
+      defaultValue: true,
+      label: 'Show Address on Website?',
+      admin: {
+        description:
+          'Turn off to hide the address from the Footer and Contact page — useful if it\'s a home address or one customers shouldn\'t visit. The map and service radius still work either way.',
+      },
+    },
     { name: 'hours', type: 'textarea' },
     {
       name: 'serviceRadiusKm',

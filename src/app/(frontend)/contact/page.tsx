@@ -74,7 +74,7 @@ export default async function ContactPage() {
               </a>
             </div>
           )}
-          {companyInfo.address && (
+          {companyInfo.showAddress && companyInfo.address && (
             <div>
               <h3 className="font-semibold">{contact.contactDetails?.addressLabel}</h3>
               <p className="text-muted-foreground">{companyInfo.address}</p>

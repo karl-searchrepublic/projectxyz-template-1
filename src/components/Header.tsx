@@ -16,7 +16,7 @@ export function Header({
   navLinks,
 }: {
   data: HeaderGlobal
-  companyInfo: CompanyInfo
+  companyInfo: Pick<CompanyInfo, 'businessName' | 'logo' | 'phone'>
   navLinks?: SiteNav['navLinks']
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

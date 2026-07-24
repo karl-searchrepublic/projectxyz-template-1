@@ -494,7 +494,14 @@ export interface CompanyInfo {
   footerTagline?: string | null;
   phone?: string | null;
   email?: string | null;
+  /**
+   * Always used to geocode the map/service-radius location, regardless of the "Show Address" setting below.
+   */
   address?: string | null;
+  /**
+   * Turn off to hide the address from the Footer and Contact page — useful if it's a home address or one customers shouldn't visit. The map and service radius still work either way.
+   */
+  showAddress?: boolean | null;
   hours?: string | null;
   /**
    * Radius (in km) drawn as a circle on the Contact page map, centered on the geocoded business address.
@@ -868,6 +875,7 @@ export interface CompanyInfoSelect<T extends boolean = true> {
   phone?: T;
   email?: T;
   address?: T;
+  showAddress?: T;
   hours?: T;
   serviceRadiusKm?: T;
   latitude?: T;

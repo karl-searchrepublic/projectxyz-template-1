@@ -89,7 +89,7 @@ export function Footer({
                   {companyInfo.email}
                 </a>
               )}
-              {companyInfo.address && (
+              {companyInfo.showAddress && companyInfo.address && (
                 <div className="flex items-start gap-2">
                   <MapPin className="mt-0.5 size-4 shrink-0" />
                   <span className="whitespace-pre-line">{companyInfo.address}</span>
