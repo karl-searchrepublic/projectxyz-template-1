@@ -40,11 +40,12 @@ export const Theme: GlobalConfig = {
     {
       name: 'headerBackgroundColor',
       type: 'text',
+      label: 'Header and Footer Background Color',
       required: true,
       defaultValue: '#ffffff',
       admin: {
         description:
-          'Header/nav bar background color (desktop bar and mobile dropdown menu). Set this per client to match the background baked into their logo file, so the logo sits cleanly on the header — independent of the general page background. Nav text color is calculated automatically for contrast against it.',
+          'Header and footer background color (including the mobile dropdown menu). Set this per client to match the background baked into their logo file, so the logo sits cleanly on both — independent of the general page background. Text color on both is calculated automatically for contrast.',
       },
     },
     {

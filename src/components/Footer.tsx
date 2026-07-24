@@ -31,7 +31,7 @@ export function Footer({
   const termsUrl = companyInfo.legalLinks?.termsUrl
 
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-border bg-header-background text-header-foreground">
       <div className="mx-auto max-w-6xl px-6 py-section-y">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col gap-3">
@@ -49,16 +49,16 @@ export function Footer({
               )}
             </Link>
             {companyInfo.footerTagline && (
-              <p className="text-sm text-muted-foreground">{companyInfo.footerTagline}</p>
+              <p className="text-sm text-header-foreground/70">{companyInfo.footerTagline}</p>
             )}
           </div>
 
           <div className="flex flex-col gap-3">
             <h3 className="text-sm font-semibold">Quick Links</h3>
-            <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
+            <nav className="flex flex-col gap-2 text-sm text-header-foreground/70">
               {navLinks?.map((link) => (
                 <Link
-                  className="transition-colors hover:text-foreground"
+                  className="transition-colors hover:text-header-foreground"
                   href={resolveSiteNavHref(link)}
                   key={link.id ?? link.label}
                 >
@@ -70,10 +70,10 @@ export function Footer({
 
           <div className="flex flex-col gap-3">
             <h3 className="text-sm font-semibold">Contact</h3>
-            <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+            <div className="flex flex-col gap-2 text-sm text-header-foreground/70">
               {companyInfo.phone && (
                 <a
-                  className="flex items-center gap-2 transition-colors hover:text-foreground"
+                  className="flex items-center gap-2 transition-colors hover:text-header-foreground"
                   href={`tel:${companyInfo.phone.replace(/[^\d+]/g, '')}`}
                 >
                   <Phone className="size-4 shrink-0" />
@@ -82,7 +82,7 @@ export function Footer({
               )}
               {companyInfo.email && (
                 <a
-                  className="flex items-center gap-2 transition-colors hover:text-foreground"
+                  className="flex items-center gap-2 transition-colors hover:text-header-foreground"
                   href={`mailto:${companyInfo.email}`}
                 >
                   <Mail className="size-4 shrink-0" />
@@ -105,7 +105,7 @@ export function Footer({
                 {socialLinks.map(({ href, label, Icon }) => (
                   <a
                     aria-label={label}
-                    className="text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-header-foreground/70 transition-colors hover:text-header-foreground"
                     href={href}
                     key={label}
                     rel="noopener noreferrer"
@@ -120,17 +120,20 @@ export function Footer({
         </div>
 
         {(data.copyrightText || privacyPolicyUrl || termsUrl) && (
-          <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 text-sm text-header-foreground/70 sm:flex-row sm:items-center sm:justify-between">
             {data.copyrightText && <p>{data.copyrightText}</p>}
             {(privacyPolicyUrl || termsUrl) && (
               <div className="flex flex-wrap gap-x-6 gap-y-2">
                 {privacyPolicyUrl && (
-                  <a className="transition-colors hover:text-foreground" href={privacyPolicyUrl}>
+                  <a
+                    className="transition-colors hover:text-header-foreground"
+                    href={privacyPolicyUrl}
+                  >
                     Privacy Policy
                   </a>
                 )}
                 {termsUrl && (
-                  <a className="transition-colors hover:text-foreground" href={termsUrl}>
+                  <a className="transition-colors hover:text-header-foreground" href={termsUrl}>
                     Terms
                   </a>
                 )}
