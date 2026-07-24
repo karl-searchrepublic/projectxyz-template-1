@@ -339,11 +339,10 @@ export const seed = async (payload: Payload): Promise<void> => {
           addressLabel: 'Address',
           hoursLabel: 'Hours',
         },
-        serviceAreaHeading: 'Areas We Service',
       },
     })
   }
-  // No backfill needed for contactDetails.*Label or serviceAreaHeading: each
-  // has a defaultValue, so Postgres backfills the column itself when the
-  // migration adds it — even on a pre-existing doc.
+  // No backfill needed for contactDetails.*Label: each has a defaultValue,
+  // so Postgres backfills the column itself when the migration adds it —
+  // even on a pre-existing doc.
 }

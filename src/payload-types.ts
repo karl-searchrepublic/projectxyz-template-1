@@ -793,7 +793,6 @@ export interface ContactPage {
     addressLabel?: string | null;
     hoursLabel?: string | null;
   };
-  serviceAreaHeading?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1110,7 +1109,6 @@ export interface ContactPageSelect<T extends boolean = true> {
         addressLabel?: T;
         hoursLabel?: T;
       };
-  serviceAreaHeading?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

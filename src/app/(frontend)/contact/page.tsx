@@ -109,10 +109,7 @@ export default async function ContactPage() {
 
       {serviceArea.suburbs && serviceArea.suburbs.length > 0 && (
         <section className="mx-auto max-w-6xl px-6 pb-section-y-lg">
-          <h2 className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
-            {contact.serviceAreaHeading}
-          </h2>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             {serviceArea.suburbs.map((suburb) => (
               <Chip key={suburb.id ?? suburb.name} label={suburb.name} />
             ))}
