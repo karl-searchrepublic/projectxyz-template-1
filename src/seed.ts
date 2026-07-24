@@ -31,6 +31,21 @@ const services = [
         answer:
           'Usually not. High-pressure water jetting clears most blockages without any digging, so excavation is only used as a last resort.',
       },
+      {
+        question: 'How much does it cost to clear a blocked drain?',
+        answer:
+          'Costs vary depending on the location and severity of the blockage, but we always provide an upfront quote before starting any work.',
+      },
+      {
+        question: 'Can tree roots cause a blocked drain?',
+        answer:
+          'Yes, tree roots are one of the most common causes of blocked drains, especially in older clay pipes. Our CCTV camera can confirm if roots are the issue.',
+      },
+      {
+        question: 'How can I stop my drains from blocking again?',
+        answer:
+          'Avoid pouring fats, oils, and wipes down the drain, and consider a scheduled drain clean if blockages keep recurring.',
+      },
     ],
   },
   {
@@ -60,6 +75,20 @@ const services = [
         answer:
           'It depends on your household size, energy costs, and available space. We can talk you through the options during a quote.',
       },
+      {
+        question: 'How often should a hot water system be serviced?',
+        answer:
+          'Most systems benefit from an annual service to check the anode, pressure valve, and overall condition, which helps avoid breakdowns.',
+      },
+      {
+        question: 'What size hot water system do I need?',
+        answer:
+          'This depends on your household size and hot water usage. We can recommend the right capacity when we quote your job.',
+      },
+      {
+        question: 'Do you offer emergency hot water repairs?',
+        answer: 'Yes, we offer same-day emergency callouts for hot water system failures.',
+      },
     ],
   },
   {
@@ -88,6 +117,21 @@ const services = [
         question: 'What are the signs I might have a hidden leak?',
         answer:
           'An unusually high water bill, damp patches on walls or floors, or the sound of running water when everything is turned off are all common signs.',
+      },
+      {
+        question: 'How long does a leak detection inspection take?',
+        answer:
+          'Most inspections take between one and two hours, depending on the size of the property and how many areas need checking.',
+      },
+      {
+        question: 'Can a hidden leak really increase my water bill that much?',
+        answer:
+          'Yes, even a small, continuous leak can waste thousands of litres of water over a few months, which shows up as a noticeably higher bill.',
+      },
+      {
+        question: 'What happens after you find the leak?',
+        answer:
+          'We will explain exactly where the leak is and provide an upfront quote to repair it, so there are no surprises.',
       },
     ],
   },
