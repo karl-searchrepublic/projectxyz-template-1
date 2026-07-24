@@ -4,8 +4,7 @@ import { Phone } from 'lucide-react'
 import config from '@/payload.config'
 import { PageIntro } from '@/components/PageIntro'
 import { ContactForm } from '@/components/ContactForm'
-import { Chip } from '@/components/Chip'
-import { ServiceAreaMap } from '@/components/ServiceAreaMap'
+import { ServiceAreaSection } from '@/components/ServiceAreaSection'
 
 export async function generateMetadata() {
   const payloadConfig = await config
@@ -48,7 +47,7 @@ export default async function ContactPage() {
         subtext={contact.pageIntro?.subtext}
       />
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-section-y-lg lg:grid-cols-3">
+      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-section-y-lg lg:grid-cols-2">
         <ContactForm />
 
         <div className="flex flex-col gap-6">
@@ -87,35 +86,16 @@ export default async function ContactPage() {
             </div>
           )}
         </div>
-
-        <div className="flex flex-col gap-3">
-          {companyInfo.serviceRadiusKm && serviceArea.label && (
-            <p className="text-sm font-medium text-muted-foreground">
-              Servicing within {companyInfo.serviceRadiusKm}km of {serviceArea.label}
-            </p>
-          )}
-
-          {companyInfo.latitude && companyInfo.longitude && (
-            <div className="min-h-[320px] overflow-hidden rounded-xl border border-border">
-              <ServiceAreaMap
-                latitude={companyInfo.latitude}
-                longitude={companyInfo.longitude}
-                radiusKm={companyInfo.serviceRadiusKm}
-              />
-            </div>
-          )}
-        </div>
       </section>
 
-      {serviceArea.suburbs && serviceArea.suburbs.length > 0 && (
-        <section className="mx-auto max-w-6xl px-6 pb-section-y-lg">
-          <div className="flex flex-wrap justify-center gap-3">
-            {serviceArea.suburbs.map((suburb) => (
-              <Chip key={suburb.id ?? suburb.name} label={suburb.name} />
-            ))}
-          </div>
-        </section>
-      )}
+      <ServiceAreaSection
+        areaLabel={serviceArea.label}
+        heading={serviceArea.heading}
+        latitude={companyInfo.latitude}
+        longitude={companyInfo.longitude}
+        radiusKm={companyInfo.serviceRadiusKm}
+        suburbs={serviceArea.suburbs ?? []}
+      />
     </>
   )
 }
