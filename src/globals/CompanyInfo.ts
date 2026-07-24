@@ -32,6 +32,13 @@ export const CompanyInfo: GlobalConfig = {
         description: 'Shown in the header in place of the business name text, if uploaded',
       },
     },
+    {
+      name: 'footerTagline',
+      type: 'text',
+      admin: {
+        description: 'Short one-line tagline shown under the logo in the footer',
+      },
+    },
     { name: 'phone', type: 'text' },
     { name: 'email', type: 'text' },
     { name: 'address', type: 'textarea' },
@@ -82,6 +89,26 @@ export const CompanyInfo: GlobalConfig = {
         { name: 'instagram', type: 'text', admin: { description: 'Full Instagram profile URL' } },
         { name: 'x', type: 'text', label: 'X (Twitter)', admin: { description: 'Full X/Twitter profile URL' } },
         { name: 'linkedin', type: 'text', admin: { description: 'Full LinkedIn page URL' } },
+      ],
+    },
+    {
+      name: 'legalLinks',
+      type: 'group',
+      label: 'Legal Links',
+      admin: {
+        description: 'Shown in the footer bottom bar. Leave either blank to hide that link.',
+      },
+      fields: [
+        {
+          name: 'privacyPolicyUrl',
+          type: 'text',
+          label: 'Privacy Policy URL',
+        },
+        {
+          name: 'termsUrl',
+          type: 'text',
+          label: 'Terms URL',
+        },
       ],
     },
   ],

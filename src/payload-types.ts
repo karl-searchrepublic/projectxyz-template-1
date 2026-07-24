@@ -478,6 +478,10 @@ export interface CompanyInfo {
    * Shown in the header in place of the business name text, if uploaded
    */
   logo?: (number | null) | Media;
+  /**
+   * Short one-line tagline shown under the logo in the footer
+   */
+  footerTagline?: string | null;
   phone?: string | null;
   email?: string | null;
   address?: string | null;
@@ -518,6 +522,13 @@ export interface CompanyInfo {
      * Full LinkedIn page URL
      */
     linkedin?: string | null;
+  };
+  /**
+   * Shown in the footer bottom bar. Leave either blank to hide that link.
+   */
+  legalLinks?: {
+    privacyPolicyUrl?: string | null;
+    termsUrl?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -822,6 +833,7 @@ export interface ServiceArea {
 export interface CompanyInfoSelect<T extends boolean = true> {
   businessName?: T;
   logo?: T;
+  footerTagline?: T;
   phone?: T;
   email?: T;
   address?: T;
@@ -837,6 +849,12 @@ export interface CompanyInfoSelect<T extends boolean = true> {
         instagram?: T;
         x?: T;
         linkedin?: T;
+      };
+  legalLinks?:
+    | T
+    | {
+        privacyPolicyUrl?: T;
+        termsUrl?: T;
       };
   updatedAt?: T;
   createdAt?: T;
