@@ -41,7 +41,7 @@ export function Hero({
             {data.headline}
           </h1>
           {data.subtext && (
-            <p className="mb-6 text-lg font-light text-muted-foreground lg:mb-8 lg:text-xl">
+            <p className="mb-6 text-lg text-muted-foreground lg:mb-8 lg:text-xl">
               {data.subtext}
             </p>
           )}
