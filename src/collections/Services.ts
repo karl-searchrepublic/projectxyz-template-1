@@ -71,6 +71,11 @@ export const Services: CollectionConfig = {
       ],
     },
     {
+      name: 'descriptionHeading',
+      type: 'text',
+      defaultValue: 'Overview',
+    },
+    {
       name: 'description',
       type: 'textarea',
       required: true,

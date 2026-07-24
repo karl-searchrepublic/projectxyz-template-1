@@ -244,6 +244,7 @@ export interface Service {
     label?: string | null;
     href?: string | null;
   };
+  descriptionHeading?: string | null;
   /**
    * Long-form body copy for the individual service page
    */
@@ -412,6 +413,7 @@ export interface ServicesSelect<T extends boolean = true> {
         label?: T;
         href?: T;
       };
+  descriptionHeading?: T;
   description?: T;
   whatsIncluded?:
     | T

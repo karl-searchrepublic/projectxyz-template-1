@@ -50,6 +50,7 @@ import * as migration_20260724_010836_add_company_info_show_address from './2026
 import * as migration_20260724_012331_remove_contact_page_map_placeholder from './20260724_012331_remove_contact_page_map_placeholder';
 import * as migration_20260724_012758_remove_contact_page_service_area_heading from './20260724_012758_remove_contact_page_service_area_heading';
 import * as migration_20260724_014906_remove_services_page_how_it_works_and_faq from './20260724_014906_remove_services_page_how_it_works_and_faq';
+import * as migration_20260724_015758_add_service_description_heading from './20260724_015758_add_service_description_heading';
 
 export const migrations = [
   {
@@ -310,6 +311,11 @@ export const migrations = [
   {
     up: migration_20260724_014906_remove_services_page_how_it_works_and_faq.up,
     down: migration_20260724_014906_remove_services_page_how_it_works_and_faq.down,
-    name: '20260724_014906_remove_services_page_how_it_works_and_faq'
+    name: '20260724_014906_remove_services_page_how_it_works_and_faq',
+  },
+  {
+    up: migration_20260724_015758_add_service_description_heading.up,
+    down: migration_20260724_015758_add_service_description_heading.down,
+    name: '20260724_015758_add_service_description_heading'
   },
 ];

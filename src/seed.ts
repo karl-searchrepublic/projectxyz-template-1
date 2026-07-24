@@ -11,6 +11,7 @@ const services = [
     subtext: 'Fast, reliable clearing for blocked and slow-running drains.',
     metaDescription:
       'Fast, reliable blocked drain clearing using CCTV drain cameras and high-pressure water jetting. Licensed and available for emergency callouts.',
+    descriptionHeading: 'Overview',
     description:
       'Blocked drains can bring a household or business to a standstill. Our team uses CCTV drain cameras and high-pressure water jetting to find the cause of the blockage and clear it quickly, without unnecessary digging.',
     whatsIncluded: [
@@ -27,6 +28,7 @@ const services = [
     subtext: 'Installation, repair, and replacement for all hot water system types.',
     metaDescription:
       'Hot water system installation, repair, and replacement for gas, electric, solar, and heat pump systems, with same-day emergency service.',
+    descriptionHeading: 'Overview',
     description:
       'From electric and gas storage tanks to continuous flow and heat pump systems, we install, service, and repair hot water systems of every type and brand, with same-day emergency callouts available.',
     whatsIncluded: [
@@ -43,6 +45,7 @@ const services = [
     subtext: 'Non-invasive leak detection to find hidden leaks before they cause damage.',
     metaDescription:
       'Non-invasive leak detection using acoustic listening devices and thermal imaging to find hidden leaks before they cause serious damage.',
+    descriptionHeading: 'Overview',
     description:
       'Hidden leaks behind walls, under slabs, or underground can waste thousands of litres of water and cause serious damage. We use acoustic listening devices and thermal imaging to pinpoint leaks without unnecessary excavation.',
     whatsIncluded: [

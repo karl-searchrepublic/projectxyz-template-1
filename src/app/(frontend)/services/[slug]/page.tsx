@@ -5,6 +5,7 @@ import { CheckCircle2 } from 'lucide-react'
 
 import config from '@/payload.config'
 import { Hero } from '@/components/Hero'
+import { CTABanner } from '@/components/CTABanner'
 import type { Service } from '@/payload-types'
 
 async function getService(slug: string) {
@@ -66,7 +67,10 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
       />
 
       <section className="mx-auto max-w-3xl px-6 py-section-y">
-        <p className="text-lg text-muted-foreground">{service.description}</p>
+        {service.descriptionHeading && (
+          <h2 className="text-2xl font-bold tracking-tight">{service.descriptionHeading}</h2>
+        )}
+        <p className="mt-4 text-lg text-muted-foreground">{service.description}</p>
       </section>
 
       {service.whatsIncluded && service.whatsIncluded.length > 0 && (
@@ -101,6 +105,13 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           </div>
         </section>
       )}
+
+      <CTABanner
+        buttonHref={servicesPage.finalCta?.buttonHref}
+        buttonLabel={servicesPage.finalCta?.buttonLabel}
+        heading={servicesPage.finalCta?.heading}
+        subtext={servicesPage.finalCta?.subtext}
+      />
     </>
   )
 }
