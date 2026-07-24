@@ -48,8 +48,6 @@ export default async function ContactPage() {
       />
 
       <section className="mx-auto grid max-w-6xl gap-12 px-6 py-section-y-lg lg:grid-cols-2">
-        <ContactForm />
-
         <div className="flex flex-col gap-6">
           {companyInfo.phone && (
             <div>
@@ -86,6 +84,8 @@ export default async function ContactPage() {
             </div>
           )}
         </div>
+
+        <ContactForm />
       </section>
 
       <ServiceAreaSection
