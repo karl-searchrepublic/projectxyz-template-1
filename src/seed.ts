@@ -275,6 +275,8 @@ export const seed = async (payload: Payload): Promise<void> => {
           subtext: 'From urgent repairs to full installations, we cover it all.',
           primaryCta: { label: 'Get a Quote', href: '/contact' },
         },
+        introHeading: 'Our Services',
+        introText: 'See below for a full list of the services we provide.',
         whatsIncludedHeading: "What's Included",
         relatedServicesHeading: 'Related Services',
         finalCta: {
@@ -286,7 +288,7 @@ export const seed = async (payload: Payload): Promise<void> => {
       },
     })
   }
-  // No backfill needed for whatsIncludedHeading/relatedServicesHeading: each
+  // No backfill needed for introHeading/introText/whatsIncludedHeading/relatedServicesHeading: each
   // has a defaultValue, so Postgres backfills the column itself when the
   // migration adds it — even on a pre-existing doc.
 

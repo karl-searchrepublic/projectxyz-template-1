@@ -744,6 +744,8 @@ export interface ServicesPage {
       href?: string | null;
     };
   };
+  introHeading?: string | null;
+  introText?: string | null;
   whatsIncludedHeading?: string | null;
   relatedServicesHeading?: string | null;
   finalCta?: {
@@ -1039,6 +1041,8 @@ export interface ServicesPageSelect<T extends boolean = true> {
               href?: T;
             };
       };
+  introHeading?: T;
+  introText?: T;
   whatsIncludedHeading?: T;
   relatedServicesHeading?: T;
   finalCta?:

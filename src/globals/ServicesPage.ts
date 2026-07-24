@@ -47,6 +47,18 @@ export const ServicesPage: GlobalConfig = {
       ],
     },
     {
+      name: 'introHeading',
+      type: 'text',
+      label: 'Services List Heading',
+      defaultValue: 'Our Services',
+    },
+    {
+      name: 'introText',
+      type: 'textarea',
+      label: 'Services List Body Text',
+      defaultValue: 'See below for a full list of the services we provide.',
+    },
+    {
       name: 'whatsIncludedHeading',
       type: 'text',
       label: "'What's Included' Heading (service detail pages)",

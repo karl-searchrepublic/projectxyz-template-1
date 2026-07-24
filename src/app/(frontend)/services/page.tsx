@@ -29,16 +29,31 @@ export default async function ServicesPage() {
     <>
       <Hero data={servicesPage.hero} phone={companyInfo.phone} />
 
-      <section className="mx-auto grid max-w-6xl gap-6 px-6 py-section-y-lg sm:grid-cols-2 lg:grid-cols-3">
-        {services.docs.map((service) => (
-          <ServiceCard
-            description={service.subtext}
-            href={`/services/${service.slug}`}
-            icon={service.icon}
-            key={service.id}
-            title={service.title}
-          />
-        ))}
+      <section className="mx-auto max-w-6xl px-6 py-section-y-lg">
+        {(servicesPage.introHeading || servicesPage.introText) && (
+          <div className="mx-auto mb-10 flex max-w-2xl flex-col items-center gap-3 text-center">
+            {servicesPage.introHeading && (
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                {servicesPage.introHeading}
+              </h2>
+            )}
+            {servicesPage.introText && (
+              <p className="text-muted-foreground">{servicesPage.introText}</p>
+            )}
+          </div>
+        )}
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {services.docs.map((service) => (
+            <ServiceCard
+              description={service.subtext}
+              href={`/services/${service.slug}`}
+              icon={service.icon}
+              key={service.id}
+              title={service.title}
+            />
+          ))}
+        </div>
       </section>
 
       <CTABanner
