@@ -1,14 +1,23 @@
+import { cn } from '@/lib/utils'
+
 export function CredentialsStrip({
   heading,
   items,
+  background = 'accent',
 }: {
   heading?: string | null
   items: Array<{ id?: string | null; label: string; value: string }>
+  background?: 'background' | 'accent'
 }) {
   if (items.length === 0) return null
 
   return (
-    <section className="border-t border-border bg-accent">
+    <section
+      className={cn(
+        'border-t border-border',
+        background === 'accent' ? 'bg-accent' : 'bg-background',
+      )}
+    >
       <div className="mx-auto max-w-6xl px-6 py-section-y">
         {heading && (
           <h2 className="mb-10 text-center text-2xl font-bold tracking-tight sm:text-3xl">

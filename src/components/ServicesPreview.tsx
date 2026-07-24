@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { ServiceCard } from '@/components/ServiceCard'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import type { Service } from '@/payload-types'
 
 export function ServicesPreview({
@@ -10,17 +11,24 @@ export function ServicesPreview({
   services,
   viewAllLabel,
   readMoreLabel,
+  background = 'background',
 }: {
   heading?: string | null
   subtext?: string | null
   services: Service[]
   viewAllLabel?: string | null
   readMoreLabel?: string | null
+  background?: 'background' | 'accent'
 }) {
   if (services.length === 0) return null
 
   return (
-    <section className="border-t border-border bg-background">
+    <section
+      className={cn(
+        'border-t border-border',
+        background === 'accent' ? 'bg-accent' : 'bg-background',
+      )}
+    >
       <div className="mx-auto max-w-6xl px-6 py-section-y">
         <div className="mx-auto mb-10 flex max-w-2xl flex-col items-center gap-3 text-center">
           {heading && <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{heading}</h2>}

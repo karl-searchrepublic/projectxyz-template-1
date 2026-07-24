@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 import type { GooglePlaceDetails } from '@/lib/googleRating'
 
 export function TestimonialsCarousel({
@@ -12,11 +13,13 @@ export function TestimonialsCarousel({
   reviews,
   placeDetails,
   showReviewsPill,
+  background = 'background',
 }: {
   heading?: string | null
   reviews: GooglePlaceDetails['reviews']
   placeDetails?: GooglePlaceDetails | null
   showReviewsPill?: boolean | null
+  background?: 'background' | 'accent'
 }) {
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -37,7 +40,12 @@ export function TestimonialsCarousel({
   }
 
   return (
-    <section className="border-t border-border bg-background">
+    <section
+      className={cn(
+        'border-t border-border',
+        background === 'accent' ? 'bg-accent' : 'bg-background',
+      )}
+    >
       <div className="mx-auto max-w-6xl px-6 py-section-y">
         <div className="mb-8 flex items-start justify-between gap-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">

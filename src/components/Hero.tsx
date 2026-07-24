@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, Phone } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import type { Media } from '@/payload-types'
 
 export type HeroData = {
@@ -15,11 +16,25 @@ export type HeroData = {
   } | null
 }
 
-export function Hero({ data, phone }: { data: HeroData; phone?: string | null }) {
+export function Hero({
+  data,
+  phone,
+  background = 'accent',
+}: {
+  data: HeroData
+  phone?: string | null
+  background?: 'background' | 'accent'
+}) {
   const image = data.image && typeof data.image === 'object' ? (data.image as Media) : null
 
   return (
-    <section className="bg-accent text-accent-foreground">
+    <section
+      className={cn(
+        background === 'accent'
+          ? 'bg-accent text-accent-foreground'
+          : 'bg-background text-foreground',
+      )}
+    >
       <div className="mx-auto grid max-w-6xl gap-8 px-6 py-section-y lg:grid-cols-12 lg:gap-16 lg:py-section-y-lg">
         <div className="order-last flex flex-col justify-center lg:order-none lg:col-span-6">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-balance md:text-5xl">
