@@ -38,6 +38,7 @@ export default buildConfig({
   globals: [
     CompanyInfo,
     Theme,
+    SiteNav,
     Header,
     Footer,
     HomePage,
@@ -45,7 +46,6 @@ export default buildConfig({
     ServicesPage,
     ContactPage,
     TrustStrip,
-    SiteNav,
     Testimonials,
     ServiceArea,
   ],

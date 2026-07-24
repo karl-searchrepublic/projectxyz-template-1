@@ -12,7 +12,7 @@ export const SiteNav: GlobalConfig = {
     afterChange: [revalidateFrontend],
   },
   admin: {
-    group: 'Components',
+    group: 'Site Settings',
     description: 'Nav links shared by both the Header and the Footer.',
   },
   fields: [
