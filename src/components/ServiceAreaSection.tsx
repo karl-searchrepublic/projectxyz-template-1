@@ -45,7 +45,11 @@ export function ServiceAreaSection({
               )}
               <div className="flex flex-wrap gap-3">
                 {suburbs.map((suburb) => (
-                  <Chip key={suburb.id ?? suburb.name} label={suburb.name} />
+                  <Chip
+                    background={background}
+                    key={suburb.id ?? suburb.name}
+                    label={suburb.name}
+                  />
                 ))}
               </div>
             </div>
