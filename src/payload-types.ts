@@ -256,6 +256,13 @@ export interface Service {
       }[]
     | null;
   relatedServices?: (number | Service)[] | null;
+  faq?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -422,6 +429,13 @@ export interface ServicesSelect<T extends boolean = true> {
         id?: T;
       };
   relatedServices?: T;
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -748,6 +762,7 @@ export interface ServicesPage {
   introText?: string | null;
   whatsIncludedHeading?: string | null;
   relatedServicesHeading?: string | null;
+  faqHeading?: string | null;
   finalCta?: {
     heading?: string | null;
     subtext?: string | null;
@@ -1045,6 +1060,7 @@ export interface ServicesPageSelect<T extends boolean = true> {
   introText?: T;
   whatsIncludedHeading?: T;
   relatedServicesHeading?: T;
+  faqHeading?: T;
   finalCta?:
     | T
     | {

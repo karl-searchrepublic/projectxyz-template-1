@@ -6,6 +6,7 @@ import { CheckCircle2 } from 'lucide-react'
 import config from '@/payload.config'
 import { Hero } from '@/components/Hero'
 import { CTABanner } from '@/components/CTABanner'
+import { Accordion } from '@/components/Accordion'
 import type { Service } from '@/payload-types'
 
 async function getService(slug: string) {
@@ -92,7 +93,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
       )}
 
       {relatedServices.length > 0 && (
-        <section className="mx-auto max-w-3xl px-6 pb-section-y-lg">
+        <section className="mx-auto max-w-3xl px-6 pb-section-y">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
             {servicesPage.relatedServicesHeading}
           </h2>
@@ -106,6 +107,17 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 {related.title}
               </Link>
             ))}
+          </div>
+        </section>
+      )}
+
+      {service.faq && service.faq.length > 0 && (
+        <section className="mx-auto max-w-3xl px-6 pb-section-y-lg">
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            {servicesPage.faqHeading}
+          </h2>
+          <div className="mt-6">
+            <Accordion items={service.faq} />
           </div>
         </section>
       )}

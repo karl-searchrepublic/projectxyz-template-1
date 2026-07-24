@@ -104,5 +104,25 @@ export const Services: CollectionConfig = {
       relationTo: 'services',
       hasMany: true,
     },
+    {
+      name: 'faq',
+      type: 'array',
+      labels: {
+        singular: 'Question',
+        plural: 'Questions',
+      },
+      fields: [
+        {
+          name: 'question',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'answer',
+          type: 'textarea',
+          required: true,
+        },
+      ],
+    },
   ],
 }

@@ -20,6 +20,18 @@ const services = [
       { item: 'Root and debris removal' },
       { item: 'Follow-up drain camera report' },
     ],
+    faq: [
+      {
+        question: 'How do you find the cause of a blocked drain?',
+        answer:
+          'We start with a CCTV drain camera to see exactly where the blockage is and what is causing it before we recommend a fix.',
+      },
+      {
+        question: 'Will you need to dig up my yard?',
+        answer:
+          'Usually not. High-pressure water jetting clears most blockages without any digging, so excavation is only used as a last resort.',
+      },
+    ],
   },
   {
     title: 'Hot Water Systems',
@@ -37,6 +49,18 @@ const services = [
       { item: 'Gas, electric, solar, and heat pump systems' },
       { item: 'Same-day emergency service' },
     ],
+    faq: [
+      {
+        question: 'How long does a hot water system installation take?',
+        answer:
+          'Most replacements are completed in a single day, so you are rarely without hot water for long.',
+      },
+      {
+        question: 'Which type of hot water system is right for me?',
+        answer:
+          'It depends on your household size, energy costs, and available space. We can talk you through the options during a quote.',
+      },
+    ],
   },
   {
     title: 'Leak Detection',
@@ -53,6 +77,18 @@ const services = [
       { item: 'Thermal imaging inspection' },
       { item: 'Underground and slab leak detection' },
       { item: 'Detailed findings report' },
+    ],
+    faq: [
+      {
+        question: 'How can you find a leak without digging up my property?',
+        answer:
+          'Acoustic listening devices and thermal imaging let us pinpoint a leak\'s location accurately, so we only dig where we need to.',
+      },
+      {
+        question: 'What are the signs I might have a hidden leak?',
+        answer:
+          'An unusually high water bill, damp patches on walls or floors, or the sound of running water when everything is turned off are all common signs.',
+      },
     ],
   },
 ]
@@ -279,6 +315,7 @@ export const seed = async (payload: Payload): Promise<void> => {
         introText: 'See below for a full list of the services we provide.',
         whatsIncludedHeading: "What's Included",
         relatedServicesHeading: 'Related Services',
+        faqHeading: 'Frequently Asked Questions',
         finalCta: {
           heading: 'Need a hand with a plumbing job?',
           subtext: 'Reach out today and we will get back to you fast.',
@@ -288,7 +325,7 @@ export const seed = async (payload: Payload): Promise<void> => {
       },
     })
   }
-  // No backfill needed for introHeading/introText/whatsIncludedHeading/relatedServicesHeading: each
+  // No backfill needed for introHeading/introText/whatsIncludedHeading/relatedServicesHeading/faqHeading: each
   // has a defaultValue, so Postgres backfills the column itself when the
   // migration adds it — even on a pre-existing doc.
 

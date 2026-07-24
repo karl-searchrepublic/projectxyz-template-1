@@ -71,6 +71,12 @@ export const ServicesPage: GlobalConfig = {
       defaultValue: 'Related Services',
     },
     {
+      name: 'faqHeading',
+      type: 'text',
+      label: "'FAQ' Heading (service detail pages)",
+      defaultValue: 'Frequently Asked Questions',
+    },
+    {
       name: 'finalCta',
       type: 'group',
       label: 'Final CTA Banner',
