@@ -44,7 +44,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en" style={themeStyle}>
-      <body className="pb-20 md:pb-0">
+      <body className="pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0">
         <Header
           companyInfo={{
             businessName: companyInfo.businessName,
