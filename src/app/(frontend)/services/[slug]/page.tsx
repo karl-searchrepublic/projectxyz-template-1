@@ -83,7 +83,10 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           </h2>
           <ul className="mt-6 flex flex-col gap-3">
             {service.whatsIncluded.map((entry) => (
-              <li className="flex items-center gap-3" key={entry.id ?? entry.item}>
+              <li
+                className="flex items-center gap-3 text-lg text-muted-foreground"
+                key={entry.id ?? entry.item}
+              >
                 <CheckCircle2 className="size-5 shrink-0 text-primary" />
                 {entry.item}
               </li>
